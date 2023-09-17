@@ -57,7 +57,7 @@ const MobileMenu = ({handleLocationChange}) => {
             <Link to="#">Our Services</Link>
             <ul className="sub-menu" style={activeLi("home")}>
               <li>
-                <Link to="#">State Health Insurance</Link>
+                <Link to="/state-health-insurance">State Health Insurance</Link>
               </li>
               <li className="has-children">
                 <Link to="/social-health-insurance">Social Health Insurance</Link>
