@@ -60,21 +60,7 @@ const MobileMenu = ({handleLocationChange}) => {
                 <Link to="#">State Health Insurance</Link>
               </li>
               <li className="has-children">
-                <Link to="#">Social Health Insurance</Link>
-                <ul className="sub-menu" style={multiMenuActiveLi("onePage")}>
-                  <li>
-                    <Link to="#">TISHIP</Link>
-                  </li>
-                  <li>
-                    <Link to="#">GIFSHIP</Link>
-                  </li>
-                </ul>
-                <span
-                  className="dd-trigger"
-                  onClick={() => multiMenuSet("onePage")}
-                >
-                  <i className="far fa-angle-down" />
-                </span>
+                <Link to="/social-health-insurance">Social Health Insurance</Link>
               </li>
             </ul>
             <span className="dd-trigger" onClick={() => activeMenuSet("home")}>
