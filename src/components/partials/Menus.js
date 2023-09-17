@@ -36,7 +36,7 @@ const Menus = () => {
           </Link>
           <ul className="sub-menu">
             <li className='menu-item'>
-              <Link to="#">State Health Insurance</Link>
+              <Link to="/state-health-insurance">State Health Insurance</Link>
             </li>
             <li className='menu-item'>
               <Link to="/social-health-insurance">Social Health Insurance</Link>
