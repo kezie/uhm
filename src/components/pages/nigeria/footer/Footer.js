@@ -57,6 +57,11 @@ const Footer = () => {
                       <li>
                         <Link to="/faqs">FAQs</Link>
                       </li>
+                      <li>
+                        <Link to='#' data-bs-toggle="modal" data-bs-target="#loginModal">
+                          Login To Portal
+                        </Link>
+                      </li>
                     </ul>
                   </div>
                 </div>
