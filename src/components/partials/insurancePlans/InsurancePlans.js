@@ -30,7 +30,7 @@ const InsurancePlans = () => {
                   </Link>
                 </h3>
               </div>
-              <p>
+              <p style={{textAlign:'left'}}>
                {insurance.desc}
               </p>
                 <Link to={insurance.link}>
