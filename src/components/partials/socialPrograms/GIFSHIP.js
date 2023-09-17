@@ -8,14 +8,14 @@ const GIFSHIP = () => {
         className="banner-one bg_cover p-r z-1"
         style={{ backgroundImage: `url(${otumba})` }}
     > 
-        <div className="container">
+        <div className="container pt-120">
             <div className="row">
                 <div className="col-xl-7 col-lg-10">
                 {/*=== Hero Content ===*/}
                     <div className="text-white mt-5 mb-5">
-                        <h1 className="wow fadeInUp mb-2" data-wow-delay=".7s" style={{color:'#db812f'}}>
+                        <h2 className="wow fadeInUp mb-4" data-wow-delay=".7s" style={{color:'#db812f'}}>
                             The GIFSHIP PROGRAMME
-                        </h1>
+                        </h2>
                         <p className="wow fadeInUp mb-2 text-light">
                             GIFSHIP represents Group Individual and Family Social health insuance programme of the National Health Insurance Authority. 
                             The GIFSHIP program is available for individuals, families and groups of 10 or more. 
@@ -29,13 +29,13 @@ const GIFSHIP = () => {
                         </p>
                     </div>
                     <div
-                  className="hero-button wow fadeInDown"
-                  data-wow-delay=".9s"
-                >
-                  <Link to="/insurance" className={`main-btn btn-outline`}>
-                    <span className=""> Buy Now</span>
-                  </Link>
-                </div>
+                      className="hero-button wow fadeInDown"
+                      data-wow-delay=".9s"
+                    >
+                      <Link to="#" className={`main-btn btn-success`}>
+                        <span className=""> More Info </span>
+                      </Link>
+                    </div>
                 </div>
             </div>
         </div>
