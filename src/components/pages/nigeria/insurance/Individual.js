@@ -1,6 +1,7 @@
 import React from 'react'
 import PageBanner from '../../../partials/PageBanner'
 import { Link } from 'react-router-dom'
+import Button from './Button'
 
 const Individual = () => {
   return (
@@ -21,16 +22,14 @@ const Individual = () => {
                   </p>
                   <div className='about-two_content-box'>
                     <ul className="check-style-two">
-                      <li>Portfolio Diversification</li>
-                      <li>Capital Protection</li>
-                      <li>Volatility Protection</li>
-                      <li>Inflation Protection</li>
+                      <li>Easy Network Access</li>
+                      <li>Preventive Care</li>
+                      <li>Very Affordable</li>
+                      <li>Comprehensive Coverage</li>
                     </ul>
                   </div>
                 </div>
-                <Link to="#">
-                  <a className="main-btn btn-black">Buy Plan</a>
-                </Link>
+                <Button/>
               </div>
               <div className="col-lg-6">
                 <div className="skill-img-box mb-50 text-lg-right text-md-center p-r z-1 wow fadeInRight">
