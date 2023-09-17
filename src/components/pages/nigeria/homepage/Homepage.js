@@ -72,13 +72,12 @@ const Homepage = ({posts}) => {
                   <div className="col-md-6">
                     <div className="features-item-four animate-hover-icon text-center wow fadeInUp">
                       <div className="icon">
-                        <i className="flaticon-search" />
+                        <i className="flaticon-customers" />
                       </div>
                       <div className="text">
                         <h4 className="title">Customer Relationship Management</h4>
-                        <p>
-                          We denounce righteous dislike men beguiled and
-                          demoralized charmso
+                        <p style={{textAlign:'left', fontSize:16}}>
+                          Ultimate Health HMO ensures comprehensive care, easy access, and proactive health management.
                         </p>
                       </div>
                     </div>
@@ -86,13 +85,12 @@ const Homepage = ({posts}) => {
                   <div className="col-md-6">
                     <div className="features-item-four animate-hover-icon text-center wow fadeInDown">
                       <div className="icon">
-                        <i className="flaticon-idea-1" />
+                        <i className="fa fa-hospital-user" />
                       </div>
                       <div className="text">
-                        <h4 className="title">Nation Wide Hospital Network</h4>
-                        <p>
-                          We denounce righteous dislike men beguiled and
-                          demoralized charmso
+                        <h4 className="title pb-lg-4">Nation Wide Hospital Network</h4>
+                        <p style={{textAlign:'left', fontSize:16}}>
+                          Ultimate Health HMO offers Nation Wide comprehensive hospital coverage for your peace of mind.
                         </p>
                       </div>
                     </div>
