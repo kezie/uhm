@@ -40,14 +40,6 @@ const Menus = () => {
             </li>
             <li className='menu-item'>
               <Link to="/social-health-insurance">Social Health Insurance</Link>
-              <ul className="sub-menu">
-                <li>
-                  <Link to="#">TISHIP</Link>
-                </li>
-                <li>
-                  <Link to="#">GIFSHIP</Link>
-                </li>
-              </ul>
             </li>
           </ul>
         </li>
