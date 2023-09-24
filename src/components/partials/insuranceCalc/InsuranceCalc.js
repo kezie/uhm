@@ -19,15 +19,15 @@ const InsuranceCalc = () => {
                 <div className="section-title-three text-left">
                     <div className="section-title section-title-left">
                     <span className="sub-title text-light">Get a Free Quote</span>
-                    <h2 className='text-light'>Get an Insurance Quote <br/> to Get Started</h2>
+                    <h2 className='text-light'>Pick a Plan to Get Started</h2>
                     </div>
                 </div>
                 <div>
                     <div className="row mt-5">
-                        <div className='col-lg-8 text-light'>
+                        <div className='text-light'>
                             <Tab.Container id="left-tabs-example" defaultActiveKey={`${TabData[0].title}`}>
                                 <Row>
-                                    <Col sm={6}>
+                                    <Col sm={4}>
                                         <Nav variant="pills" className="flex-column">
                                             {TabData.map((tab)=>(
                                                 <Nav.Item key={tab.title}>
@@ -36,14 +36,90 @@ const InsuranceCalc = () => {
                                             ))}
                                         </Nav>
                                     </Col>
-                                    <Col sm={6}>
+                                    <Col sm={8}>
                                         <Tab.Content>
                                             {TabData.map((tab)=>(
-                                                <Tab.Pane key={tab.title} eventKey={tab.title}>
+                                                <Tab.Pane key={tab.title} eventKey={tab.title} className='mt-sm-4'>
                                                     <h3 className='text-light mb-2'>{tab.title} PLAN</h3>
                                                     <p className="text-light">{tab.content}</p>
                                                 </Tab.Pane>
                                             ))}
+                                            <div className="mt-3">
+                                            {/* === Contact Form Box === */}
+                                                <div className="insurance_form mb-50 wow fadeInRight">
+                                                    <form onSubmit={(e) => e.preventDefault()}>
+                                                        <div className='row'>
+                                                            <div className="form_group mb-2 col-lg-6 ">
+                                                                <input
+                                                                    type="text"
+                                                                    className="w-100 p-2 rounded-pill text-center"
+                                                                    placeholder="First Name"
+                                                                    name="name"
+                                                                    required=""
+                                                                />
+                                                            </div>
+
+                                                            <div className="form_group mb-2 col-lg-6 ">
+                                                                <input
+                                                                    type="text"
+                                                                    className="w-100 p-2 rounded-pill text-center"
+                                                                    placeholder="Last Name"
+                                                                    name="name"
+                                                                    required=""
+                                                                />
+                                                            </div>
+                                                        
+                                                            <div className="form_group mb-2 col-lg-6 ">
+                                                                <input
+                                                                    type="email"
+                                                                    className="w-100 p-2 rounded-pill text-center"
+                                                                    placeholder="Email"
+                                                                    name="email"
+                                                                    required=""
+                                                                />
+                                                            </div>
+                                                        
+                                                            <div className="form_group mb-2 col-lg-6 ">
+                                                                <input
+                                                                    type="text"
+                                                                    className="w-100 p-2 rounded-pill text-center"
+                                                                    placeholder="Phone"
+                                                                    name="phone"
+                                                                    required=""
+                                                                />
+                                                            </div>
+
+                                                            <div className="col-lg-6 form_group mb-2">
+                                                                <input
+                                                                    type="number"
+                                                                    className="w-100 p-2 rounded-pill text-center"
+                                                                    placeholder="Number of Lives"
+                                                                    name="numb"
+                                                                    required=""
+                                                                />
+                                                            </div>
+                                                    
+                                                            <div className="col-lg-6 form_group mb-2">
+                                                                <input
+                                                                    type="text"
+                                                                    className="w-100 p-2 rounded-pill text-center"
+                                                                    placeholder="Plan"
+                                                                    name="plan"
+                                                                    required=""
+                                                                    value={`${option} PLAN`}
+                                                                    disabled
+                                                                />
+                                                            </div>
+                                                        
+                                                            <div className="form_group">
+                                                                <button className="main-btn btn-red">
+                                                                    Get Quote
+                                                                </button>
+                                                            </div>
+                                                        </div>  
+                                                    </form>
+                                                </div>
+                                            </div>
                                             <div className="get-insurance__call">
                                                 <div className="get-insurance__call-icon">
                                                     <i className="fas fa-headset"></i>
@@ -53,14 +129,15 @@ const InsuranceCalc = () => {
                                                     <a href="tel:+2348112893000">+234-811-2893-000</a>
                                                 </div>
                                             </div>
+                                            
                                         </Tab.Content>
                                     </Col>
                                 </Row>
                             </Tab.Container>
                         </div>
                         {/* form */}
-                        <div className="col-lg-4">
-                        {/*=== Contact Form Box ===*/}
+                        {/* <div className="col-lg-4">
+                        === Contact Form Box ===
                             <div className="insurance_form mb-50 wow fadeInRight">
 
                                 <form onSubmit={(e) => e.preventDefault()}>
@@ -134,7 +211,7 @@ const InsuranceCalc = () => {
                                     </div>  
                                 </form>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
