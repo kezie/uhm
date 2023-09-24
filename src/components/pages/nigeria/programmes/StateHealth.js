@@ -1,7 +1,8 @@
 import React from 'react'
-import otumba from '../../../../images/hero-bg-2.jpg'
+import gifship from '../../../../images/gifship.jpg'
 import PageBanner from '../../../partials/PageBanner'
 import { Link } from 'react-router-dom'
+import Brands from '../../../partials/brands'
 
 const StateHealth = () => {
   return (
@@ -9,11 +10,11 @@ const StateHealth = () => {
         <PageBanner pageName={"Social Health Insurance"} PageImage={"wcu2.png"} />
         <section
             className="banner-one bg_cover p-r z-1"
-            style={{ backgroundImage: `url(${otumba})` }}
+            style={{ backgroundImage: `url(${gifship})` }}
         > 
-            <div className="container pt-120">
+            <div className="container pt-100 pb-100">
                 <div className="row">
-                    <div className="col-xl-7 col-lg-10">
+                    <div className="col-xl-7 col-lg-10 bg-dark p-4" style={{opacity:0.8, borderRadius:'50px'}}>
                     {/*=== Hero Content ===*/}
                         <div className="text-white mt-5 mb-5">
                             <h2 className="wow fadeInUp mb-2" data-wow-delay=".7s" style={{color:'#db812f'}}>
@@ -39,6 +40,7 @@ const StateHealth = () => {
                 </div>
             </div>
         </section>
+        <Brands/>
     </>
   )
 }
