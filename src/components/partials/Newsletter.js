@@ -1,3 +1,5 @@
+import Socials from "./socials/Socials";
+
 const Newsletter = () => {
   return (
     <section className="newsletter-section black-bg pt-50 pb-30">
@@ -7,6 +9,7 @@ const Newsletter = () => {
             {/*=== Common Heading ===*/}
             <div className="section-title section-title-white wow fadeInLeft">
               <h2>Follow Us On Social Media To Feel Our Pulse</h2>
+              <Socials style={{marginRight:'4px'}}/>
               <h6 className="text-light">The taste of the pudding is in the eating</h6>
             </div>
           </div>
