@@ -58,7 +58,7 @@ function App() {
           <Route path="/providers" element={< Providers/>} />
           <Route path="/:slug" element={< Details/>} />
           <Route path="/global" element={<Globalpage/>}/>
-          <Route path="/insurance" element={< Insurance/>}/>
+          <Route path="/insurance-plans" element={< Insurance/>}/>
           <Route path='/contact' element={<Contact/>}/>
           <Route path='/faqs' element={<FAQs/>}/>
           <Route path='/individual-plan' element={<Individual/>} />
