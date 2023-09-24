@@ -46,7 +46,7 @@ const Footer = () => {
                   <div className="footer-content">
                     <ul className="widget-nav">
                       <li>
-                        <Link to="/insurance">Insurance Plans</Link>
+                        <Link to="/insurance-plans">Insurance Plans</Link>
                       </li>
                       <li>
                         <Link to="/story">About Us</Link>
