@@ -1,16 +1,17 @@
 import React from 'react'
-import otumba from '../../../images/hero-bg-2.jpg'
+import tiship from '../../../images/tiship.jpg'
 import { Link } from 'react-router-dom'
 
 const TISHIP = () => {
   return (
     <section
         className="banner-one bg_cover p-r z-1"
-        style={{ backgroundImage: `url(${otumba})` }}
+        style={{ backgroundImage: `url(${tiship})` }}
     > 
-        <div className="container pt-120">
+        <div className="container pt-100 pb-100">
             <div className="row">
-                <div className="col-xl-7 col-lg-10">
+                <div className='col-xl-5 col-lg-2'></div>
+                <div className="col-xl-7 col-lg-10  bg-dark p-4" style={{opacity:0.8, borderRadius:'50px'}}>
                 {/*=== Hero Content ===*/}
                     <div className="text-white mt-5 mb-5">
                         <h2 className="wow fadeInUp mb-4" data-wow-delay=".7s" style={{color:'#db812f'}}>
