@@ -21,8 +21,7 @@ import Family from './components/pages/nigeria/insurance/Family';
 import Associations from './components/pages/nigeria/insurance/Associations';
 import Corperate from './components/pages/nigeria/insurance/Corperate';
 import Payment from './components/partials/payment/PaystackIntegration';
-import SocialPrograms from './components/pages/nigeria/programmes/SocialHealth'
-import StatePrograms from './components/pages/nigeria/programmes/StateHealth'
+import SocialPrograms from './components/pages/nigeria/programmes'
 import WOW from 'wowjs'
 
 function App() {
@@ -67,7 +66,6 @@ function App() {
           <Route path='/corperate-plan' element={<Corperate/>} />
           <Route path='/payment' element={<Payment/>} />
           <Route path='/social-health-insurance' element={<SocialPrograms/>} />
-          <Route path='/state-health-insurance' element={<StatePrograms/>} />
         </Routes>
       <Footer/>
       </Router>
