@@ -4,6 +4,7 @@ import Newsletter from '../../../partials/Newsletter'
 import { offices } from './Offices'
 import Socials from '../../../partials/socials/Socials'
 import Form from './Form'
+import { Link } from 'react-router-dom'
 
 const Contact = () => {
 
@@ -47,68 +48,42 @@ const Contact = () => {
       style={{backgroundImage: "url(assets/images/bg/benefits-bg-2-1.png)" }}
       >
         <div className='container pb-3'>
-          <div className="section-title section-title-left mb-10 wow fadeInDown">
-            <span className="sub-title">You can also reach us on</span>
-            <h4>Corporate Head Office</h4>
+          <div className="section-title text-center section-title-left mb-10 wow fadeInDown">
+            <span className="sub-title pb-4">You can also reach us on</span>
           </div>
-          <div className="row align-items-center">
-            {/* <div className="single-info-item col-lg-4 animate-hover-icon d-flex mb-20 wow fadeInUp">
-              <div className="icon">
-                <img src="assets/images/icon/icon-1.png" width={50} alt="Icon" />
-              </div>
-              <div className="info">
-                <p>
-                  4th Floor, Plot 1446, Constitution Avenue, Central Business District, FCT-Abuja
-                </p>
-              </div>
-            </div> */}
-            <div className="card col-lg-4 text-center" style={{backgroundColor:'rgb(2,0,36);'}}>
-              <div className="icon pt-2">
-                <img src="assets/images/icon/icon-1.png" width={50} alt="Icon" />
-              </div>
-              <div className="card-body">
-                <p className="card-text">4th Floor, Plot 1446, Constitution Avenue, Central Business District, FCT-Abuja</p>
-              </div>
-            </div>
-
-            <div className="card col-lg-4 text-center">
-              <div className="icon text-center pt-2">
-                <img src="assets/images/icon/icon-2.png" width={45} alt="Icon" />
-              </div>
-              <div className="card-body">
-                <h5 className="card-title">Email Us</h5>
-                <p>
-                  <a href="mailto:info@ultimatehealthhmo.com">
-                    info@ultimatehealthhmo.com
-                  </a>
-                </p>
-              </div>
-            </div>
-
-            <div className="card col-lg-4 text-center">
-              <div className="icon text-center pt-2">
-                <img src="assets/images/icon/icon-3.png" width={50} alt="Icon" />
-              </div>
-              <div className="card-body">
-                <h5 className="card-title">For Enquiries</h5>
-                <p>
-                  <a href="tel:+2348111111448">018870017 </a> OR  <a href="tel:+2348030951853">018890002</a>
-                </p>
-              </div>
-            </div>
-
-          </div>
+            <div className="" style={{maxWidth:'30%', margin:'auto'}}>
+              <div className="service-item-three text-center mb-80 wow fadeInUp">
+               <div className="icon">
+                  <Link target='_blank'>
+                    <i className="fas fa-map-marked-alt"/>
+                  </Link>
+               </div>
+               <div className="text">
+                 <h4 className="title mb-2">
+                     <a>Corporate Head Office</a>
+                 </h4>
+                 <p className='text-dark'>4th Floor, Plot 1446, Constitution Avenue, Central Business District, FCT-Abuja</p>
+                 <p className='text-dark' style={{fontSize:13}}>
+                    <i style={{color:'#db812e'}} className='fa fa-phone'></i> FOR ENQUIRIES <a href="tel:+2348111111448">018870017 </a> OR  <a href="tel:+2348030951853">018890002</a>
+                  </p>
+                  <p className='text-dark' style={{fontSize:16}}>
+                    <i style={{color:'#db812e'}} className='fas fa-envelope'></i> {' '}
+                     <a href="mailto:info@ultimatehealthhmo.com">info@ultimatehealthhmo.com</a>
+                  </p>
+               </div>
+             </div>
+            </div> 
         </div>
       {/*====== End Contact Information Section ======*/}
         <div className='container mt-5'>
           <div className="row">
             {offices.map((data)=>(
              <div className="col-lg-4 col-md-6 col-sm-12" key={data.id}>
-              <div className="service-item-three animate-hover-icon text-center mb-80 wow fadeInUp">
+              <div className="service-item-three text-center mb-80 wow fadeInUp">
                <div className="icon">
-                  <a href={data.map} target='_blank'>
+                  <Link href={data.map} target='_blank'>
                     <i className="fas fa-map-marked-alt"/>
-                  </a>
+                  </Link>
                </div>
                <div className="text">
                  <h6 className="title">
