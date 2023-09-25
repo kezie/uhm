@@ -95,9 +95,9 @@ const Footer = () => {
                         </span>
     
                         <h5 className="pt-3">Follow Us on Social Media</h5>
-                        <ul className="social-link pt-2">
+                        <span className="pt-2">
                           <Socials backgroundColor={'#bed88f'} text_light={'text-light'}/>
-                        </ul>
+                        </span>
                       </div>
                     </div>
                   </div>
