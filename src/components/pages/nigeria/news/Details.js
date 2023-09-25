@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react'
-import { Link, useParams } from 'react-router-dom'
-import PageBanner from '../../../partials/PageBanner'
+import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPosts } from '../../../redux/reducers/postReducer'
 import { getCategories } from '../../../redux/reducers/categoryReducer'
@@ -29,11 +28,10 @@ const Details = () => {
 
   return (
     <>
-    <PageBanner pageName={"News/Events"} PageImage={'story.jpg'}/>{" "}
     <section className="blog-details-page pt-130 pb-90">
         <div className="container">
           <div className="row">
-            <div className="col-xl-8">
+            <div style={{maxWidth:'70%', margin:'auto'}}>
               {/*===  Blog Details Wrapper  ===*/}
               <div className="blog-details-wrapper mb-40">
                 {/*===  Blog Post  ===*/}
@@ -51,39 +49,6 @@ const Details = () => {
                     <div className="entry-content">
                       <h3 className="title">{post.title.rendered}</h3>
                       <div dangerouslySetInnerHTML={{ __html: post.content.rendered}} />
-                      {/* <figure className="block-image">
-                        <img
-                          src="assets/images/blog/single-blog-1.jpg"
-                          alt=""
-                        />
-                      </figure>
-                      <p>
-                        Nemo enim ipsam voluptatem quia volupt pernatur aut odit
-                        aut fugit sed quia consequuntur magni dolores eos qui
-                        ratione volumessequ nesciunt. Neque porro quisquam est
-                        qui dolorem ipsum quia dolor sit amet coctetur adipisci
-                        velit sed
-                      </p>
-                      <div className="quote-admin text-center">
-                        <div className="quote-inner-content">
-                          <div className="quote-admin-content">
-                            <h3>
-                              Which Podcasts Should Web Designer And Developers
-                              Be Listening To Ultimate Digital Clean Checklist
-                              Prepare
-                            </h3>
-                            <h5>David H. Molina</h5>
-                          </div>
-                        </div>
-                      </div>
-                      <p>
-                        Unde omnis iste natus error voluptatem accusantium
-                        doloreque laudantium totam rem aperiam eaque quae abillo
-                        inventore veritatis quasi architecto beatae vitae dicta
-                        sunt explicabo. Nemo enim ipsam voluptatem quia volupt
-                        pernatur aut odit aut fugit sed quia consequuntur magni
-                        dolores eos qui ratione
-                      </p> */}
                     </div>
                   </div>
                  
@@ -155,36 +120,12 @@ const Details = () => {
                 </div>
               </div>
             </div>
-            <div className="col-xl-4">
-              {/*===  Sidebar widget area  ===*/}
+            {/* <div className="">
+              ===  Sidebar widget area  ===
               <div className="sidebar-widget-area">
-                {/*===  Search Widget  ===*/}
-                <div className="sidebar-widget search-widget mb-40 border-0 wow fadeInUp">
-                  <h4 className="widget-title">
-                    Search Here <span className="line" />
-                  </h4>
-                  <form
-                    onSubmit={(e) => e.preventDefault()}
-                    className="search-form"
-                  >
-                    <div className="form_group">
-                      <input
-                        type="email"
-                        className="form_control"
-                        placeholder="Search here......"
-                        name="email"
-                        required=""
-                      />
-                      <button className="search-btn">
-                        <i className="far fa-search" />
-                      </button>
-                    </div>
-                  </form>
-                </div>
-                <Sidebar categoryItems={categoryItems} latestPosts={latestPosts}/>
-                
+                <Sidebar categoryItems={categoryItems} latestPosts={latestPosts}/>               
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
