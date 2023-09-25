@@ -44,7 +44,7 @@ const Index = () => {
                   className="hero-button wow fadeInDown"
                   data-wow-delay=".9s"
                 >
-                  <Link to="/insurance" className="main-btn btn-outline">
+                  <Link to="/insurance-plans" className="main-btn btn-outline">
                     <span className=""> Buy Now</span>
                   </Link>
                 </div>
