@@ -9,7 +9,7 @@ const WhatsAppChatButton = () => {
 
   return (
     <Link to={chatLink} target="_blank" rel="noopener noreferrer" className="whatsapp-button-sticky">
-      <i style={{fontSize: '40px', color:"green"}} className="fab fa-whatsapp"/> <span className='wa-text'>Chat with Us</span>
+       <span className='wa-text'>Chat with Us</span>
     </Link>
   );
 };
