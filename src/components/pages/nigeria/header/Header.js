@@ -120,7 +120,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
                     <MobileMenu handleLocationChange={handleLocationChange}/>
                   </Fragment>
                 <div className="menu-button pt-30">
-                  <Link to="/insurance">
+                  <Link to="/insurance-plans">
                     <span className="main-btn btn-red">Get Quote</span>
                   </Link>
                 </div>
@@ -135,7 +135,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
                 </span>
               </div>
               <div className="menu-button">
-                <Link to="/insurance">
+                <Link to="/insurance-plans">
                   <span className="main-btn btn-red">Get a Quote</span>
                 </Link>
               </div>
