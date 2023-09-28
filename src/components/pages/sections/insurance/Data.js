@@ -21,8 +21,7 @@ export const plans = [
         {plan: 'Annual Health check-circles', status: 'fa fa-times-circle text-danger'},
         {plan: 'Cancer Screening*', status : 'fa fa-times-circle text-danger'},
         {plan: 'Drug Delivery & Pickup', status : 'fa fa-times-circle text-danger'},
-        {plan: 'Personal Health Equipment', status : 'fa fa-times-circle text-danger'},
-        {plan: 'Delivery Abroad', status : 'fa fa-times-circle text-danger'}
+        {plan: 'Personal Health Equipment', status : 'fa fa-times-circle text-danger'}
         ]
     },
     {
@@ -47,8 +46,7 @@ export const plans = [
         {plan: 'Annual Health check-circles', status: 'fa fa-check-circle text-success'},
         {plan: 'Cancer Screening*', status : 'fa fa-times-circle text-danger'},
         {plan: 'Drug Delivery & Pickup', status : 'fa fa-check-circle text-success'},
-        {plan: 'Personal Health Equipment', status : 'fa fa-times-circle text-danger'},
-        {plan: 'Delivery Abroad', status : 'fa fa-times-circle text-danger'}
+        {plan: 'Personal Health Equipment', status : 'fa fa-times-circle text-danger'}
         ]
     },
     {
@@ -73,8 +71,7 @@ export const plans = [
         {plan: 'Annual Health check-circles', status: 'fa fa-check-circle text-success'},
         {plan: 'Cancer Screening*', status : 'fa fa-check-circle text-success'},
         {plan: 'Drug Delivery & Pickup', status : 'fa fa-check-circle text-success'},
-        {plan: 'Personal Health Equipment', status : 'fa fa-times-circle text-danger'},
-        {plan: 'Delivery Abroad', status : 'fa fa-check-circle text-success'}
+        {plan: 'Personal Health Equipment', status : 'fa fa-times-circle text-danger'}
         ]
     },
     {
@@ -99,8 +96,7 @@ export const plans = [
         {plan: 'Annual Health check-circles', status: 'fa fa-check-circle text-success'},
         {plan: 'Cancer Screening*', status : 'fa fa-check-circle text-success'},
         {plan: 'Drug Delivery & Pickup', status : 'fa fa-check-circle text-success'},
-        {plan: 'Personal Health Equipment', status : 'fa fa-check-circle text-success'},
-        {plan: 'Delivery Abroad', status : 'fa fa-check-circle text-success'}
+        {plan: 'Personal Health Equipment', status : 'fa fa-check-circle text-success'}
         ]
     }
 ]
