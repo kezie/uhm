@@ -4,44 +4,45 @@ import {uhms_providers} from './Data'
 import TableHeader from '../../../partials/dataTable/header/TableHeader';
 import Search from '../../../partials/search/Search';
 import PaginationComponent from '../../../partials/pagination/PaginationComponent'
+import Table from './Table';
 
 const Providers = () => {
-    const [providers, setProviders] = useState([]);
-    const [totalItems, setTotalItems] = useState(0);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [search, setSearch] = useState('');
-    const ITEMS_PER_PAGE = 10
+    // const [providers, setProviders] = useState([]);
+    // const [totalItems, setTotalItems] = useState(0);
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [search, setSearch] = useState('');
+    // const ITEMS_PER_PAGE = 10
 
-    const headers = [
-        {name: "S/N", field: 'id'},
-        {name: "PROVIDER", field: 'provider'},
-        {name: "STATE", field: 'state'},
-        {name: "ADDRESS", field: 'address'},
-        {name: "CATEGORY", field: 'category'}
-    ]
+    // const headers = [
+    //     {name: "S/N", field: 'id'},
+    //     {name: "PROVIDER", field: 'provider'},
+    //     {name: "STATE", field: 'state'},
+    //     {name: "ADDRESS", field: 'address'},
+    //     {name: "CATEGORY", field: 'category'}
+    // ]
 
-    useEffect(()=>{
-        setProviders(uhms_providers.dataroot.uhms_providers)
-    }, []);
+    // useEffect(()=>{
+    //     setProviders(uhms_providers.dataroot.uhms_providers)
+    // }, []);
 
-    const providersData = useMemo(()=> {
-        let gottenProviders = providers
-        setTotalItems(gottenProviders.length);
+    // const providersData = useMemo(()=> {
+    //     let gottenProviders = providers
+    //     setTotalItems(gottenProviders.length);
 
-        if(search){
-            gottenProviders = gottenProviders.filter(
-                provider => provider.State.toLowerCase().includes(search.toLowerCase()) ||
-                provider.Health_Care_Provider.toLowerCase().includes(search.toLowerCase())
-            )
-        }
+    //     if(search){
+    //         gottenProviders = gottenProviders.filter(
+    //             provider => provider.State.toLowerCase().includes(search.toLowerCase()) ||
+    //             provider.Health_Care_Provider.toLowerCase().includes(search.toLowerCase())
+    //         )
+    //     }
 
-        return gottenProviders.slice(
-            (currentPage - 1) * ITEMS_PER_PAGE,
-            (currentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE
-        );
+    //     return gottenProviders.slice(
+    //         (currentPage - 1) * ITEMS_PER_PAGE,
+    //         (currentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE
+    //     );
 
 
-    },[providers, currentPage, search]);
+    // },[providers, currentPage, search]);
 
   return (
     <>
@@ -54,13 +55,13 @@ const Providers = () => {
             <div className="col-xl-8 col-lg-10">
               {/*=== Common Heading ===*/}
               <div className="section-title text-center mb-60 wow fadeInDown">
-                <span className="sub-title">Our List Of Providers</span>
+                <span className="sub-title">Browse through our list of Providers</span>
               </div>
             </div>
           </div>
-          <div className="row">
+          {/* <div className="row">
             <div className="col-xl-12 col-lg-12">
-              {/*=== Search and Paginatio ===*/}
+              === Search and Paginatio ===
                 <div className='row my-3'>
                     <div className='col-md-6'>
                         <PaginationComponent
@@ -83,11 +84,11 @@ const Providers = () => {
                     </div>
                 </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
       <section>
-        {/* Provider Table */}
+        {/* Provider Table
         <div className='container'> 
             <div className='row'>
                 <div className='col mb-3 col-12'>
@@ -107,7 +108,7 @@ const Providers = () => {
                         </table>
                 </div>
 
-                {/* Pagination */}
+                 Pagination 
                 <div className='col-md-6 mb-4'>
                         <PaginationComponent
                             total = {totalItems}
@@ -117,7 +118,8 @@ const Providers = () => {
                         />
                     </div>
             </div>
-        </div>
+        </div> */}
+        <Table/>
       </section>
     </>
     );
