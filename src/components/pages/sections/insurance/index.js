@@ -73,6 +73,7 @@ const Plans = () => {
                     <div className="section-title text-center mb-75">
                         <span className="sub-title">Our Pricing Package</span>
                         <h2>Amazing Packages</h2>
+                        <p className='text-center'>Pick one of our plans off the shelf or design something specifically for you and your organization by calling our marketing team on: +234-811-2893-000</p>
                     </div>
                     </div>
                 </div>
