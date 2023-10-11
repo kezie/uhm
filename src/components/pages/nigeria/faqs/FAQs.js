@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import PageBanner from '../../../partials/PageBanner'
-import SimpleFaq from '../../../partials/SimpleFaq'
+import SimpleFaq from './SimpleFaq'
 
 const FAQs = () => {
 
