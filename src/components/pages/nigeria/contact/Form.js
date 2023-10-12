@@ -1,9 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Form = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [subject, setSubject] = useState('');
+    const [message, setMessage] = useState('');
+    const [error, setError] = useState('');
+    const [isLoading, setLoading] = useState(false);
+    const [sent, setSent] = useState('')
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        setLoading(true)
+      
+        const formData = new FormData();
+      
+        Array.from(e.currentTarget.elements).forEach((field) => {
+          if (!field.name) return;
+          formData.append(field.name, field.value);
+        });
+      
+        await fetch(
+          "https://interior.alsidiqtechnologies.com/wp-json/contact-form-7/v1/contact-forms/8/feedback",
+          {
+            body: formData,
+            method: "POST",
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.status !== "mail_sent") throw data.message
+                setName(''); setEmail('');setMessage(''); setSubject(''); setError(''); setSent('Message Sent, We will get in touch shortly');
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            setError('Please fill out all fields')
+          }).finally(() => {
+            setLoading(false)
+          });
+          
+      }
   return (
     <form
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={handleSubmit}
         className="contact-form"
     >
         <div className="row">
@@ -13,8 +52,10 @@ const Form = () => {
                 type="text"
                 className="form_control"
                 placeholder="Full Name"
-                name="name"
+                name="your-name"
                 required=""
+                onChange={(e) => setName(e.target.value)}
+                value={name}
             />
             <i className="far fa-user" />
             </div>
@@ -25,8 +66,10 @@ const Form = () => {
                 type="email"
                 className="form_control"
                 placeholder="Email Address"
-                name="email"
+                name="your-email"
+                onChange={(e) => setEmail(e.target.value)}
                 required=""
+                value={email}
             />
             <i className="far fa-envelope" />
             </div>
@@ -36,11 +79,13 @@ const Form = () => {
             <input
                 type="text"
                 className="form_control"
-                placeholder="Phone"
-                name="phone"
+                placeholder="subject"
+                name="your-subject"
+                onChange={(e) => setSubject(e.target.value)}
                 required=""
+                value={subject}
             />
-            <i className="far fa-phone" />
+            <i className="far fa-pencil" />
             </div>
         </div>
         
@@ -48,27 +93,20 @@ const Form = () => {
             <div className="form_group">
             <textarea
                 className="form_control"
-                name="message"
+                name="your-message"
                 placeholder="Write your Message"
+                onChange={(e) => setMessage(e.target.value)}
                 defaultValue={""}
+                value={message}
             />
             <i className="far fa-pencil" />
             </div>
         </div>
-        <div className="col-lg-12">
-            <div className="form_checkbox">
-            <input type="checkbox" name="checkbox" id="check1" />
-            <label htmlFor="check1">
-                <span>
-                I agree that my data is collected and stored.
-                </span>
-            </label>
-            </div>
-        </div>
+        <span className={error ? 'text-danger text-center' : 'text-success text-center'}>{error ? error:sent}</span>
         <div className="col-lg-12">
             <div className="form_group">
             <button className="main-btn btn-red">
-                Send Message
+                {isLoading ? 'Sending Message...' :'Send Message' }
             </button>
             </div>
         </div>
