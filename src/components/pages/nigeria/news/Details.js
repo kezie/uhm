@@ -31,7 +31,8 @@ const Details = () => {
     <section className="blog-details-page pt-130 pb-90">
         <div className="container">
           <div className="row">
-            <div style={{maxWidth:'70%', margin:'auto'}}>
+            <div className='col-lg-1'></div>
+            <div className='col-lg-10'>
               {/*===  Blog Details Wrapper  ===*/}
               <div className="blog-details-wrapper mb-40">
                 {/*===  Blog Post  ===*/}
@@ -120,6 +121,7 @@ const Details = () => {
                 </div>
               </div>
             </div>
+            <div className='col-lg-1'></div>
             {/* <div className="">
               ===  Sidebar widget area  ===
               <div className="sidebar-widget-area">
