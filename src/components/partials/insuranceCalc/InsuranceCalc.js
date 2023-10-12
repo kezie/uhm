@@ -10,6 +10,47 @@ const InsuranceCalc = () => {
         setOption(plan);
     }
 
+    const [fname, setFname] = useState('');
+    const [lname, setLname] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [lives, setLives] = useState('');
+    const [error, setError] = useState('');
+    const [isLoading, setLoading] = useState(false);
+    const [sent, setSent] = useState('')
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        setLoading(true)
+      
+        const formData = new FormData();
+      
+        Array.from(e.currentTarget.elements).forEach((field) => {
+          if (!field.name) return;
+          formData.append(field.name, field.value);
+        });
+      
+        await fetch(
+          "https://interior.alsidiqtechnologies.com/wp-json/contact-form-7/v1/contact-forms/4754/feedback",
+          {
+            body: formData,
+            method: "POST",
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.status !== "mail_sent") throw data.message
+                setFname(''); setLname(''); setLives(''); setEmail(''); setPhone(''); setError(''); setSent('Message Sent, We will be in touch shortly');
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            setError('Please fill out all fields')
+          }).finally(() => {
+            setLoading(false)
+          });
+          
+      }
+
     return (
         <section className="get-insurance">
             <div className="get-insurance__shape-1"
@@ -47,15 +88,17 @@ const InsuranceCalc = () => {
                                             <div className="mt-3">
                                             {/* === Contact Form Box === */}
                                                 <div className="insurance_form mb-50 wow fadeInRight">
-                                                    <form onSubmit={(e) => e.preventDefault()}>
+                                                    <form onSubmit={handleSubmit}>
                                                         <div className='row'>
                                                             <div className="form_group mb-2 col-lg-6 ">
                                                                 <input
                                                                     type="text"
                                                                     className="w-100 p-2 rounded-pill text-center"
                                                                     placeholder="First Name"
-                                                                    name="name"
+                                                                    name="fname"
                                                                     required=""
+                                                                    onChange={(e) => setFname(e.target.value)}
+                                                                    value={fname}
                                                                 />
                                                             </div>
 
@@ -64,8 +107,10 @@ const InsuranceCalc = () => {
                                                                     type="text"
                                                                     className="w-100 p-2 rounded-pill text-center"
                                                                     placeholder="Last Name"
-                                                                    name="name"
+                                                                    name="lname"
                                                                     required=""
+                                                                    onChange={(e) => setLname(e.target.value)}
+                                                                    value={lname}
                                                                 />
                                                             </div>
                                                         
@@ -76,6 +121,8 @@ const InsuranceCalc = () => {
                                                                     placeholder="Email"
                                                                     name="email"
                                                                     required=""
+                                                                    onChange={(e) => setEmail(e.target.value)}
+                                                                    value={email}
                                                                 />
                                                             </div>
                                                         
@@ -86,6 +133,8 @@ const InsuranceCalc = () => {
                                                                     placeholder="Phone"
                                                                     name="phone"
                                                                     required=""
+                                                                    onChange={(e) => setPhone(e.target.value)}
+                                                                    value={phone}
                                                                 />
                                                             </div>
 
@@ -94,8 +143,10 @@ const InsuranceCalc = () => {
                                                                     type="number"
                                                                     className="w-100 p-2 rounded-pill text-center"
                                                                     placeholder="Number of Lives"
-                                                                    name="numb"
+                                                                    name="lives"
                                                                     required=""
+                                                                    onChange={(e) => setLives(e.target.value)}
+                                                                    value={lives}
                                                                 />
                                                             </div>
                                                     
@@ -110,10 +161,10 @@ const InsuranceCalc = () => {
                                                                     disabled
                                                                 />
                                                             </div>
-                                                        
+                                                            <span className="text-center">{error ? error:sent}</span>
                                                             <div className="form_group">
                                                                 <button className="main-btn btn-red">
-                                                                    Get Quote
+                                                                    {isLoading ? 'Sending Message...' :'Send Message' }
                                                                 </button>
                                                             </div>
                                                         </div>  
