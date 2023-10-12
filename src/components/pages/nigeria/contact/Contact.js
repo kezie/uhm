@@ -51,7 +51,9 @@ const Contact = () => {
           <div className="section-title text-center section-title-left mb-10 wow fadeInDown">
             <span className="sub-title pb-4">You can also reach us on</span>
           </div>
-            <div className="" style={{maxWidth:'30%', margin:'auto'}}>
+          <div className="row">
+            <div className='col-lg-4'></div>
+            <div className="col-lg-4">
               <div className="service-item-three text-center mb-80 wow fadeInUp">
                <div className="icon">
                   <Link target='_blank'>
@@ -73,6 +75,8 @@ const Contact = () => {
                </div>
              </div>
             </div> 
+            <div className='col-lg-4'></div>
+          </div>
         </div>
       {/*====== End Contact Information Section ======*/}
         <div className='container mt-5'>
