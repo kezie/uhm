@@ -31,7 +31,7 @@ const Homepage = ({posts}) => {
       <section className="about-section-two pt-100 pt-100 p-r z-1">
         <div className="container">
           <div className="row align-items-center">
-            <div className="col-lg-6">
+            <div className="col-lg-5">
               <div className="about-four_image-box p-r z-1">
                 <img
                   src="assets/images/about/about-6.jpg"
@@ -58,7 +58,7 @@ const Homepage = ({posts}) => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-7">
               <div className="about-content-box content-box-gap pl-lg-50 wow fadeInRight">
                 <div className="section-title section-title-left">
                   <span className="sub-title">Why Ultimate Health HMO</span>
@@ -77,8 +77,8 @@ const Homepage = ({posts}) => {
                       <div className="text">
                         <h4 className="title">Customer Relationship Management</h4>
                         <p style={{textAlign:'left', fontSize:16}}>
-                        We place a high premium on customer satisfaction with global standard platforms to
-permanently feel the pulse of our enrollees and ensure their satisfaction.
+                          We place a high premium on customer satisfaction with global standard platforms to
+                          permanently feel the pulse of our enrollees and ensure their satisfaction.
                         </p>
                       </div>
                     </div>
@@ -89,11 +89,11 @@ permanently feel the pulse of our enrollees and ensure their satisfaction.
                         <i className="fa fa-hospital-user" />
                       </div>
                       <div className="text">
-                        <h4 className="title pb-lg-4">Nation Wide Hospital Network</h4>
+                        <h4 className="title">Nation Wide Hospital Network</h4>
                         <p style={{textAlign:'left', fontSize:16}}>
-                        In Ultimate Health HMO, the NHIA accredited facilities across the country are our critical
-stakeholders and our relationship is plugged in the same socket to ensure our enrollee&#39;s
-satisfaction always.
+                          In Ultimate Health HMO, the NHIA accredited facilities across the country are our critical
+                          stakeholders and our relationship is plugged in the same socket to ensure our enrollee&#39;s
+                          satisfaction always.
                         </p>
                       </div>
                     </div>
