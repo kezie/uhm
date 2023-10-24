@@ -8,6 +8,7 @@ import CurrencyFormat from 'react-currency-format'
 import { useSelector } from 'react-redux'
 import otumba from '../../../../images/hero-bg-2.jpg'
 import InsuranceCalc from '../../../partials/insuranceCalc/InsuranceCalc'
+import Framer from '../../../partials/Framer'
 
 const Plans = () => {
   const {userLocation} = useSelector((state)=>(state.userLocation))
@@ -22,6 +23,7 @@ const Plans = () => {
 
   return (
     <>
+        <Framer/>
         <PageBanner pageName={"Our Insurance Plans"} PageImage={'team.jpg'} />{" "}
         {userLocation === "NG" ? '' : (
             <section
