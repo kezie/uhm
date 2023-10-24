@@ -33,9 +33,14 @@ const Story = () => {
                   <h2>LEADING HEALTH INSURANCE COMPANY</h2>
                 </div>
                 <p className="wow fadeInUp">
-                  ULTIMATE HEALTH MANAGEMENT SERVICES LIMITED, a duly registered Company in Nigeria since December, 2007 with 
-                  RC Number: 723347. Ultimate Health HMO is a National Health Maintenance Organization (HMO) accredited by the National Health Insurance Scheme (now Authority, NHIA)
-                  in July 2009. 
+                Ultimate Health is a Health Maintenance Organization established by healthcare experts and
+astute businessmen/ women with the objective to add value to the healthcare system of the
+country by delivering excellent/global standard preventive and curative medical services in
+accordance with the laws and at affordable rates.
+                </p>
+                <p>
+                We have grown over the years and have set up offices in the (6) geopolitical zones of the
+federation with pockets of branches within the zones.
                 </p>
               </div>
             </div>
@@ -74,113 +79,6 @@ const Story = () => {
         </div>
       </section>
 
-      {/* Mission */}
-      {/* <section className="features-section p-r z-1 pt-100 pb-85">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-4 col-sm-12"> */}
-              {/*=== Features Item ===*/}
-              {/* <div className="features-item animate-hover-icon mb-40 wow fadeInUp">
-                <div className="icon">
-                  <i className="flaticon-stats" />
-                </div>
-                <div className="text">
-                  <h4 className="title">Our Vission</h4>
-                  <p>
-                    To be the trailblazer,always leading in the provision of world-class managed care services.
-                  </p>
-                </div>
-              </div> */}
-            {/* </div>
-            <div className="col-md-4 col-sm-12"> */}
-              {/*=== Features Item ===*/}
-              {/* <div className="features-item animate-hover-icon mb-40 wow fadeInUp">
-                <div className="icon">
-                  <i className="flaticon-support" />
-                </div>
-                <div className="text">
-                  <h4 className="title">Our Mission</h4>
-                  <p>
-                    To positively revolutionize the managed care concept by developing innovative customized healthcare products to suit the needs of different segments of the society, while promoting the highest 
-                    standards of quality healthcare practice and service delivery in Nigeria.
-                  </p>
-                </div>
-              </div> */}
-            {/* </div>
-            <div className="col-md-4 col-sm-12"> */}
-              {/*=== Features Item ===*/}
-              {/* <div className="features-item animate-hover-icon mb-40 wow fadeInUp">
-                <div className="icon">
-                  <i className="flaticon-digital-strategy" />
-                </div>
-                <div className="text">
-                  <h4 className="title">Our Values</h4>
-                  <ul>
-                    <li>
-                      Integrity
-                    </li>
-                    <li>
-                      Professionalism
-                    </li>
-                    <li>
-                      Customer Satisfaction
-                    </li>
-                    <li>
-                      Innovation
-                    </li>
-                  </ul>
-                </div>
-              </div> */}
-            {/* </div>
-            <div className="col-md-6 col-sm-12"> */}
-              {/*=== Features Item ===*/}
-              {/* <div className="features-item animate-hover-icon mb-40 wow fadeInUp">
-                <div className="icon">
-                  <i className="flaticon-digital-strategy" />
-                </div>
-                <div className="text">
-                  <h4 className="title">OUR STRENGTHS</h4>
-                  <ul>
-                    <li>
-                      We are passionate about the wellbeing of our clients always.
-                    </li>
-                    <li>
-                      We provide unparalleled services and settle for no less.
-                    </li>
-                    <li>
-                      We consider the healthcare facilities/providers as our partners and we have established and 
-                      still establishing mutually rewarding relationship with them.
-                    </li>
-                    <li>
-                      We possess standard working tools to constantly measure the expectations of our 
-                      clients in order to always serve them better.
-                    </li>
-                    <li>
-                      We always deliver on our promise.
-                    </li>
-                  </ul>
-                </div>
-              </div> */}
-            {/* </div>
-            <div className="col-md-6 col-sm-12"> */}
-              {/*=== Features Item ===*/}
-              {/* <div className="features-item animate-hover-icon mb-40 wow fadeInUp">
-                <div className="icon">
-                  <i className="flaticon-digital-strategy" />
-                </div>
-                <div className="text">
-                  <h4 className="title">OUR UNIQUE SELLING PROPOSITION</h4>
-                  <p>
-                  Our expertise in designing well suited 
-                  Customized Products and the Provision of top notch services at all times.
-                  </p>
-                </div>
-              </div> */}
-            {/* </div>
-          </div>
-        </div>
-      </section> */}
-
       {/*====== End Author Section ======*/}
       <section className="about-section pt-90 pb-80">
         <div className="container">
@@ -200,16 +98,15 @@ const Story = () => {
             <div className="col-lg-6">
               <div className="about-content-box content-box-gap mb-50 wow fadeInRight">
                 <p className='mt-5'>
-                  We are a foremost healthcare financing Company headquartered in Abuja the Federal Capital 
-                  Territory. At Ultimate Health HMO we provide the ultimate healthcare coverage and services 
-                  with rich clinical and clerical knowledge and expertise in organizing financial and healthcare 
-                  resources to best serve specific needs. We provide these unparalleled healthcare services through 
-                  a strictly NHIS-accredited network of Health Care Facilities-HCFs ranging from primary to tertiary 
-                  care across the nation. We complement this network of facilities with Specialists/Consultants Panel 
-                  consisting of credible medical professionals that offer personalized services whenever and wherever.
+                Our team of experts are painstakingly selected with our eyes always on Global Exposure, Ability
+to think out of the box, Flexibility, Deep Knowledge of Risk Management, Strategic Marketing,
+Corporate Governance and Best Practice.
                 </p>
                 <p>
-                We leverage a robust software and technology to develop modernized healthcare systems, analyse data and provide truly tested services.
+                Our expertise in designing well seated and suited customized health products and the
+establishment of mutually rewarding working relationship with NHIA accredited Health Care
+Facilities- HCFs which translate to the provision of top-notch medical services to our enrollees
+is our Unique Selling Proposition- USP.
                 </p>
               </div>
             </div>
