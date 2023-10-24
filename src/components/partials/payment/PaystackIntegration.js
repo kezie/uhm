@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 const PaystackIntegration = ({amount, id}) => {
 
-  const {location} = useSelector((state)=>(state.location))
+  const {userLocation} = useSelector((state)=>(state.userLocation))
 
   const [fname, setFname] = useState('')
   const [lname, setLname] = useState('')
@@ -99,7 +99,7 @@ const PaystackIntegration = ({amount, id}) => {
                               placeholder="Amount"
                               name="amount"
                               required=""
-                              value={ location === "NG" ? '₦' +`${amount}` : '$' +`${amount}`}
+                              value={ userLocation === "NG" ? '₦' +`${amount}` : '$' +`${amount}`}
                               // onChange={(e)=>setAmount(e.target.value)}
                           />
                           <i className="far fa-money-bill" />
