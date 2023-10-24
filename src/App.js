@@ -27,15 +27,14 @@ import WOW from 'wowjs'
 
 function App() {
   const dispatch = useDispatch();
-  // const [location, setLocation] = useState('');
-  const { location } = useSelector((state)=> state.location)
+  const { userLocation } = useSelector((state)=> state.userLocation)
 
   useEffect(()=>{
     dispatch(getLocation());
   },[])
 
-  const handleLocationChange = (location) => {
-    dispatch(setLocation(location));
+  const handleLocationChange = (userLocation) => {
+    dispatch(setLocation(userLocation));
   };
 
   useEffect(()=>{
@@ -50,7 +49,7 @@ function App() {
         <ScrollToTop/>
         <Header handleLocationChange={handleLocationChange}/>
         <Routes>
-          <Route path="/" element={ location === 'NG' ? < Homepage /> : <Globalpage/>} />
+          <Route path="/" element={ userLocation === 'NG' ? < Homepage /> : <Globalpage/>} />
           <Route path="/team" element={< Team />} />
           <Route path="/board" element={< Board />} />
           <Route path="/story" element={< Story />} />
