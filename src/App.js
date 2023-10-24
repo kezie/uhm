@@ -13,7 +13,6 @@ import Story from './components/pages/nigeria/story/Story';
 import Insurance from './components/pages/sections/insurance'
 import ScrollToTop from './components/partials/ScrollToTop';
 import Contact from './components/pages/nigeria/contact/Contact';
-// import Contact from './components/partials/Cf7'
 import FAQs from './components/pages/nigeria/faqs/FAQs';
 import { getLocation, setLocation} from './components/redux/reducers/locationReducer';
 import { useDispatch, useSelector } from 'react-redux';
