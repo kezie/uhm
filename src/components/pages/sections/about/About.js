@@ -13,8 +13,8 @@ const About = () => {
   let src = ''
 
   if(userLocation === "NG"){
-    p1 = 'Ultimate Health is a Health Maintenance Organization established to deliver excellent preventive and curative medical services at affordable rates. '
-    p2 = 'We have multiple offices across the 6 Geopolitical Zones of the Federation and an excellent team of experts with Global exposure. We are innovative, strategic and flexible with our eyes always on providing solutions with Best Practices and Corporate Governance.'
+    p1 = 'Ultimate Health is a Health Maintenance Organization established by healthcare experts and astute businessmen/ women with the objective to add value to the healthcare system of the country by delivering excellent/global standard preventive and curative medical services in accordance with the laws and at affordable rates.'
+    p2 = 'We have grown over the years and have set up offices in the (6) geopolitical zones of the federation with pockets of branches within the zones.'
     title = 'Leading Health Insurance Company'
     sub_title = 'About Us'
     src = 'assets/images/about/about-10.png'
