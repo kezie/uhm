@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import Newsletter from "../../../partials/Newsletter";
 import PageBanner from "../../../partials/PageBanner";
 import { teamData } from './Data';
-import Loader from '../../../partials/Loader';
+import WOW from 'wowjs'
+import Framer from '../../../partials/Framer';
 
 const Team = () => {
-
-  const [loading, setLoading] = useState(true)
   useEffect(()=>{
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
+    new WOW.WOW({
+      live:false
+    }).init()
   }, [])
   
   return (
     <>
+    <Framer/>
     <PageBanner pageName={"Board Members"} PageImage={'team.jpg'} />{" "}
-    {loading ? <Loader/> : <>
       <section className="team-section pt-120 pb-130">
         <div className="container">
           <div className="row justify-content-center">
@@ -51,8 +50,6 @@ const Team = () => {
         </div>
       </section>
       <Newsletter />
-      </>
-    }
   </>
   )
 }
