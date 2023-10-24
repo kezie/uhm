@@ -38,7 +38,7 @@ const Newsletter = () => {
                       />
                       <i className="far fa-envelope" />
                     </div>
-                    <div className="form_checkbox">
+                    {/* <div className="form_checkbox">
                       <input
                         type="checkbox"
                         name="checkbox"
@@ -50,7 +50,7 @@ const Newsletter = () => {
                           I agree to the <a href="#"> Privacy Policy</a>.
                         </span>
                       </label>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="col-lg-4 mt-2">
                     <div className="form-button float-lg-right">
