@@ -10,7 +10,6 @@ const Team = () => {
   const [loading, setLoading] = useState(true)
   useEffect(()=>{
     setTimeout(() => {
-      // Update the state to hide the spinner when the data is loaded
       setLoading(false);
     }, 2000);
   }, [])
@@ -18,7 +17,7 @@ const Team = () => {
   return (
     <>
     <PageBanner pageName={"Board Members"} PageImage={'team.jpg'} />{" "}
-    {loading ? <div className='p-4'><Loader/></div> : <>
+    {loading ? <Loader/> : <>
       <section className="team-section pt-120 pb-130">
         <div className="container">
           <div className="row justify-content-center">
