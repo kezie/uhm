@@ -5,7 +5,7 @@ import Socials from "./socials/Socials";
 
 const MobileMenu = ({handleLocationChange}) => {
 
-  const { location } = useSelector((state)=> state.location)
+  const { userLocation } = useSelector((state)=> state.userLocation)
   const [activeMenu, setActiveMenu] = useState("");
   const [multiMenu, setMultiMenu] = useState("");
   const [open, setOpen] = useState(false);
@@ -23,7 +23,7 @@ const MobileMenu = ({handleLocationChange}) => {
         <ul>
           
           <li className="menu-item">
-            { location === "NG" ? <Link to="/" className="active">Home</Link> : <Link to="/global" className="active">Home</Link> }  
+            { userLocation === "NG" ? <Link to="/" className="active">Home</Link> : <Link to="/global" className="active">Home</Link> }  
           </li>
 
           <li className="menu-item has-children">
@@ -94,7 +94,7 @@ const MobileMenu = ({handleLocationChange}) => {
 
           <div className="btn-group" style={{cursor:'pointer'}}>
             <span className= "dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              {location === "NG" ? <> <img src="assets/images/logo/naija.png" width={25}/> <span style={{fontWeight:'bold'}}> NG</span> </> : <> <img src="assets/images/logo/global.png" width={20}/> <span style={{fontWeight:'bold'}}> Global</span> </> }
+              {userLocation === "NG" ? <> <img src="assets/images/logo/naija.png" width={25}/> <span style={{fontWeight:'bold'}}> NG</span> </> : <> <img src="assets/images/logo/global.png" width={20}/> <span style={{fontWeight:'bold'}}> Global</span> </> }
             </span>
             <ul className="dropdown-menu" style={{minWidth:"7rem"}}>
               <li className="ms-2"><Link onClick={() => handleLocationChange('NG')} to="/"> <img src="assets/images/logo/naija.png" width={25}/> Nigeria</Link></li>
