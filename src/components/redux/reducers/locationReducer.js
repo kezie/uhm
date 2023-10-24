@@ -2,14 +2,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  location: '',
+  userLocation: '',
   isLoading: true,
 }
 
 const token = '39e93a01118816';
 const apiUrl = `https://ipinfo.io/102.91.5.235?token=${token}`
 
-export const getLocation = createAsyncThunk('location/getLocation', async () =>{
+export const getLocation = createAsyncThunk('userLocation/getLocation', async () =>{
     try{
       const res = await axios(apiUrl);
       return res.data.country;
@@ -19,12 +19,12 @@ export const getLocation = createAsyncThunk('location/getLocation', async () =>{
   })
 
   const locationSlice = createSlice({
-    name: "location",
+    name: "userLocation",
     initialState,
     
     reducers: {
           setLocation: (state, action) => {
-          state.location = action.payload;
+          state.userLocation = action.payload;
           console.log(action);
         }
       },
@@ -34,7 +34,7 @@ export const getLocation = createAsyncThunk('location/getLocation', async () =>{
         },
         [getLocation.fulfilled]:(state, action)=>{
           state.isLoading = false
-          state.location = action.payload
+          state.userLocation = action.payload
         },
         [getLocation.rejected]:(state, action)=>{
           state.isLoading = false
