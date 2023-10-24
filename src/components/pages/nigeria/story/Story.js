@@ -1,11 +1,20 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import PageBanner from '../../../partials/PageBanner'
 import Brands from '../../../partials/brands'
+import Framer from '../../../partials/Framer'
+import WOW from 'wowjs'
 
 const Story = () => {
 
+  useEffect(()=>{
+    new WOW.WOW({
+      live:false
+    }).init()
+  }, [])
+
   return (
     <>
+    <Framer/>
     <PageBanner pageName={"Our Story"} PageImage={'story.jpg'}/>{" "}
       <section className="fact-section p-r z-1 pt-130 pb-120">
         <div className="container">
@@ -33,14 +42,14 @@ const Story = () => {
                   <h2>LEADING HEALTH INSURANCE COMPANY</h2>
                 </div>
                 <p className="wow fadeInUp">
-                Ultimate Health is a Health Maintenance Organization established by healthcare experts and
-astute businessmen/ women with the objective to add value to the healthcare system of the
-country by delivering excellent/global standard preventive and curative medical services in
-accordance with the laws and at affordable rates.
+                  Ultimate Health is a Health Maintenance Organization established by healthcare experts and
+                  astute businessmen/ women with the objective to add value to the healthcare system of the
+                  country by delivering excellent/global standard preventive and curative medical services in
+                  accordance with the laws and at affordable rates.
                 </p>
                 <p>
-                We have grown over the years and have set up offices in the (6) geopolitical zones of the
-federation with pockets of branches within the zones.
+                  We have grown over the years and have set up offices in the (6) geopolitical zones of the
+                  federation with pockets of branches within the zones.
                 </p>
               </div>
             </div>
@@ -98,15 +107,15 @@ federation with pockets of branches within the zones.
             <div className="col-lg-6">
               <div className="about-content-box content-box-gap mb-50 wow fadeInRight">
                 <p className='mt-5'>
-                Our team of experts are painstakingly selected with our eyes always on Global Exposure, Ability
-to think out of the box, Flexibility, Deep Knowledge of Risk Management, Strategic Marketing,
-Corporate Governance and Best Practice.
+                  Our team of experts are painstakingly selected with our eyes always on Global Exposure, Ability
+                  to think out of the box, Flexibility, Deep Knowledge of Risk Management, Strategic Marketing,
+                  Corporate Governance and Best Practice.
                 </p>
                 <p>
-                Our expertise in designing well seated and suited customized health products and the
-establishment of mutually rewarding working relationship with NHIA accredited Health Care
-Facilities- HCFs which translate to the provision of top-notch medical services to our enrollees
-is our Unique Selling Proposition- USP.
+                  Our expertise in designing well seated and suited customized health products and the
+                  establishment of mutually rewarding working relationship with NHIA accredited Health Care
+                  Facilities- HCFs which translate to the provision of top-notch medical services to our enrollees
+                  is our Unique Selling Proposition- USP.
                 </p>
               </div>
             </div>
