@@ -5,6 +5,7 @@ import TableHeader from '../../../partials/dataTable/header/TableHeader';
 import Search from '../../../partials/search/Search';
 import PaginationComponent from '../../../partials/pagination/PaginationComponent'
 import Table from './Table';
+import Framer from '../../../partials/Framer';
 
 const Providers = () => {
     // const [providers, setProviders] = useState([]);
@@ -45,7 +46,8 @@ const Providers = () => {
     // },[providers, currentPage, search]);
 
   return (
-    <>
+      <>
+        <Framer/>
         <PageBanner pageName={"Provider Network"} PageImage={'team.jpg'} />{" "}
         <section className="features-section pt-130 bg_cover pb-100"
             style={{backgroundImage: "url(assets/images/bg/testimonial-bg1.png)" }}
