@@ -1,30 +1,18 @@
-import React, {useEffect} from 'react'
-import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { getPosts } from '../../../redux/reducers/postReducer'
-import { getCategories } from '../../../redux/reducers/categoryReducer'
-import Sidebar from './partials/Sidebar'
+import React from 'react'
+import { useParams, Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Details = () => {
   const {slug} = useParams()
-  const dispatch = useDispatch();
   const { postItems, isLoading } = useSelector((state)=> state.posts)
   const { categoryItems } = useSelector((state)=> state.categories)
 
-  useEffect(()=>{
-    dispatch(getPosts());
-  }, [])
+  const postIndex = postItems.findIndex((p) => p.slug === slug);
+  const post = postItems[postIndex];
 
-  useEffect(()=>{
-    dispatch(getCategories());
-  }, [])
+  const nextPost = postIndex > 0 ? postItems[postIndex - 1] : null;
+  const prevPost = postIndex < postItems.length - 1 ? postItems[postIndex + 1] : null;
 
-  const postItem = postItems.filter(post => post.slug == slug);
-  const post = postItem[0];
-  const latestPosts = postItems.slice(0, 3);
-    // if(!post) {
-    //     return <div>Post not found.</div>;
-    //   }
 
   return (
     <>
@@ -120,6 +108,18 @@ const Details = () => {
                   </form>
                 </div>
               </div>
+              <div className="post-navigation">
+                {prevPost && (
+                  <Link to={`/${prevPost.slug}`} className="btn me-4" style={{backgroundColor:'#8eb850', color:'white'}}>
+                    &lt; Previous Post
+                  </Link>
+                )}
+                {nextPost && (
+                  <Link to={`/${nextPost.slug}`} className="btn" style={{backgroundColor:'#8eb850', color:'white', float:'right'}}>
+                    Next Post &gt;
+                  </Link>
+                )}
+            </div>
             </div>
             <div className='col-lg-1'></div>
             {/* <div className="">
