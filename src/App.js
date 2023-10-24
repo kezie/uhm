@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Globalpage from './components/pages/global'
 import Header from './components/pages/nigeria/header/Header'
 import Footer from './components/pages/nigeria/footer/Footer'
@@ -24,8 +24,10 @@ import Corperate from './components/pages/nigeria/insurance/Corperate';
 import Payment from './components/partials/payment/PaystackIntegration';
 import SocialPrograms from './components/pages/nigeria/programmes'
 import WOW from 'wowjs'
+import { AnimatePresence } from "framer-motion";
 
 function App() {
+  const location = useLocation();
   const dispatch = useDispatch();
   const { userLocation } = useSelector((state)=> state.userLocation)
 
@@ -45,10 +47,10 @@ function App() {
 
 
   return (
-      <Router>
+    <AnimatePresence >
         <ScrollToTop/>
         <Header handleLocationChange={handleLocationChange}/>
-        <Routes>
+        <Routes location={location} key={location.pathname}>
           <Route path="/" element={ userLocation === 'NG' ? < Homepage /> : <Globalpage/>} />
           <Route path="/team" element={< Team />} />
           <Route path="/board" element={< Board />} />
@@ -68,7 +70,7 @@ function App() {
           <Route path='/social-health-insurance' element={<SocialPrograms/>} />
         </Routes>
       <Footer/>
-      </Router>
+    </AnimatePresence>
   );
 }
 
