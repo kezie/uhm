@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const About = () => {
 
-  const { location } = useSelector((state)=> state.location)
+  const { userLocation } = useSelector((state)=> state.userLocation)
 
   let p1 = ''
   let p2 = ''
@@ -12,7 +12,7 @@ const About = () => {
   let sub_title = ''
   let src = ''
 
-  if(location === "NG"){
+  if(userLocation === "NG"){
     p1 = 'Ultimate Health is a Health Maintenance Organization established to deliver excellent preventive and curative medical services at affordable rates. '
     p2 = 'We have multiple offices across the 6 Geopolitical Zones of the Federation and an excellent team of experts with Global exposure. We are innovative, strategic and flexible with our eyes always on providing solutions with Best Practices and Corporate Governance.'
     title = 'Leading Health Insurance Company'
