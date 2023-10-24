@@ -1,11 +1,8 @@
-import React, { useState, useRef, useEffect, useMemo, useCallback} from 'react';
-import { createRoot } from 'react-dom/client';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
-import { AgGridReact } from 'ag-grid-react'; // the AG Grid React Component
+import React, { useState, useEffect, useMemo} from 'react';
+import { AgGridReact } from 'ag-grid-react';
 
-import 'ag-grid-community/styles/ag-grid.css'; // Core grid CSS, always needed
-import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
-import PageBanner from '../../../partials/PageBanner';
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
 import {uhms_providers} from './Data'
 
 const Test = () => {
@@ -30,14 +27,13 @@ const Test = () => {
     setRowData(uhms_providers.dataroot.uhms_providers)
   }, [])
 
-
   return (
-      <div className='ag-theme-alpine' style={{height:600,width:'100%' }}>
+      <div className='ag-theme-alpine' style={{height:900,width:'100%' }}>
         <AgGridReact
           rowData={rowData}
           columnDefs={columnDefs}
           pagination={true}
-          paginationPageSize={10}
+          paginationPageSize={20}
           defaultColDef={defaultColDef}
         />
       </div>
