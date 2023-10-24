@@ -1217,22 +1217,21 @@ button {
 }
 .header-navigation .navbar-toggler {
   padding: 10px 7px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: transparent;
+  background-color: #afd553;
+  border-radius: 8px;
   cursor: pointer;
   display: none;
   margin-left: 30px;
 }
 .header-navigation .navbar-toggler span {
   position: relative;
-  background-color: #1a1a1a;
-  border-radius: 3px;
+  background-color: #f7700f;
   display: block;
-  height: 2px;
+  height: 1px;
   padding: 0;
   -webkit-transition-duration: 300ms;
-          transition-duration: 300ms;
-  width: 30px;
+  transition-duration: 300ms;
+  width: 20px;
   cursor: pointer;
   display: block;
 }
