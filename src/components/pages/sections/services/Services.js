@@ -4,13 +4,13 @@ import { useSelector } from 'react-redux'
 
 const Services = () => {
 
-  const { location } = useSelector((state)=> state.location)
+  const { userLocation } = useSelector((state)=> state.userLocation)
   
   let content = ''
   let subtitle = ''
   let title = ''
   
-  if(location === "NG"){
+  if(userLocation === "NG"){
     content = 'Feel Free to pick any of our plans and have a bite on our spicy bouquet and you will be glad you did. Call our Marketing Team on +234-811-2893-000'
     subtitle = 'There is no one that cannot afford our Health Insurance Products'
     title = 'Health Plans tailor made for you'
