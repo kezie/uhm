@@ -1,13 +1,22 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import Newsletter from "../../../partials/Newsletter";
 import PageBanner from "../../../partials/PageBanner";
 import { teamData } from './Data';
+import Framer from '../../../partials/Framer';
+import WOW from 'wowjs'
 
 const Team = () => {
   
+  useEffect(()=>{
+    new WOW.WOW({
+      live:false
+    }).init()
+  }, [])
+  
   return (
     <>
+    <Framer/>
     <PageBanner pageName={"Team Members"} PageImage={'team.jpg'} />{" "}
     
     {/*====== Start Team Section ======*/}
