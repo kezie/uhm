@@ -30,14 +30,14 @@ const Header = ({ singleMenus, handleLocationChange }) => {
       const toggleBtn = header.getElementsByClassName("navbar-toggler")[0],
         overlay = header.getElementsByClassName("nav-overlay")[0],
         menu = header.getElementsByClassName("nav-menu")[0];
-      toggleBtn.addEventListener("click", () => {
-        overlay.classList.add("active");
-        menu.classList.add("menu-on");
-      });
-      overlay.addEventListener("click", () => {
-        overlay.classList.remove("active");
-        menu.classList.remove("menu-on");
-      });
+        toggleBtn.addEventListener("click", () => {
+          overlay.classList.add("active");
+          menu.classList.add("menu-on");
+        });
+        overlay.addEventListener("click", () => {
+          overlay.classList.remove("active");
+          menu.classList.remove("menu-on");
+        });
     });
   }, [width]);
 
