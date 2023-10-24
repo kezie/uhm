@@ -7,7 +7,7 @@ export const store = configureStore({
   reducer:{
     posts: postReducer,
     categories: categoryReducer,
-    location: locationReducer
+    userLocation: locationReducer
   }
 });
 
