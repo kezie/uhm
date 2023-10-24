@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 
 const Menus = () => {
 
-  const { location } = useSelector((state)=> state.location)
+  const { userLocation } = useSelector((state)=> state.userLocation)
 
   return (
     <Fragment>
     <nav className="main-menu d-none d-xl-block">
       <ul>
         <li className="menu-item">
-          { location === "NG" ? <Link to="/" className="active">Home</Link> : <Link to="/global" className="active">Home</Link> }  
+          { userLocation === "NG" ? <Link to="/" className="active">Home</Link> : <Link to="/global" className="active">Home</Link> }  
         </li>
         <li className="menu-item">
           <Link to="#">
