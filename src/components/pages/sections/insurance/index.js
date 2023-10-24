@@ -10,11 +10,11 @@ import otumba from '../../../../images/hero-bg-2.jpg'
 import InsuranceCalc from '../../../partials/insuranceCalc/InsuranceCalc'
 
 const Plans = () => {
-  const {location} = useSelector((state)=>(state.location))
+  const {userLocation} = useSelector((state)=>(state.userLocation))
 
   let insPlan = [];
 
-  if(location === "NG"){
+  if(userLocation === "NG"){
     insPlan = plans
   }else{
     insPlan = plans2
@@ -23,7 +23,7 @@ const Plans = () => {
   return (
     <>
         <PageBanner pageName={"Our Insurance Plans"} PageImage={'team.jpg'} />{" "}
-        {location === "NG" ? '' : (
+        {userLocation === "NG" ? '' : (
             <section
             className="banner-one bg_cover p-r z-1"
             style={{ backgroundImage: `url(${otumba})` }}
@@ -90,7 +90,7 @@ const Plans = () => {
                                     <span className="plan" style={{color:'#008000'}}>{plan.plan}</span>
                                     <h2 className="price">
                                         <span className="currency" style={{fontSize:'14px'}}>
-                                            { location === "NG" ? "₦" : "$"}</span> <span className="sm" style={{fontSize:'22px'}}> <CurrencyFormat value={plan.price}  displayType={'text'} thousandSeparator={true} /></span>
+                                            { userLocation === "NG" ? "₦" : "$"}</span> <span className="sm" style={{fontSize:'22px'}}> <CurrencyFormat value={plan.price}  displayType={'text'} thousandSeparator={true} /></span>
                                         <span className="sm" style={{fontSize:'14px'}}> .00 </span>
                                     </h2>
                                     <h3 style={{fontSize:'14px', color:'#008000'}}>PER INDIVIDUAL</h3>
