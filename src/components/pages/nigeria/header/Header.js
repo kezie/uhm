@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 const Header = ({ singleMenus, handleLocationChange }) => {
 
-  const { location } = useSelector((state)=> state.location)
+  const { userLocation } = useSelector((state)=> state.userLocation)
 
   useEffect(() => {
     stickyNav({ singleMenus });
@@ -73,7 +73,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
 
                 <div className="btn-group" style={{cursor:'pointer'}}>
                   <span className= "dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    {location === "NG" ? <> <img src="assets/images/logo/naija.png" width={25}/> <span style={{fontWeight:'bold'}}> NG</span> </> : <> <img src="assets/images/logo/global.png" width={20}/> <span style={{fontWeight:'bold'}}> Global</span> </> }
+                    {userLocation === "NG" ? <> <img src="assets/images/logo/naija.png" width={25}/> <span style={{fontWeight:'bold'}}> NG</span> </> : <> <img src="assets/images/logo/global.png" width={20}/> <span style={{fontWeight:'bold'}}> Global</span> </> }
                   </span>
                   <ul className="dropdown-menu" style={{minWidth:"6rem"}}>
                     <li className="ms-2"><Link onClick={() => handleLocationChange('NG')} to="/"> <img src="assets/images/logo/naija.png" width={25}/> Nigeria</Link></li>
@@ -93,7 +93,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
           <div className="primary-menu">
             {/*=== Site Branding ===*/}
             <div className="site-branding">
-            { location === "NG" ? (<Link to="/">
+            { userLocation === "NG" ? (<Link to="/">
                 <span className="brand-logo">
                   <img src="assets/images/logo/logo-2.png" width={60} alt="Site Logo" />
                 </span>
