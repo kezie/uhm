@@ -19,7 +19,7 @@ const Story = () => {
       <section className="fact-section p-r z-1 pt-130 pb-120">
         <div className="container">
           <div className="row">
-            <div className="col-xl-7 col-lg-12">
+            <div className="col-xl-5 col-lg-12">
               {/*=== Fact image box ===*/}
               <div className="fact-img_one-box text-right pr-lg-70 mb-50">
                 <div className="quote-box-three text-left wow fadeInLeft z-1" style={{backgroundColor:'#088715'}}>
@@ -34,7 +34,7 @@ const Story = () => {
                 />
               </div>
             </div>
-            <div className="col-xl-5 col-lg-12">
+            <div className="col-xl-7 col-lg-12">
               {/*=== Fact content Box ===*/}
               <div className="fact-one_content-box mb-10" >
                 <div className="section-title section-title-left wow fadeInDown">
