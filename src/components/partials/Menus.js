@@ -1,15 +1,10 @@
-import React, {Fragment, useEffect, useState} from 'react'
+import React, {Fragment, useEffect} from 'react'
 import { useSelector } from 'react-redux';
 import { Link, NavLink } from "react-router-dom";
 
 const Menus = () => {
 
   const { userLocation } = useSelector((state)=> state.userLocation)
-  const [serviceClicked, setServiceClicked] = useState(false)
-  
-  const handleServiceClick = () => {
-    setServiceClicked(true)
-  }
 
   useEffect(()=>{
     const service = document.getElementsByClassName("services-li")[0];
