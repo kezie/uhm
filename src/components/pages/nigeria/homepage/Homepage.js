@@ -106,6 +106,10 @@ const Homepage = ({posts}) => {
       </section>
       {/*====== End why choose us ======*/}
 
+      {/* Insurance form */}
+      <InsuranceCalc/>
+      {/* End Insurance Form */}
+      
       <Brands/>
       
       {/*====== Start Feedback Section ======*/}
@@ -116,9 +120,6 @@ const Homepage = ({posts}) => {
       <Blog posts={posts}/>
       {/*====== End Blog Section ======*/}
 
-      {/* Insurance form */}
-      <InsuranceCalc/>
-      {/* End Insurance Form */}
 
       {/* Get Insurance Start */}
       {/*====== Start Newsletter Section ======*/}
