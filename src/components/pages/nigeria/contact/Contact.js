@@ -52,7 +52,7 @@ const Contact = () => {
       </section>
       
       <section className="contact-information-section bg_cover pt-100 pb-20"
-      style={{backgroundImage: "url(assets/images/bg/benefits-bg-2-1.png)" }}
+      style={{background: 'radial-gradient(circle, rgba(219,129,46, 0.2) 32% , rgba(142, 184, 80, 0.1) 60%)'}}
       >
         <div className='container pb-3'>
           <div className="section-title text-center section-title-left mb-10 wow fadeInDown">
