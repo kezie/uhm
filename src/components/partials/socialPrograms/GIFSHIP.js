@@ -17,15 +17,13 @@ const GIFSHIP = () => {
                             The GIFSHIP PROGRAMME
                         </h2>
                         <p className="wow fadeInUp mb-2 text-light">
-                            GIFSHIP represents Group Individual and Family Social health insuance programme of the National Health Insurance Authority. 
+                            GIFSHIP represents Group Individual and Family Social Health Insurance Programme of the National Health Insurance Authority. 
                             The GIFSHIP program is available for individuals, families and groups of 10 or more. 
-                            The GIFSHIP is health coverage available to every Nigerian no matter where you are located. 
-                            Contact us to get registered on the programme.
+                            It is designed and approved by the NHIA for Small and Medium enterprises and all players in the informal sector. 
                         </p>
                         <p className="wow fadeInUp mb-2 text-light">
-                            It is a programme committed to ensuring qualitative healthcare services for students of the institutions thereby promoting the health and wellbeing of students.
-                            It is slated for a period of one year academic session for the students of the institution
-                            This programme is open to both private and tertiary institution
+                            The GIFSHIP is health coverage available to every Nigerian no matter where you are located. 
+                            Contact us to get registered on the programme.
                         </p>
                     </div>
                     <div
@@ -33,7 +31,7 @@ const GIFSHIP = () => {
                       data-wow-delay=".9s"
                     >
                       <Link to="#" className={`main-btn btn-success`}>
-                        <span className=""> More Info </span>
+                        <span className=""> Learn More </span>
                       </Link>
                     </div>
                 </div>
