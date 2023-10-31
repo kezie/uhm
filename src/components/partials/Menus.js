@@ -1,65 +1,89 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, useEffect, useState} from 'react'
 import { useSelector } from 'react-redux';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Menus = () => {
 
   const { userLocation } = useSelector((state)=> state.userLocation)
+  const [serviceClicked, setServiceClicked] = useState(false)
+  
+  const handleServiceClick = () => {
+    setServiceClicked(true)
+  }
+
+  useEffect(()=>{
+    const service = document.getElementsByClassName("services-li")[0];
+    const about = document.getElementsByClassName("about-us-li")[0];
+    const active = document.getElementsByClassName("menu-li")[0];
+    const activeServiceLi = document.getElementById('service-li')
+    const activeAboutLi = document.getElementById('about-li')
+    service.addEventListener("click", () => {
+      activeServiceLi.classList.add("active");
+    });
+    about.addEventListener("click", () => {
+      activeAboutLi.classList.add("active");
+    });
+    active.addEventListener("click", ()=>{
+      activeServiceLi.classList.remove("active");
+      activeAboutLi.classList.remove("active");
+    })
+  })
+
 
   return (
     <Fragment>
     <nav className="main-menu d-none d-xl-block">
       <ul>
         <li className="menu-item">
-          { userLocation === "NG" ? <Link to="/" className="active">Home</Link> : <Link to="/global" className="active">Home</Link> }  
+          { userLocation === "NG" ? <NavLink to="/" className='menu-li'>Home</NavLink> : <NavLink to="/global" className='menu-li'>Home</NavLink> }  
         </li>
         <li className="menu-item">
-          <Link to="#">
+          <Link to="#" id="about-li">
             About Us
           </Link>
           <ul className="sub-menu">
             <li>
-              <Link to="/story">Our Story</Link>
+              <NavLink exact to="/story" className='about-us-li'  activeClassName="active">Our Story</NavLink>
             </li>
             <li>
-              <Link to="/board">Board Members</Link>
+              <NavLink to="/board" className='about-us-li' activeClassName="active">Board Members</NavLink>
             </li>
             <li>
-              <Link to="/team">Our Team</Link>
+              <NavLink to="/team" className='about-us-li' activeClassName="active">Our Team</NavLink>
             </li>
           </ul>
         </li>
 
         <li className="menu-item">
-          <Link to="#">
+          <Link to="#" id='service-li' >
             Our Services
           </Link>
           <ul className="sub-menu">
             <li className='menu-item'>
-              <Link to="/insurance-plans">Private Health Insurance</Link>
+              <NavLink to="/insurance-plans" className='services-li' activeClassName="active">Private Health Insurance</NavLink>
             </li>
             <li className='menu-item'>
-              <Link to="/social-health-insurance">Social Health Insurance</Link>
+              <NavLink to="/social-health-insurance" className='services-li' activeClassName="active">Social Health Insurance</NavLink>
             </li>
           </ul>
         </li>
 
         <li className="menu-item">
-          <Link to="/providers">
+          <NavLink to="/providers" className='menu-li' activeClassName="active">
             Provider Network
-          </Link>
+          </NavLink>
         </li>
 
         <li className="menu-item">
-          <Link to="/news">
+          <NavLink to="/news" className='menu-li' activeClassName="active">
             News/Events
-          </Link>
+          </NavLink>
         </li>
 
         <li className="menu-item">
-          <Link to="/contact">
+          <NavLink to="/contact" className='menu-li' activeClassName="active">
             Contact Us
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </nav>
