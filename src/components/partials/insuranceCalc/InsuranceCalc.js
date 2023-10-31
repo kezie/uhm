@@ -61,6 +61,7 @@ const InsuranceCalc = () => {
                     <div className="section-title section-title-left">
                     <span className="sub-title text-light">Get a Free Quote</span>
                     <h2 className='text-light'>Pick a Plan to Get Started</h2>
+                    <h4 className='text-light'>See what the plans entail</h4>
                     </div>
                 </div>
                 <div>
