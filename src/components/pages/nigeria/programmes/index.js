@@ -7,7 +7,7 @@ const Programs = () => {
   return (
     <>
       <Framer/>
-      <PageBanner pageName={"Social Health Insurance"} PageImage={"wcu2.png"} />
+      <PageBanner pageName={"Social Health Insurance"} PageImage={"insurance.jpg"} />
       <SocialPrograms/>
     </>
   )
