@@ -24,58 +24,31 @@ const Plans = () => {
   return (
     <>
         <Framer/>
-        <PageBanner pageName={"Our Insurance Plans"} PageImage={'team.jpg'} />{" "}
-        {userLocation === "NG" ? '' : (
-            <section
-            className="banner-one bg_cover p-r z-1"
-            style={{ backgroundImage: `url(${otumba})` }}
-        >
-             <div className="shape shape-one">
-                <span>
-                    <img src="assets/images/hero/hero-one_shape-1.png" alt="" />
-                </span>
-            </div>
-            <div className="shape shape-two">
-            <span>
-                <Link to='https://www.youtube.com/watch?v=33ndQmpxMQ0&feature=youtu.be' target='_blank'>
-                    <img src="assets/images/hero/circle.png" width={150} alt="" />
-                </Link>
-            </span>
-            </div>
-            <div className="container">
-            <div className="row">
-                <div className="col-xl-7 col-lg-10">
-                {/*=== Hero Content ===*/}
-                <div className="text-white mt-5 mb-5">
-                    <h1 className="wow fadeInUp mb-2" data-wow-delay=".7s" style={{color:'#db812f'}}>
-                        Don't Send Money For Another Medical Bill
-                    </h1>
-                    <p className="wow fadeInUp mb-2 text-light">
-                        The ability to take care of loved ones in Nigeria from the diaspora can be a source of pride and joy. Raising and sending money back home for unplanned medical expenditures can steal that joy.
-                    </p>
-                    <p className="wow fadeInUp mb-2 text-light">
-                        Work with a partner that has been taking care of the healthcare needs of Nigerians for close to 20 years. Let us ensure that all your loved ones in Nigeria have access to the best medical care, and you do not have to bother about impromptu expenses.
-                    </p>
-                    <div className="hero-button mt-3 wow fadeInUp" data-wow-delay=".9s">
-                        <Link  to="https://www.youtube.com/watch?v=33ndQmpxMQ0&feature=youtu.be" target='_blank'>
-                            <span className="main-btn btn-red">Watch Presentation</span>
-                        </Link>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-            </section>
-        )}
+        <PageBanner pageName={"Our Insurance Plans"} PageImage={'insurance.jpg'} />{" "}
         <section className="pricing-section pt-120 pb-90">
             <div className="container">
                 <div className="row justify-content-center">
-                    <div className="col-xl-8 col-lg-10">
+                    <div className="col-xl-10 col-lg-12">
                     {/*=== Common Heading ===*/}
                     <div className="section-title text-center mb-75">
                         <span className="sub-title">Our Pricing Package</span>
-                        <h2>Amazing Packages</h2>
-                        <p className='text-center'>Pick one of our plans off the shelf or design something specifically for you and your organization by calling our marketing team on: +234-811-2893-000</p>
+                        <p>
+                            We provide coverage for medical expenses incurred due to illnesses or accidents. 
+                        </p>
+                        <p>
+                            Our bouquet of plans offer a comprehensive range of benefits that help individuals and families stay 
+                            financially protected and secure. Our plans provide coverage for various medical expenses, 
+                            such as hospitalization, surgeries, doctor visits, diagnostic tests, and more. 
+                            We also cover the cost of prescription drugs and medical equipment, 
+                            which are essential for the recovery of patients. Some plans offer several additional 
+                            benefits, such as wellness programs, preventive care, and telemedicine services. 
+                            With various options available, our plans allow you to select from a range of options 
+                            that best suit your budget, lifestyle, and healthcare needs. Overall, our plans are an 
+                            investment to maintain and improve your health, providing peace of mind for you and your 
+                            loved ones.
+                        </p>
+                        {/* <h2>Amazing Packages</h2>
+                        <p className='text-center'>Pick one of our plans off the shelf or design something specifically for you and your organization by calling our marketing team on: +234-811-2893-000</p> */}
                     </div>
                     </div>
                 </div>
