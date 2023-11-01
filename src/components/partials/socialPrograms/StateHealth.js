@@ -28,8 +28,8 @@ const StateHealth = () => {
                       className="hero-button wow fadeInDown"
                       data-wow-delay=".9s"
                     >
-                      <Link to="#" className={`main-btn btn-success`}>
-                        <span className=""> More Info </span>
+                      <Link to="#" className={`main-btn btn-success`} data-bs-toggle="modal" data-bs-target="#formModal">
+                        <span className=""> Learn More </span>
                       </Link>
                     </div>
                 </div>
