@@ -9349,3 +9349,15 @@ ul.rating li {
   padding:10px;
   color:white
 }
+
+.page-item.active .page-link{
+  background-color: #d88031;
+}
+
+.page-link{
+  color:#000
+}
+
+.ag-icon {
+  display: none;
+}
