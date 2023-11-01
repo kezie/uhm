@@ -9361,3 +9361,15 @@ ul.rating li {
 .ag-icon {
   display: none;
 }
+
+.insurance-form input {
+  border: 1px solid green;
+  border-radius: 20px;
+  margin:10px 0;
+}
+
+.insurance-form select {
+  border: 1px solid green;
+  border-radius: 20px;
+  margin:10px 0;
+}
