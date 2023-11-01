@@ -8,7 +8,7 @@ const Providers = () => {
   return (
       <>
         <Framer/>
-        <PageBanner pageName={"Provider Network"} PageImage={'team.jpg'} />{" "}
+        <PageBanner pageName={"Provider Network"} PageImage={'providers.jpg'} />{" "}
         
       <section>
         <div>
