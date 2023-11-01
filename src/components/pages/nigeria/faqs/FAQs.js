@@ -46,17 +46,17 @@ const FAQs = () => {
                 className="faq-two-img"
                 alt="Faq Image"
               />
-              <img
+              {/* <img
                 src="assets/images/gallery/faq-4.jpg"
                 className="faq-three-img"
                 alt="Faq Image"
               />
               <div className="fintex-logo">
                 <img
-                  src="assets/images/logo/big-logo-1.png"
+                  src="assets/images/logo/logo-1.png"
                   alt="logo"
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
