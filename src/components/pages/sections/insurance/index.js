@@ -57,12 +57,14 @@ const Plans = () => {
                         <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                             {/*=== Pricing Item ===*/}
                             <div className="pricing-item-one mb-60 wow fadeInUp">
-                                <span className="save">Comprehensive Annual Limit</span>
-                                <div className="pricing-header text-center pb-35">
-                                    <div>
-                                        <span style={{color:"#db812e", fontSize:'12px', fontWeight:'bold'}}>U-HEALTH</span>
+                                <span className="save text-center">
+                                    <div className='mb-1 mt-1'>
+                                        <span style={{ fontSize:'12px', fontWeight:'bold'}}>U-HEALTH</span>
                                     </div>
-                                    <span className="plan" style={{color:'#008000'}}>{plan.plan}</span>
+                                    <span className="plan" style={{color:`${plan.color}`}}>{plan.plan}</span>
+                                </span>
+                                <div className="pricing-header text-center mt-4 pb-35">
+                                    <h6 style={{fontSize:14}}>COMPREHENSIVE ANNUAL LIMIT</h6>
                                     <h2 className="price">
                                         <span className="currency" style={{fontSize:'14px'}}>
                                             { userLocation === "NG" ? "₦" : "$"}</span> <span className="sm" style={{fontSize:'22px'}}> <CurrencyFormat value={plan.price}  displayType={'text'} thousandSeparator={true} /></span>
