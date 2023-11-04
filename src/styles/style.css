@@ -4137,14 +4137,14 @@ button {
 }
 .pricing-item-one span.save {
   position: absolute;
-  top: -13px;
-  left: 15px;
+  top: -30px;
+  left: 50px;
   background-color: #db812e;
   color: #fff;
   font-family: "Manrope", sans-serif;
   font-weight: 800;
   border-radius: 13px;
-  padding: 5px 15px;
+  padding:15px 50px;
   line-height: 16px;
 }
 .pricing-item-one .pricing-header {
