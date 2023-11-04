@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import Socials from "../../../partials/socials/Socials";
 import WhatsAppChatButton from "../../../partials/whatsapp/WhatsAppChatButton";
+import { useSelector } from "react-redux";
 
 const Footer = () => { 
+  const { userLocation } = useSelector((state)=> state.userLocation)
   return (
       <footer className="footer-default footer-dark text-white p-r z-1">
         <div className="shape shape-one">
@@ -58,9 +60,10 @@ const Footer = () => {
                         <Link to="/faqs">FAQs</Link>
                       </li>
                       <li>
-                        <Link to='#' data-bs-toggle="modal" data-bs-target="#loginModal">
+                      { userLocation === "NG" ? 
+                        (<Link to='#' data-bs-toggle="modal" data-bs-target="#loginModal">
                           Login To Portal
-                        </Link>
+                        </Link>): '' }
                       </li>
                     </ul>
                   </div>
