@@ -16,7 +16,7 @@ const About = () => {
     p1 = 'Ultimate Health is a Health Maintenance Organization established by healthcare experts and astute businessmen/ women with the objective to add value to the healthcare system of the country by delivering excellent/global standard preventive and curative medical services in accordance with the laws and at affordable rates.'
     p2 = 'We have grown over the years and have set up offices in the (6) geopolitical zones of the federation with pockets of branches within the zones.'
     title = 'Leading Health Insurance Company'
-    sub_title = 'About Us'
+    sub_title = ''
     src = 'assets/images/about/about-10.png'
   }else{
     p1 = "Are you worried about the healthcare challenges faced by your loved ones in Nigeria? At Ultimate Health, we understand your concerns, and we're here to provide a reliable solution. With our comprehensive health insurance plans, you can ensure that your family in Nigeria receives the best medical care when they need it most."
