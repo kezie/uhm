@@ -54,6 +54,8 @@ const MobileMenu = ({handleLocationChange}) => {
           </li>
 
           <li className="menu-item has-children">
+          { userLocation === "NG" ? (
+            <>
             <Link to="#">Our Services</Link>
             <ul className="sub-menu" style={activeLi("home")}>
               <li>
@@ -66,6 +68,7 @@ const MobileMenu = ({handleLocationChange}) => {
             <span className="dd-trigger" onClick={() => activeMenuSet("home")}>
               <i className="far fa-angle-down" />
             </span>
+            </> ) : <Link to="/insurance-plans"> Our Services </Link> }
           </li>
 
           <li className="menu-item">
