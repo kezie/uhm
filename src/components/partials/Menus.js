@@ -53,6 +53,8 @@ const Menus = () => {
         </li>
 
         <li className="menu-item">
+        { userLocation === "NG" ? (
+          <>
           <Link to="#" id='service-li' >
             Our Services
           </Link>
@@ -64,6 +66,10 @@ const Menus = () => {
               <NavLink to="/social-health-insurance" className='services-li' activeClassName="active">Social Health Insurance</NavLink>
             </li>
           </ul>
+          </>) : <NavLink to="/insurance-plans" className='menu-li' activeClassName="active">
+            Our Services
+          </NavLink>}
+          
         </li>
 
         <li className="menu-item">
