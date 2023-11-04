@@ -14,7 +14,7 @@ export const teamData = [
     },
     {
         id:2,
-        name:'Otunba Lekan Ewenla M.IoD',
+        name:'Otunba Lekan Ewenla M.CIoD',
         position:'Managing Director/CEO',
         image:otumba
     },
