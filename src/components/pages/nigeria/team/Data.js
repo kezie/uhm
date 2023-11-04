@@ -13,7 +13,7 @@ import dara from '../../../../images/team/dara.jpg'
 export const teamData = [
     {
         id:1,
-        name:'Otunba Lekan Ewenla',
+        name:'Otunba Lekan Ewenla M.CIoD',
         position:'MANAGING DIRECTOR/CEO',
         image:md
     },
