@@ -44,7 +44,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
   
     return(
     <>
-    <header className="header-area transparent-header">
+    <header className="header-area">
       {/*=== Header Top-bar ===*/}
       <div className="topbar-two">
         <div className="container-1420">
@@ -62,16 +62,10 @@ const Header = ({ singleMenus, handleLocationChange }) => {
             </div>
             <div className="col-xl-4 col-lg-3">
               <div className="top-right float-lg-right d-flex align-items-center">
-                <div className="me-3">
-                  <Link to='#' data-bs-toggle="modal" data-bs-target="#loginModal">
-                    <i className="fa fa-user"></i> Login
-                  </Link>
-                </div>
-
 
                 <Socials/>
 
-                <div className="btn-group" style={{cursor:'pointer'}}>
+                <div className="btn-group ms-4" style={{cursor:'pointer'}}>
                   <span className= "dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     {userLocation === "NG" ? <> <img src="assets/images/logo/naija.png" width={25}/> <span style={{fontWeight:'bold'}}> NG</span> </> : <> <img src="assets/images/logo/global.png" width={20}/> <span style={{fontWeight:'bold'}}> Global</span> </> }
                   </span>
