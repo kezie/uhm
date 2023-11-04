@@ -3,6 +3,7 @@ export const plans2 = [
         id:'plan1',
         plan:'CLASSIC',
         price:'1400',
+        color:'#ECF3E2',
         benefits: [
         {plan: 'Outpatient Care', status: 'fa fa-check-circle text-success'},
         {plan: 'Hospital Admission', status:'fa fa-check-circle text-success'},
@@ -29,6 +30,7 @@ export const plans2 = [
         id:'plan2',
         plan:'GOLD',
         price:'2000',
+        color:'#BCD59A',
         benefits: [
         {plan: 'Outpatient Care', status: 'fa fa-check-circle text-success'},
         {plan: 'Hospital Admission', status:'fa fa-check-circle text-success'},
@@ -55,6 +57,7 @@ export const plans2 = [
         id:'plan3',
         plan:'DIAMOND',
         price:'3000',
+        color:'#6D903C',
         benefits: [
         {plan: 'Outpatient Care', status: 'fa fa-check-circle text-success'},
         {plan: 'Hospital Admission', status:'fa fa-check-circle text-success'},
@@ -81,6 +84,7 @@ export const plans2 = [
         id:'plan4',
         plan:'DIAMOND+',
         price: '5000',
+        color:'#37481E',
         benefits: [
         {plan: 'Outpatient Care', status: 'fa fa-check-circle text-success'},
         {plan: 'Hospital Admission', status:'fa fa-check-circle text-success'},
