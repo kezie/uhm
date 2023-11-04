@@ -100,7 +100,7 @@ const Details = () => {
                       <div className="col-lg-12">
                         <div className="form_group">
                           <button className="main-btn btn-red">
-                            Send Us Message
+                            Comment
                           </button>
                         </div>
                       </div>
