@@ -67,7 +67,7 @@ const Story = () => {
               {/*=== Author Content Box ===*/}
               <div className="author-content-box mt-20 mb-50 ml-lg-60 wow fadeInRight">
                 <h2>
-                  <span className="thin">Meet</span> Otunba Lekan Ewenla, M.IoD
+                  <span className="thin">Meet</span> Otunba Lekan Ewenla, M.CIoD
                 </h2>
                 <p>
                   Lekan Ewenla was appointed the Managing Director/CEO of Ultimate 
