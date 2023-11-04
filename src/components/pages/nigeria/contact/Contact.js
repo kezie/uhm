@@ -56,7 +56,7 @@ const Contact = () => {
       >
         <div className='container pb-3'>
           <div className="section-title text-center section-title-left mb-10 wow fadeInDown">
-            <span className="sub-title pb-4">You can also reach us on</span>
+            <span className="sub-title pb-5">You Can Also Visit Us At Our Various Office Locations</span>
           </div>
           <div className="row">
             <div className='col-lg-4'></div>
