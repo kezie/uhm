@@ -307,21 +307,21 @@ textarea.form_control {
   line-height: 24px;
   color: #db812e;
 }
-.sub-title:after, .sub-title:before {
+/* .sub-title:after, .sub-title:before {
   display: inline-block;
   content: "";
   font-family: "Font Awesome 5 pro";
   font-weight: 400;
   margin-right: 10px;
-}
-.sub-title:before {
+} */
+/* .sub-title:before {
   content: "";
   margin-right: 10px;
 }
 .sub-title:after {
   content: "";
   margin-left: 10px;
-}
+} */
 
 .section-title .sub-title {
   margin-bottom: 15px;
@@ -2607,6 +2607,7 @@ button {
   position: relative;
   -webkit-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
+  border-radius: 20px;
 }
 .service-item .text i {
   font-size: 45px;
@@ -2700,8 +2701,7 @@ button {
 .service-item-three {
   padding: 0 38px 40px;
   border-radius: 7px;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(22, 185, 54, 0.102)), color-stop(60%, rgba(203, 207, 211, 0.21)), to(rgba(1, 1, 1, 0.32157)));
-  background: linear-gradient(-180deg, rgba(17, 215, 46, 0.102) 0%, rgba(189, 163, 16, 0.21) 60%, rgba(159, 82, 6, 0.322) 100%);
+  border: 1px solid #8eb850;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .service-item-three {
