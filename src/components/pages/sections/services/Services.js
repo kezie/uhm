@@ -12,7 +12,7 @@ const Services = () => {
   
   if(userLocation === "NG"){
     content = 'Feel Free to pick any of our plans and have a bite on our spicy bouquet and you will be glad you did. Call our Marketing Team on +234-811-2893-000'
-    subtitle = 'There is no one that cannot afford our Health Insurance Products'
+    subtitle = 'There Is No One That Cannot Afford Our Health Insurance Products'
     title = 'Health Plans tailor made for you'
   }else{
     content = 'To learn more about our health insurance plans and get a personalized quote, contact our marketing team on +234-811-2893-000.'
