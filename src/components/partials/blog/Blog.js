@@ -18,18 +18,17 @@ const Blog = () => {
     dispatch(getCategories());
   }, [])
 
-  const limitedPosts = postItems.slice(0, 3);
+  const limitedPosts = postItems ? postItems.slice(0, 3) : [];
   return (
     <section className="blog-section service-section pt-100 z-1 p-r bg_cover pb-100 pt-70 p-r z-1"
       style={{ backgroundImage: "url(assets/images/bg/blog.jpg)" }}
     >
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-xl-8 col-lg-10">
+            <div className="col-xl-10 col-lg-10">
               {/*=== Common Heading ===*/}
               <div className="section-title text-center mb-60 wow fadeInDown">
-                <span className="sub-title">Article &amp; News</span>
-                <h2>Get Every Single News &amp; Blog</h2>
+                <h2>Catch Up With Exciting News &amp; Blog Posts</h2>
               </div>
             </div>
           </div>
