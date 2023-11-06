@@ -1,31 +1,36 @@
 export const data = [
     {
         id:'1',
+        style:'150px',
         icon:'far fa-hospital',
         link:'/providers',
         title:'Our Providers',
-        text:'We provide healthcare for our enrollees in all states of Nigeria. We are partnered with all NHIA-accredited healthcare providers in the country to provide unrivalled healthcare for you and your loved ones.'
+        text:'We are in partnership with all the NHIA accreditated health facilities across the 36 state of the federation including the FCT'
     },
     {
         id:'2',
+        style:'58px',
         icon:'fas fa-file-contract',
         link:'/insurance-plans',
         title:'See Our Plans',
-        text:'Our bouquet of plans offer a comprehensive range of benefits that help individuals and families stay financially protected and secure. Invest in Peace of mind for you and your loved ones.'
+        text:"Our bouquet of plans offer a comprehensive range of benefits that help individuals and families stay financially stable and protected. Invest in Peace of mind as sickness will not announce it's coming"
     },
     {
         id:'3',
+        style:'150px',
         icon: 'fab fa-researchgate',
         link:'',
         title:'Our Research',
-        text:'Read more about healthcare administration in Nigeria. In our periodical publications we keep you informed about all the advancements in healthcare in Nigeria.'
+        social:true,
+        text:'Kindly visit our social media platforms for more exposure about our activities and strength in Nigeria'
     },
     {
         id:'4',
+        style:'',
         icon: 'fas fa-info-circle',
-        link:'',
+        link:'/news',
         title:'Get Information',
-        text:'Our Diaspora plan is continually adding features and benefits to improve the quality of care your loved ones receive. Join our mailing list to stay up to date on the new features and benefits available.'
+        text:'Our Diaspora plans  are strategically designed in consonance with Global standards. knowing fully well that the country Nigeria is a Global community. With Global standards to meet your expectations based on the exposure in the Diaspora'
     }
 
 ]
