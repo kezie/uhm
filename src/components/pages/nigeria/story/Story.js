@@ -72,7 +72,7 @@ const Story = () => {
                 <p>
                   Lekan Ewenla was appointed the Managing Director/CEO of Ultimate 
                   Health Management Services at the inception of the company.
-                  He is also a strategic investor and member of the Board of Directors.
+                  He is also a strategic investor and a member of the Board of Directors.
                 </p>
                 <h5>MD/CEO</h5>
               </div>
@@ -80,7 +80,7 @@ const Story = () => {
             <div className="col-lg-6">
               {/*=== Author Image ===*/}
               <div className="author-image mb-50 wow fadeInLeft">
-                <img src="assets/images/md2.jpg" alt="Author Image" height={'auto'}/>
+                <img src="assets/images/md2.jpg" alt="Author Image" height={'auto'} style={{borderRadius:30}}/>
               </div>
             </div>
             
@@ -108,11 +108,11 @@ const Story = () => {
               <div className="about-content-box content-box-gap mb-50 wow fadeInRight">
                 <p className='mt-5'>
                   Our team of experts are painstakingly selected with our eyes always on Global Exposure, Ability
-                  to think out of the box, Flexibility, Deep Knowledge of Risk Management, Strategic Marketing,
+                  to think out of the box, Flexibility, Deep Knowledge of Risk Pulling and Management, Strategic Marketing,
                   Corporate Governance and Best Practice.
                 </p>
                 <p>
-                  Our expertise in designing well seated and suited customized health products and the
+                  Our expertise in designing well seated and suited customized health care products and the
                   establishment of mutually rewarding working relationship with NHIA accredited Health Care
                   Facilities- HCFs which translate to the provision of top-notch medical services to our enrollees
                   is our Unique Selling Proposition- USP.
