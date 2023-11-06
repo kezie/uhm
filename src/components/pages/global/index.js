@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
-import otunba from '../../../images/hero-bg-2.jpg'
+import otunba from '../../../images/banner2.jpg'
+import circle from '../../../images/circle.png'
 import { Link } from 'react-router-dom'
+import Socials from "../../partials/socials/Socials";
 import WOW from 'wowjs'
 import {data} from './data'
 import Brands from '../../partials/brands'
@@ -19,33 +21,38 @@ const Home = () => {
       {/*====== Start Hero Section ======*/}
       <section
       className="banner-one bg_cover p-r z-1"
-      style={{ backgroundImage: `url(${otunba})`, paddingTop:'100px' }}
+      style={{ backgroundImage: `url(${otunba})` }}
       >
-          <div className="shape shape-one">
-              <span>
-                  <img src="assets/images/hero/hero-one_shape-1.png" alt="" />
-              </span>
-          </div>
           <div className="shape shape-two">
-          <span>
-              <Link to='https://www.youtube.com/watch?v=33ndQmpxMQ0&feature=youtu.be' target='_blank'>
-                  <img src="assets/images/hero/circle.png" width={150} alt="" />
-              </Link>
-          </span>
+            <span>
+                <Link data-bs-toggle="modal" data-bs-target="#videoModal">
+                    <img src={circle} width={150} alt="" />
+                </Link>
+            </span>
           </div>
           <div className="container">
           <div className="row">
               <div className="col-xl-7 col-lg-10">
               {/*=== Hero Content ===*/}
-              <div className="text-white mt-5 mb-5">
-                  <h1 className="wow fadeInUp mb-2" data-wow-delay=".7s" style={{color:'#db812f'}}>
+              <div className="text-white mt-5 mb-5" style={{textAlign:'justify'}}>
+                  <h1 className="wow fadeInUp mb-2" data-wow-delay=".7s" style={{color:'#db812f', fontSize:45}}>
                       Don't Send Money For Another Medical Bill
                   </h1>
                   <p className="wow fadeInUp mb-2 text-light" style={{fontSize:18}}>
-                      The ability to take care of loved ones in Nigeria from the diaspora can be a source of pride and joy. Raising and sending money back home for unplanned medical expenditures can steal that joy.
+                      The ability to take care of the medical needs of loved ones in Nigeria from Diaspora 
+                      can be a source of pride and joy. Raising and sending money back home for unplanned 
+                      medical expenditures can distort and disrupt individual's financial plan and derail 
+                      future plans.
                   </p>
                   <p className="wow fadeInUp mb-2 text-light" style={{fontSize:18}}>
-                      Work with a partner that has been taking care of the healthcare needs of Nigerians for close to 20 years. Let us ensure that all your loved ones in Nigeria have access to the best medical care, and you do not have to bother about impromptu expenses.
+                      Ultimate Health HMO has been in the health insurance ecosystem in Nigeria for over 20 Years
+                      driving the health insurance program with innovation, flexibility and integrity.
+                  </p>
+                  <p className="wow fadeInUp mb-2 text-light" style={{fontSize:18}}>
+                      We are here to partner with you to enroll your dependants back in Nigeria on the health
+                      insurance program and even yourself, whenever you find yourself back home.
+                      It might interest you to note that the law has been passed in Nigeria to make health insurance
+                      mandatory for all Nigerians and legal residents in Nigeria.
                   </p>
                   <div className="hero-button mt-5 wow fadeInUp" data-wow-delay=".9s">
                       <Link to="/insurance-plans" className='me-3'>
@@ -78,11 +85,14 @@ const Home = () => {
           <div className="row">
               <div className="col-xl-9 col-lg-12">
                 <div className="section-title text-white text-center wow fadeInDown">
-                  <p className='text-muted' style={{fontSize:18}}>For a pre-paid premium, subscribers to the Ultimate Diaspora plan are assured of access to affordable healthcare when required amongst the list of NHIS-accredited hospitals. The plan provides access to a wide range of private and public hospitals all over the country</p>
+                  <p className='text-muted' style={{fontSize:18}}>
+                    For enrollment, interested individuals should proceed to click on the appropriate buttons
+                    looking at the preferred products, plans and choice of preferred health care facilities/premiums
+                  </p>
                 </div>
               </div>
               <div className='col-xl-3 col-lg-12'>
-                <Link to="/insurance-plans" className='mt-4 ms-4'>
+                <Link to="/insurance-plans" className='mt-2 ms-4'>
                   <span className="main-btn btn-red" style={{fontSize:13}}>Get Health Insurance</span>
                 </Link>
               </div>
@@ -98,12 +108,11 @@ const Home = () => {
                       </div>
                       <div className="text">
                         <h5 style={{color:'#8cbd53'}} className="title">{col.title}</h5>
-                        <p>
-                        {col.text}
+                        <p style={{paddingBottom:`${col.style}`}}>
+                          {col.text}
                         </p>
-                        <Link to={col.link}>
-                          <a className="btn-link">Learn More</a>
-                        </Link>
+                          {col.social ? <Socials style={{marginRight:'20px'}}/> : ''}
+                        { col.link ? <Link to={col.link}><a className="btn-link">Learn More</a></Link> : ''}
                       </div>
                     </div>
                   </div>
@@ -177,6 +186,24 @@ const Home = () => {
         </div>
       </section>
       {/*====== End Fact Section ======*/}
+
+      {/* Video Modal */}
+      <div className="modal fade" id="videoModal" tabIndex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div className=" modal-dialog modal-lg pt-130 pb-130">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="user-wrapper text-center">
+                  <div className="user-content modal-content p-4">
+                    <iframe src='https://www.youtube.com/embed/33ndQmpxMQ0?controls=1' height={400}></iframe>
+                    <span type="button" className="ms-4 text-danger" data-bs-dismiss="modal" aria-label="Close">Close</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
