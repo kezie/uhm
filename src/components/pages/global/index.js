@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
-import otunba from '../../../images/banner2.jpg'
+import banner from '../../../images/banner.jpg'
 import circle from '../../../images/circle.png'
 import { Link } from 'react-router-dom'
 import Socials from "../../partials/socials/Socials";
 import WOW from 'wowjs'
 import {data} from './data'
-import Brands from '../../partials/brands'
 import Counter from '../../partials/Counter'
+import Slider from 'react-slick';
+import { partnerSliderOne } from '../../sliderProps';
+import hospitals from './hospitals';
 
 const Home = () => {
 
@@ -21,7 +23,7 @@ const Home = () => {
       {/*====== Start Hero Section ======*/}
       <section
       className="banner-one bg_cover p-r z-1"
-      style={{ backgroundImage: `url(${otunba})` }}
+      style={{ backgroundImage: `url(${banner})` }}
       >
           <div className="shape shape-two">
             <span>
@@ -34,31 +36,33 @@ const Home = () => {
           <div className="row">
               <div className="col-xl-7 col-lg-10">
               {/*=== Hero Content ===*/}
-              <div className="text-white mt-5 mb-5" style={{textAlign:'justify'}}>
+              <div className="text-white mt-5 mb-5">
                   <h1 className="wow fadeInUp mb-2" data-wow-delay=".7s" style={{color:'#db812f', fontSize:45}}>
                       Don't Send Money For Another Medical Bill
                   </h1>
-                  <p className="wow fadeInUp mb-2 text-light" style={{fontSize:18}}>
-                      The ability to take care of the medical needs of loved ones in Nigeria from Diaspora 
-                      can be a source of pride and joy. Raising and sending money back home for unplanned 
-                      medical expenditures can distort and disrupt individual's financial plan and derail 
-                      future plans.
-                  </p>
-                  <p className="wow fadeInUp mb-2 text-light" style={{fontSize:18}}>
-                      Ultimate Health HMO has been in the health insurance ecosystem in Nigeria for over 20 Years
-                      driving the health insurance program with innovation, flexibility and integrity.
-                  </p>
-                  <p className="wow fadeInUp mb-2 text-light" style={{fontSize:18}}>
-                      We are here to partner with you to enroll your dependants back in Nigeria on the health
-                      insurance program and even yourself, whenever you find yourself back home.
-                      It might interest you to note that the law has been passed in Nigeria to make health insurance
-                      mandatory for all Nigerians and legal residents in Nigeria.
-                  </p>
-                  <div className="hero-button mt-5 wow fadeInUp" data-wow-delay=".9s">
+                  <div style={{textAlign:'justify'}}>
+                    <p className="wow fadeInUp mb-2 text-light" style={{fontSize:18}}>
+                        The ability to take care of the medical needs of loved ones in Nigeria from Diaspora 
+                        can be a source of pride and joy. Raising and sending money back home for unplanned 
+                        medical expenditures can distort and disrupt individual's financial plan and derail 
+                        future plans.
+                    </p>
+                    <p className="wow fadeInUp mb-2 text-light" style={{fontSize:18}}>
+                        Ultimate Health HMO has been in the health insurance ecosystem in Nigeria for over 20 Years
+                        driving the health insurance program with innovation, flexibility and integrity.
+                    </p>
+                    <p className="wow fadeInUp mb-2 text-light" style={{fontSize:18}}>
+                        We are here to partner with you to enroll your dependants back in Nigeria on the health
+                        insurance program and even yourself, whenever you find yourself back home.
+                        It might interest you to note that the law has been passed in Nigeria to make health insurance
+                        mandatory for all Nigerians and legal residents in Nigeria.
+                    </p>
+                  </div>
+                  <div className="hero-button mt-5 text-center wow fadeInUp" data-wow-delay=".9s">
                       <Link to="/insurance-plans" className='me-3'>
-                          <span className="main-btn btn-red">Buy Insurance</span>
+                          <span className="main-btn btn-red mb-4">Buy Insurance</span>
                       </Link>
-                      <Link  to="https://www.youtube.com/watch?v=33ndQmpxMQ0&feature=youtu.be" target='_blank'>
+                      <Link  data-bs-toggle="modal" data-bs-target="#videoModal">
                           <span className="main-btn btn-red">Watch Presentation</span>
                       </Link>
                   </div>
@@ -91,7 +95,7 @@ const Home = () => {
                   </p>
                 </div>
               </div>
-              <div className='col-xl-3 col-lg-12'>
+              <div className='col-xl-3 col-lg-12 text-center'>
                 <Link to="/insurance-plans" className='mt-2 ms-4'>
                   <span className="main-btn btn-red" style={{fontSize:13}}>Get Health Insurance</span>
                 </Link>
@@ -186,6 +190,32 @@ const Home = () => {
         </div>
       </section>
       {/*====== End Fact Section ======*/}
+      <section className="newsletter-section pt-50 pb-30"
+        style={{backgroundImage:'url(assets/images/bg/wcu.jpg)'}}
+      >
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-4 col-lg-12">
+              {/*=== Common Heading ===*/}
+              <div className="section-title wow fadeInLeft">
+                <h4>10,000+ Partner</h4>
+                <h2 style={{color:'#db812e'}}>Hospitals Nationwide</h2>
+              </div>
+            </div>
+            <div className="col-xl-8 col-lg-12">
+              <Slider {...partnerSliderOne} className='mt-4'>
+                  {hospitals.map((hospital)=>(
+                      <div className="partner-item ms-2" key={hospital.id}>
+                          <div className="partner-img">
+                              <img src={`${hospital.image}`} alt={`${hospital.hospital}`} />
+                          </div>
+                      </div>
+                  ))}
+              </Slider>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Video Modal */}
       <div className="modal fade" id="videoModal" tabIndex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
