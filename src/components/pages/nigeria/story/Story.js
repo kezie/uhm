@@ -3,6 +3,7 @@ import PageBanner from '../../../partials/PageBanner'
 import Brands from '../../../partials/brands'
 import Framer from '../../../partials/Framer'
 import WOW from 'wowjs'
+import hero from '../../../../images/hero1.png'
 
 const Story = () => {
 
@@ -22,23 +23,26 @@ const Story = () => {
             <div className="col-xl-5 col-lg-12">
               {/*=== Fact image box ===*/}
               <div className="fact-img_one-box text-right pr-lg-70 mb-50">
-                <div className="quote-box-three text-left wow fadeInLeft z-1" style={{backgroundColor:'#088715'}}>
-                  <h3 className='text-italic'>
+                <div className="quote-box-three text-left wow fadeInLeft z-1" style={{backgroundColor:'#ffffff', color:'#088715', border:'1px solid #088715'}}>
+                  <h3 className='text-italic' style={{color:'#088715'}}>
                     Playing a Leading Role in the Health Insurance Industry for almost 20 Years
                   </h3>
                 </div>
-                <img
-                  src="assets/images/about/about-10.png"
-                  className="wow fadeInDown"
-                  alt="Fact image"
-                />
+                <div style={{zIndex:200, position:'relative'}}>
+                  <img
+                    src={hero}
+                    className="wow fadeInDown"
+                    alt="Fact image"
+                    
+                  />
+                </div>
               </div>
             </div>
             <div className="col-xl-7 col-lg-12">
               {/*=== Fact content Box ===*/}
               <div className="fact-one_content-box mb-10" >
                 <div className="section-title section-title-left wow fadeInDown">
-                  <span className="sub-title">Who We Are</span>
+                  {/* <span className="sub-title">Who We Are</span> */}
                   <h2>LEADING HEALTH INSURANCE COMPANY</h2>
                 </div>
                 <p className="wow fadeInUp">
@@ -89,29 +93,19 @@ const Story = () => {
       </section>
 
       {/*====== End Author Section ======*/}
-      <section className="about-section pt-90 pb-80">
+      <section className="about-section-five bg_cover p-r z-1 pt-50 pb-50"
+        style={{ backgroundImage: "url(assets/images/bg/story_banner2.jpg)" }}
+      >
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
-              <div className="about-six_image-box p-r z-1 mb-50 wow fadeInLeft">
-                <div className="shape shape-one">
-                  <span />
-                </div>
-                <img
-                  src="assets/images/service/img-8.png"
-                  className="about-img-one"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div className="about-content-box content-box-gap mb-50 wow fadeInRight">
-                <p className='mt-5'>
+              <div className="about-content-box content-box-gap mb-50 bg-dark p-4 wow fadeInRight" style={{opacity:0.8, borderRadius:'50px'}}>
+                <p className='mt-5 text-light'>
                   Our team of experts are painstakingly selected with our eyes always on Global Exposure, Ability
                   to think out of the box, Flexibility, Deep Knowledge of Risk Pulling and Management, Strategic Marketing,
                   Corporate Governance and Best Practice.
                 </p>
-                <p>
+                <p className='mt-5 text-light'>
                   Our expertise in designing well seated and suited customized health care products and the
                   establishment of mutually rewarding working relationship with NHIA accredited Health Care
                   Facilities- HCFs which translate to the provision of top-notch medical services to our enrollees
@@ -119,6 +113,7 @@ const Story = () => {
                 </p>
               </div>
             </div>
+            <div className="col-lg-6"></div>
           </div>
         </div>
       </section>
