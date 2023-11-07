@@ -74,7 +74,7 @@ const Menus = () => {
 
         <li className="menu-item">
           <NavLink to="/providers" className='menu-li' activeClassName="active">
-            Provider Network
+            List Of Providers
           </NavLink>
         </li>
 
