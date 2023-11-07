@@ -73,7 +73,7 @@ const MobileMenu = ({handleLocationChange}) => {
 
           <li className="menu-item">
             <Link to="/providers">
-              Provider Network
+              List Of Providers
             </Link>
           </li>
 
