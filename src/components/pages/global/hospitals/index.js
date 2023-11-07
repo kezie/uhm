@@ -1,0 +1,35 @@
+export default [
+    {
+        id:0,
+        hospital:'Asher_UHMS',
+        image:'assets/images/hospitals/Asher_UHMS.png',
+    },{
+        id:1,
+        hospital:'Eko_UHMS',
+        image:'assets/images/hospitals/Eko_UHMS.png',
+    },{
+        id:2,
+        hospital:'guinea_savannah_uhms',
+        image:'assets/images/hospitals/guinea_savannah_uhms.png',
+    },{
+        id:3,
+        hospital:'limi_uhms',
+        image:'assets/images/hospitals/limi_uhms.png',
+    },{
+        id:4,
+        hospital:'nisa_uhms',
+        image:'assets/images/hospitals/nisa_uhms.png',
+    },{
+        id:5,
+        hospital:'PAMO_UHMS',
+        image:'assets/images/hospitals/PAMO_UHMS.png',
+    },{
+        id:6,
+        hospital:'TCH-for-production',
+        image:'assets/images/hospitals/TCH-for-production.png',
+    },{
+        id:7,
+        hospital:'ud_uhms',
+        image:'assets/images/hospitals/ud_uhms.png',
+    }
+]
