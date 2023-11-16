@@ -35,7 +35,7 @@ const InsurancePlans = () => {
               </p>
                 <Link to={insurance.link}>
                   <span className="icon-btn">
-                    <i className="far fa-arrow-right" />
+                    <i className="far fa-arrow-right" />Read More
                   </span>
                 </Link>
             </div>
