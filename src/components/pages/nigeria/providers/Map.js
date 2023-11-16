@@ -1,12 +1,14 @@
 import React, { useMemo, useCallback, useEffect, useRef, useState } from "react";
 import { GoogleMap, Marker, MarkerF, useLoadScript } from "@react-google-maps/api";
 import { setKey, fromAddress } from "react-geocode";
-import Places from "./places";
 import { uhms_providers } from "./Data";
-import './style.css'
 import icon from '../../../../images/logo.png'
 import { state } from "./states";
 import { Link } from "react-router-dom";
+import tippy from "tippy.js";
+import 'tippy.js/dist/tippy.css'
+import { Button } from "react-bootstrap";
+
 
 const Map = () => {
   const providers = uhms_providers.dataroot.uhms_providers;
@@ -47,10 +49,10 @@ const Map = () => {
     // Name search query
     const query = event.target.value;
 
-    // Get all employees
+    // Get all providers
     var updatedList = [...providers];
 
-    // Filter employee names by search query
+    // Filter provider by search query
     updatedList = updatedList.filter((provider) => {
       return provider.Health_Care_Provider.toLowerCase().indexOf(query.toLowerCase()) !== -1;
     });
@@ -103,7 +105,9 @@ const Map = () => {
             newMarkers.push({
               h_address:add.Address,
               position: address,
-              name: add.Health_Care_Provider, // You can use other properties from your data
+              name: add.Health_Care_Provider,
+              category:add.Category,
+              state:add.State
             });
           }
         } catch (error) {
@@ -123,23 +127,26 @@ const Map = () => {
         <h4 className="p-3">Loading...</h4>
       ) : (
         <div className="row">
-          <div className="col-lg-3 bg-dark">
-            <div className="container pt-4">
-                <input placeholder="Search hospital..." onChange={filterByHospital}/>
-            </div>
+          <div className="col-lg-3 bg-dark" style={{height:'100vh', overflow:'scroll'}}>
             <div className="container pt-3">
               {selected ? (
-                <>
-                  <h1 className="text-light" style={{fontSize:12}}>{selected.name}</h1>
-                  <p>{selected.h_address}</p>
-                </>) : ''
+                <div className="bg-light p-4" style={{position:"fixed", zIndex:2, borderRadius:20, border:'2px solid #8cbd53'}}>
+                  <h1 className="" style={{fontSize:14}}><i className="fa fa-hospital"></i> PROVIDER: {selected.name}</h1>
+                  <h5 style={{fontSize:14}}> <i className="fa fa-map pt-2"></i> ADDRESS: {selected.h_address}</h5>
+                  <p> Category: {selected.category}</p> 
+                  <p> State: {selected.state}</p>
+                </div>) : ''
               }
-              <div className="brand-filter">
-                <div>Filter by Category :</div>
+              <div className="pt-4">
+                <input className="form-control" placeholder="Search hospital..." onChange={filterByHospital}/>
+              </div>
+              <div className="brand-filter pt-2">
+                <div className="text-light">Filter by Category :</div>
                 <select
                   id="brand-input"
                   value={selectedCategory}
                   onChange={handleCategoryChange}
+                  className="form-control"
                 >
                   <option value="">All</option>
                   <option value="A">A</option>
@@ -149,12 +156,13 @@ const Map = () => {
                 </select>
               </div>
 
-              <div>Filter by State</div>
+              <div className="pt-2 text-light">Filter by State : </div>
               <div id="year-options" onClick={handleStateChange}>
                 <select
                     id="brand-input"
                     value={selectedState}
                     onChange={handleStateChange}
+                    className="form-control mb-4"
                   >
                     <option value="">All</option>
                     {
@@ -167,10 +175,18 @@ const Map = () => {
 
               {
                 filteredProvider.map((provider)=>(
-                  <Link onClick={()=>setSelected({name:provider.name, h_address: provider.Address})}>{provider.Health_Care_Provider}</Link>
+                 
+                  <Link onClick={()=>
+                    setSelected({
+                      name:provider.Health_Care_Provider, 
+                      h_address: provider.Address, 
+                      category:provider.Category,
+                      state:provider.State
+                    })
+                  }>{provider.Health_Care_Provider}</Link>
+                  
                 ))
               }
-              
             </div>
           </div>
           <div className="col-lg-9">
@@ -192,11 +208,13 @@ const Map = () => {
                     url:icon,
                     scaledSize: new window.google.maps.Size(40, 40),
                   }}
-                  onMouseOver={() => {
-                    console.log(`Hovered over ${marker.name} ${marker.h_address}`);
-                  }}
                   onClick={()=>{
-                    setSelected({name:marker.name, h_address: marker.h_address})
+                    setSelected({
+                      name:marker.name, 
+                      h_address: marker.h_address, 
+                      state:marker.state, 
+                      category:marker.category
+                    })
                     mapRef.current?.panTo(marker.position)
                   }}
                 />
