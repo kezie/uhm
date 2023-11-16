@@ -8,28 +8,28 @@ export const InsuranceData = [
     {
         image: Individuals,
         type: 'Individuals',
-        desc: 'At Ultimate Health HMO we offer health plans that fits you. Our Health plans are designed and suitable for all Individuals.',
+        desc: 'At Ultimate Health HMO we offer health plans that fits you. Our Health plans...',
         icon: 'flaticon-user',
         link: '/individual-plan'
     },
     {
         image: Families,
         type: 'Families',
-        desc: 'Are you looking to get a health insurance plan for your family? At Ultimate Health HMO we offer health plans that fits your family.',
+        desc: 'Are you looking to get a health insurance plan for your family? At Ultimate...',
         icon: 'flaticon-customers',
         link: '/family-plan'
     },
     {
         image: Corporate,
         type: 'Corporate',
-        desc: 'At Ultimate Health HMO we offer health plans that fits you. Our Health plans are designed and suitable for all sizes of Corporate Organizations.',
+        desc: 'At Ultimate Health HMO we offer health plans that fits you. Our Health plans are...',
         icon: 'flaticon-insurance',
         link: '/corperate-plan'
     },
     {
         image: Assocition,
         type: 'Associations',
-        desc: 'At Ultimate Health HMO we offer health plans that fits you. Our Health plans are designed and suitable for all sizes of Corporate Organizations.',
+        desc: 'At Ultimate Health HMO we offer health plans that fits you. Our Health plans are...',
         icon: 'flaticon-insurance',
         link: '/association-plan'
         
