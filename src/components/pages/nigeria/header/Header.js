@@ -114,7 +114,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
                     <MobileMenu handleLocationChange={handleLocationChange}/>
                   </Fragment>
                 <div className="menu-button pt-30">
-                  <Link to="/insurance-plans">
+                  <Link to="#" data-bs-toggle="modal" data-bs-target="#getQuoteModal">
                     <span className="main-btn btn-red">Get Quote</span>
                   </Link>
                 </div>
@@ -129,7 +129,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
                 </span>
               </div>
               <div className="menu-button">
-                <Link to="/insurance-plans">
+                <Link to="#" data-bs-toggle="modal" data-bs-target="#getQuoteModal" >
                   <span className="main-btn btn-red">Get a Quote</span>
                 </Link>
               </div>
@@ -143,6 +143,26 @@ const Header = ({ singleMenus, handleLocationChange }) => {
         </div>
       </div>
     </header>
+
+    {/* Get Quote Modal */}
+    <div className="modal fade" id="getQuoteModal" tabIndex="-1" aria-labelledby="getQuoteModalLabel" aria-hidden="true">
+        <div className=" modal-dialog modal-lg">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="user-wrapper text-center">
+                  <div className="user-content modal-content">
+                    <div className="user-content modal-content">
+                      <iframe src='https://share.hsforms.com/1oO0a_tQ2QRCP-gWm4c_dXwe68vw' height='600vh'></iframe>
+                      <span type="button" className="ms-4 text-danger" data-bs-dismiss="modal" aria-label="Close">Close</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
     {/* Login Modal */}
     <div className="modal fade" id="loginModal" tabIndex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
