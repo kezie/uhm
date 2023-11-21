@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 import PaystackIntegration from '../../../partials/payment/PaystackIntegration'
 import CurrencyFormat from 'react-currency-format'
 import { useSelector } from 'react-redux'
-import otumba from '../../../../images/hero-bg-2.jpg'
 import InsuranceCalc from '../../../partials/insuranceCalc/InsuranceCalc'
 import Framer from '../../../partials/Framer'
 
@@ -78,12 +77,11 @@ const Plans = () => {
                                         <li><i className={ `me-2 ${benefit.status}`}></i> {benefit.plan}</li>
                                     ))}
                                 </ul>
-                                <Link to='#' data-bs-toggle="modal" data-bs-target={`#${plan.id}`}>
+                                <Link to="#" data-bs-toggle="modal" data-bs-target="#getQuoteModal" >
                                     <span className="main-btn btn-black">Buy Plan</span>
                                 </Link>
                                 </div>
                             </div>
-                            <PaystackIntegration amount={plan.price} id={plan.id}/>
                         </div>
                     ))}
                 </div>
