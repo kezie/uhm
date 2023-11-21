@@ -41,17 +41,17 @@ const Home = () => {
                       Don't Send Money For Another Medical Bill
                   </h1>
                   <div style={{textAlign:'justify'}}>
-                    <p className="wow fadeInUp mb-2 text-light" style={{fontSize:18}}>
+                    <p className="wow fadeInUp mb-2" style={{fontSize:18, color:'#8cbd53'}}>
                         The ability to take care of the medical needs of loved ones in Nigeria from Diaspora 
                         can be a source of pride and joy. Raising and sending money back home for unplanned 
                         medical expenditures can distort and disrupt individual's financial plan and derail 
                         future plans.
                     </p>
-                    <p className="wow fadeInUp mb-2 text-light" style={{fontSize:18}}>
+                    <p className="wow fadeInUp mb-2" style={{fontSize:18,color:'#8cbd53'}}>
                         Ultimate Health HMO has been in the health insurance ecosystem in Nigeria for over 20 Years
                         driving the health insurance program with innovation, flexibility and integrity.
                     </p>
-                    <p className="wow fadeInUp mb-2 text-light" style={{fontSize:18}}>
+                    <p className="wow fadeInUp mb-2" style={{fontSize:18, color:'#8cbd53'}}>
                         We are here to partner with you to enroll your dependants back in Nigeria on the health
                         insurance program and even yourself, whenever you find yourself back home.
                         It might interest you to note that the law has been passed in Nigeria to make health insurance
