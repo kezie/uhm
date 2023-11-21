@@ -1,13 +1,18 @@
 import React, { useMemo, useCallback, useEffect, useRef, useState } from "react";
-import { GoogleMap, Marker, MarkerF, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, MarkerF, useLoadScript } from "@react-google-maps/api";
 import { setKey, fromAddress } from "react-geocode";
 import { uhms_providers } from "./Data";
-import icon from '../../../../images/logo.png'
+import icon from '../../../../images/marker.png'
 import { state } from "./states";
 import { Link } from "react-router-dom";
 import tippy from "tippy.js";
 import 'tippy.js/dist/tippy.css'
 import { Button } from "react-bootstrap";
+import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
+import "leaflet/dist/leaflet.css";
+import {Icon} from 'leaflet'
+import L from 'leaflet';
+import MarkerClusterGroup from "react-leaflet-markercluster";
 
 
 const Map = () => {
@@ -19,18 +24,10 @@ const Map = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedState, setSelectedState] = useState("");
 
-
-  setKey("AIzaSyAOTw943JRw0CePJ15vhxPxsJzVBUKERBk");
-
   const mapRef = useRef();
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyCdgDJ1e4fsDqu1jxDXhrWVuUYnX-TtXIA",
-  });
 
   const center = useMemo(() => ({ lat: 9.0765, lng: 7.3986 }), []);
   const options = useMemo(() => ({}), []);
-
-  const onLoad = useCallback((map) => (mapRef.current = map), []);
 
 
   const filterByCategory = (filteredData) => {
@@ -90,139 +87,122 @@ const Map = () => {
   }, 
   [selectedCategory, selectedState]);
 
-
   useEffect(() => {
-    const fetchGeocode = async () => {
-      const newMarkers = [];
-
-      for (const add of providers) {
-        try {
-          const { results } = await fromAddress(`${add.Address}`);
-          const { lat, lng } = results[0]?.geometry.location;
-          const address = { lat, lng };
-
-          if ("status" !== "ZERO_RESULTS") {
-            newMarkers.push({
-              h_address:add.Address,
-              position: address,
-              name: add.Health_Care_Provider,
-              category:add.Category,
-              state:add.State
-            });
-          }
-        } catch (error) {
-          console.error(error);
+    if (!mapRef.current) {
+      const map = L.map('map', {
+        center: [9.0765, 7.3986],
+        zoom: 7,
+        scrollWheelZoom: false, // Disable scroll wheel zoom
+      });
+  
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+  
+      mapRef.current = map;
+    }
+  
+    const geocodeAddress = async (address, callback) => {
+      try {
+        const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${address}`);
+        const data = await response.json();
+  
+        if (data && data.length > 0) {
+          const { lat, lon } = data[0];
+          callback([lat, lon]);
         }
+      } catch (error) {
+        console.error('Error fetching geocoding data', error);
       }
-
-      setMarkers(newMarkers);
     };
-
-    fetchGeocode();
-  }, [providers]);
+  
+    const customIcon = new L.Icon({
+      iconUrl: icon,
+      iconSize: [32, 32], // size of the icon
+      iconAnchor: [16, 32], // point of the icon which will correspond to marker's location
+      popupAnchor: [0, -32], // point from which the popup should open relative to the iconAnchor
+    });
+    
+  
+    const uhmsProviders = providers
+  
+    uhmsProviders.forEach(provider => {
+      geocodeAddress(provider.Address, (latlng) => {
+        const marker = L.marker(latlng, { icon: customIcon }).addTo(mapRef.current);
+        marker.bindPopup(`<b>${provider.Health_Care_Provider}</b><br>${provider.Address}`).openPopup();
+      });
+    });
+  }, []);
 
   return (
     <div className="">
-      {!isLoaded ? (
-        <h4 className="p-3">Loading...</h4>
-      ) : (
-        <div className="row">
-          <div className="col-lg-3 bg-dark" style={{height:'100vh', overflow:'scroll'}}>
-            <div className="container pt-3">
-              {selected ? (
-                <div className="bg-light p-4" style={{position:"fixed", zIndex:2, borderRadius:20, border:'2px solid #8cbd53'}}>
-                  <h1 className="" style={{fontSize:14}}><i className="fa fa-hospital"></i> PROVIDER: {selected.name}</h1>
-                  <h5 style={{fontSize:14}}> <i className="fa fa-map pt-2"></i> ADDRESS: {selected.h_address}</h5>
-                  <p> Category: {selected.category}</p> 
-                  <p> State: {selected.state}</p>
-                </div>) : ''
-              }
-              <div className="pt-4">
-                <input className="form-control" placeholder="Search hospital..." onChange={filterByHospital}/>
-              </div>
-              <div className="brand-filter pt-2">
-                <div className="text-light">Filter by Category :</div>
-                <select
+      <div className="row">
+        <div className="col-lg-3 bg-dark" style={{height:'100vh', overflow:'scroll'}}>
+          <div className="container pt-3">
+            {selected ? (
+              <div className="bg-light p-4" style={{position:"fixed", zIndex:1000, borderRadius:20, border:'2px solid #8cbd53'}}>
+                <h1 className="" style={{fontSize:14}}><i className="fa fa-hospital"></i> PROVIDER: {selected.name}</h1>
+                <h5 style={{fontSize:14}}> <i className="fa fa-map pt-2"></i> ADDRESS: {selected.h_address}</h5>
+                <p> Category: {selected.category}</p> 
+                <p> State: {selected.state}</p>
+              </div>) : ''
+            }
+            <div className="pt-4">
+              <input className="form-control" placeholder="Search hospital..." onChange={filterByHospital}/>
+            </div>
+            <div className="brand-filter pt-2">
+              <div className="text-light">Filter by Category :</div>
+              <select
+                id="brand-input"
+                value={selectedCategory}
+                onChange={handleCategoryChange}
+                className="form-control"
+              >
+                <option value="">All</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
+            </div>
+
+            <div className="pt-2 text-light">Filter by State : </div>
+            <div id="year-options" onClick={handleStateChange}>
+              <select
                   id="brand-input"
-                  value={selectedCategory}
-                  onChange={handleCategoryChange}
-                  className="form-control"
+                  value={selectedState}
+                  onChange={handleStateChange}
+                  className="form-control mb-4"
                 >
                   <option value="">All</option>
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="C">C</option>
-                  <option value="D">D</option>
+                  {
+                    state.map((st)=>(
+                      <option value={st}>{st}</option>
+                    ))
+                  }
                 </select>
-              </div>
-
-              <div className="pt-2 text-light">Filter by State : </div>
-              <div id="year-options" onClick={handleStateChange}>
-                <select
-                    id="brand-input"
-                    value={selectedState}
-                    onChange={handleStateChange}
-                    className="form-control mb-4"
-                  >
-                    <option value="">All</option>
-                    {
-                      state.map((st)=>(
-                        <option value={st}>{st}</option>
-                      ))
-                    }
-                  </select>
-              </div>
-
-              {
-                filteredProvider.map((provider)=>(
-                 
-                  <Link onClick={()=>
-                    setSelected({
-                      name:provider.Health_Care_Provider, 
-                      h_address: provider.Address, 
-                      category:provider.Category,
-                      state:provider.State
-                    })
-                  }>{provider.Health_Care_Provider}</Link>
-                  
-                ))
-              }
             </div>
-          </div>
-          <div className="col-lg-9">
-            <GoogleMap
-              googleMapsApiKey="AIzaSyCdgDJ1e4fsDqu1jxDXhrWVuUYnX-TtXIA"
-              mapContainerClassName="map-container"
-              center={center}
-              zoom={7}
-              options={options}
-              onLoad={onLoad}
-              style={{height:100, width:100}}
-            >
-              {markers.map((marker, index) => (
-                <MarkerF
-                  key={index}
-                  position={marker.position}
-                  title={marker.name}
-                  icon={{
-                    url:icon,
-                    scaledSize: new window.google.maps.Size(40, 40),
-                  }}
-                  onClick={()=>{
-                    setSelected({
-                      name:marker.name, 
-                      h_address: marker.h_address, 
-                      state:marker.state, 
-                      category:marker.category
-                    })
-                    mapRef.current?.panTo(marker.position)
-                  }}
-                />
-              ))}
-            </GoogleMap>
+
+            {
+              filteredProvider.map((provider)=>(
+                
+                <Link onClick={()=>
+                  setSelected({
+                    name:provider.Health_Care_Provider, 
+                    h_address: provider.Address, 
+                    category:provider.Category,
+                    state:provider.State
+                  })
+                }>{provider.Health_Care_Provider}</Link>
+                
+              ))
+            }
           </div>
         </div>
-      )}
+        <div className="col-lg-9">
+          <div id="map" style={{ height: '100vh' }}></div>
+        </div>
+      </div>
     </div>
   );
 };
