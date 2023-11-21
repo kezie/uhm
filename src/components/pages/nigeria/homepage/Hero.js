@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import '../../../../styles/video.css'
 import WOW from 'wowjs'
 import { SlideData, settings } from './SlideData';
+import ReactTyped from "react-typed";
 
 
 const Hero = () => {
@@ -26,16 +27,25 @@ const Hero = () => {
                 Your browser does not support the video tag.
               </video>
               <div className="color-overlay" style={{ backgroundColor: slide.colorOverlay}}></div>
-              <div className="text-overlay">
-                {/* <div className="">
+              {/* <div className="text-overlay">
+                <div className="">
                   <div className="hero-content">
+                    
                     <h1 className="wow fadeInDown pt-5" data-wow-delay="1s">
-                       Health Insurance Tailored For You
+                       Your Partner For 
+                       {" "}
                     </h1>
-                    <p className="wow fadeInUp pb-3 text-light" data-wow-delay=".7s">
-                      Our goal is to improve the health and the well-being of Nigerians <br/>
-                      by making health care accessible, affordable and equitable.
-                    </p>
+                    <span style={{fontSize:12}}>
+                        <ReactTyped
+                          strings={["Developer", "Writer", "Designer"]}
+                          typeSpeed={100}
+                          loop
+                          backSpeed={20}
+                          cursorChar=">"
+                          showCursor={true}
+                        />
+                      </span>
+                    
                     <div
                       className="hero-button wow fadeInDown"
                       data-wow-delay=".9s"
@@ -45,8 +55,8 @@ const Hero = () => {
                       </Link>
                     </div>
                   </div>
-                </div> */}
-              </div> 
+                </div>
+              </div>  */}
             </>
             ) : (
               <>
