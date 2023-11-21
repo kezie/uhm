@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Button = () => {
   return (
-    <Link to="/insurance-plans">
+    <Link to="#" data-bs-toggle="modal" data-bs-target="#getQuoteModal" >
         <a className="main-btn btn-black">Buy Plan</a>
     </Link>
   )
