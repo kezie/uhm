@@ -1,11 +1,11 @@
-import Hero1 from '../../../../videos/hero2.mp4'
+import Hero from '../../../../videos/hero.mp4'
 
 export const SlideData = [
     {
       type: 'video',
-      content: Hero1,
+      content: Hero,
       caption: 'Video Caption 1',
-      colorOverlay: 'rgba(0, 0, 0, 0.5)'
+      colorOverlay: 'rgba(0, 0, 0, 0.2)'
     }
   ];
 
