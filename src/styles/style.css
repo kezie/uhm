@@ -2666,6 +2666,7 @@ button {
   border-radius: 40px;
   background-color: #fff;
   color: #db812e;
+  padding:0 3px
 }
 
 /* Service Item Two*/
@@ -9372,4 +9373,8 @@ ul.rating li {
   border: 1px solid green;
   border-radius: 20px;
   margin:10px 0;
+}
+
+.hide-box{
+  display: none;
 }
