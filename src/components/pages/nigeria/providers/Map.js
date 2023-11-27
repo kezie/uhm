@@ -7,6 +7,7 @@ import 'tippy.js/dist/tippy.css'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 import L from 'leaflet';
+import { Popup as  Pop } from 'reactjs-popup'
 
 
 const Map = () => {
@@ -126,12 +127,29 @@ const Map = () => {
             </div>
 
             {
-              filteredProvider.map((provider)=>(
-                
-                <Link onClick={() => panToMarker(provider.lat, provider.lng)
-                }>{provider.Health_Care_Provider}</Link>
-                
-              ))
+              filteredProvider.length > 0 ? (filteredProvider.map((provider)=>(
+                  <Pop
+                    trigger={
+                      <p type="button" className="button" style={{color:'#ebeee6', cursor:'pointer'}}>
+                        <span onClick={() => panToMarker(provider.lat, provider.lng)}>
+                          {provider.Health_Care_Provider}
+                        </span>
+                      </p>
+                    }
+                    
+                    position={['right center']}
+                  >
+                    <div className="p-3" style={{backgroundColor:'#ebeee6'}}>
+                      <h1 style={{fontSize:14}}>
+                        {provider.Health_Care_Provider}
+                      </h1>
+                      <p style={{color:'#8cbd53'}}>
+                        {provider.State} State, Category: {provider.Category}
+                      </p>
+                      <Link style={{color:'#8cbd53'}} to= {`https://www.google.com/maps/dir/?api=1&destination=${provider.lat},${provider.lng}`} target="_blank">Get Direction</Link>
+                    </div>
+                  </Pop>
+              ))): 'No Providers found'
             }
           </div>
         </div>
