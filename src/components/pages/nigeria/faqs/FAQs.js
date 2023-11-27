@@ -3,6 +3,7 @@ import PageBanner from '../../../partials/PageBanner'
 import SimpleFaq from './SimpleFaq'
 import Framer from '../../../partials/Framer'
 import WOW from 'wowjs'
+import { Link } from 'react-router-dom'
 
 const FAQs = () => {
   useEffect(()=>{
@@ -23,7 +24,7 @@ const FAQs = () => {
             <div className="faq-one_content-box mb-50">
               <div className="section-title section-title-left mb-50 wow fadeInDown">
                 <span className="sub-title">Faqs</span>
-                <h2>Have Any Questions ? Question &amp; Answer</h2>
+                <h2>Have Any Question?</h2>
               </div>
               <div
                 className="faq-accordion-two mb-50 wow fadeInUp"
@@ -46,19 +47,9 @@ const FAQs = () => {
                 className="faq-two-img"
                 alt="Faq Image"
               />
-              {/* <img
-                src="assets/images/gallery/faq-4.jpg"
-                className="faq-three-img"
-                alt="Faq Image"
-              />
-              <div className="fintex-logo">
-                <img
-                  src="assets/images/logo/logo-1.png"
-                  alt="logo"
-                />
-              </div> */}
             </div>
           </div>
+          {/* <Link to='' className='main-btn btn-outline' style={{maxWidth:200}}>Make Enquiry</Link> */}
         </div>
       </div>
     </section>
