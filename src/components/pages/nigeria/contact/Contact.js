@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import PageBanner from '../../../partials/PageBanner'
 import Newsletter from '../../../partials/Newsletter'
 import { offices } from './Offices'
@@ -73,11 +73,11 @@ const Contact = () => {
                 </h4>
                 <p className='text-dark'>4th Floor, Plot 1446, Constitution Avenue, Central Business District, FCT-Abuja</p>
                 <p className='text-dark' style={{fontSize:13}}>
-                    <i style={{color:'#db812e'}} className='fa fa-phone'></i> FOR ENQUIRIES <a href="tel:+2348111111448">018870017 </a> OR  <a href="tel:+2348030951853">018890002</a>
+                    <i style={{color:'#db812e'}} className='fa fa-phone'></i> FOR ENQUIRIES <Link to="tel:+2348111111448">018870017 </Link> OR  <Link to="tel:+2348030951853">018890002</Link>
                   </p>
                   <p className='text-dark' style={{fontSize:16}}>
                     <i style={{color:'#db812e'}} className='fas fa-envelope'></i> {' '}
-                    <a href="mailto:info@ultimatehealthhmo.com">info@ultimatehealthhmo.com</a>
+                    <Link to="mailto:info@ultimatehealthhmo.com">info@ultimatehealthhmo.com</Link>
                   </p>
               </div>
             </div>
@@ -92,7 +92,7 @@ const Contact = () => {
             <div className="col-lg-4 col-md-6 col-sm-12" key={data.id}>
               <div className="service-item-three text-center mb-80 wow fadeInUp">
               <div className="icon">
-                  <Link href={data.map} target='_blank'>
+                  <Link to={data.map} target='_blank'>
                     <i className="fas fa-map-marked-alt"/>
                   </Link>
               </div>
@@ -102,10 +102,10 @@ const Contact = () => {
                 </h6>
                 <p className='text-dark'>{data.address}</p>
                 <p className='text-dark' style={{fontSize:13}}>
-                    <i style={{color:'#db812e'}} className='fa fa-phone'></i> {data.mobile}
+                  <Link to={`tel:${data.mobile}`}><i style={{color:'#db812e'}} className='fa fa-phone'></i> {data.mobile} </Link>
                   </p>
                   <p className='text-dark' style={{fontSize:13}}>
-                    <i style={{color:'#db812e'}} className='fas fa-envelope'></i> {data.email}
+                  <Link to={`mailto:${data.email}`}><i style={{color:'#db812e'}} className='fas fa-envelope'></i> {data.email}</Link>
                   </p>
               </div>
             </div>
