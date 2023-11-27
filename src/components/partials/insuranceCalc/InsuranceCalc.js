@@ -1,8 +1,20 @@
 import React, {useState} from 'react'
 import { TabData } from './Data'
 import {Col, Nav, Row, Tab} from 'react-bootstrap'
+import { useLocation, useParams } from 'react-router-dom'
 
 const InsuranceCalc = () => {
+
+    
+    const {purchase} = useParams();
+
+    const activeTab = ()=>{
+        if(purchase === "classic"){return TabData[0].title}
+        else if(purchase === "gold"){return TabData[1].title}
+        else if(purchase === "diamond"){return TabData[2].title}
+        else if(purchase === "diamond+"){return TabData[3].title}
+        else {return TabData[0].title}
+    }
 
     const [option, setOption] = useState('CLASSIC')
 
@@ -67,7 +79,7 @@ const InsuranceCalc = () => {
                 <div>
                     <div className="row mt-5">
                         <div className='text-light'>
-                            <Tab.Container id="left-tabs-example" defaultActiveKey={`${TabData[0].title}`}>
+                            <Tab.Container id="left-tabs-example" defaultActiveKey={activeTab}>
                                 <Row>
                                     <Col sm={4}>
                                         <Nav variant="pills" className="flex-column">
@@ -145,6 +157,7 @@ const InsuranceCalc = () => {
                                                                     className="w-100 p-2 rounded-pill text-center"
                                                                     placeholder="Number of Lives"
                                                                     name="lives"
+                                                                    min={1}
                                                                     required=""
                                                                     onChange={(e) => setLives(e.target.value)}
                                                                     value={lives}
@@ -158,7 +171,7 @@ const InsuranceCalc = () => {
                                                                     placeholder="Plan"
                                                                     name="plan"
                                                                     required=""
-                                                                    value={`${option} PLAN`}
+                                                                    value={ purchase ? `${(purchase).toUpperCase()} PLAN` : `${option} PLAN`}
                                                                     disabled
                                                                 />
                                                             </div>
