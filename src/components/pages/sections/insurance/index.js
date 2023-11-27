@@ -77,7 +77,7 @@ const Plans = () => {
                                         <li><i className={ `me-2 ${benefit.status}`}></i> {benefit.plan}</li>
                                     ))}
                                 </ul>
-                                <Link to="#" data-bs-toggle="modal" data-bs-target="#getQuoteModal" >
+                                <Link to={`/insurance-calculator/${(plan.plan).toLocaleLowerCase()}`}>
                                     <span className="main-btn btn-black">Buy Plan</span>
                                 </Link>
                                 </div>
@@ -88,8 +88,7 @@ const Plans = () => {
                 <div className='text-center'>*Terms and Conditions Applies</div>
             </div>
         </section>
-
-        <InsuranceCalc/>
+        
 
         { userLocation === "NG" ? "" : (
             <section className="newsletter-section pt-50 pb-30"
