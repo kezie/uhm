@@ -19,9 +19,11 @@ const Form = () => {
           if (!field.name) return;
           formData.append(field.name, field.value);
         });
+
+        const url = process.env.REACT_APP_CONTACT_FORM_API
       
         await fetch(
-          "https://interior.alsidiqtechnologies.com/wp-json/contact-form-7/v1/contact-forms/8/feedback",
+          url,
           {
             body: formData,
             method: "POST",
