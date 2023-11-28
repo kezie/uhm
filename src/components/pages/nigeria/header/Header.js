@@ -129,7 +129,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
                 </span>
               </div>
               <div className="menu-button">
-                <Link to="#" data-bs-toggle="modal" data-bs-target="#getQuoteModal" >
+                <Link to="/insurance-plans">
                   <span className="main-btn btn-red">Get a Quote</span>
                 </Link>
               </div>
