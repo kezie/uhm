@@ -9378,3 +9378,16 @@ ul.rating li {
 .hide-box{
   display: none;
 }
+
+.checkout-input{
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #8cbd53;
+  padding: 5px 10px
+}
+
+.checkout-input:focus{
+  border: 1px solid #db812e;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
