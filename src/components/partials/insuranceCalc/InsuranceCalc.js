@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { TabData } from './Data'
 import {Col, Nav, Row, Tab} from 'react-bootstrap'
-import { useLocation, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const InsuranceCalc = () => {
 
@@ -42,8 +42,10 @@ const InsuranceCalc = () => {
           formData.append(field.name, field.value);
         });
       
+        const url = process.env.REACT_APP_QUOTE_CALC_API
+        
         await fetch(
-          "https://interior.alsidiqtechnologies.com/wp-json/contact-form-7/v1/contact-forms/4754/feedback",
+          url,
           {
             body: formData,
             method: "POST",
