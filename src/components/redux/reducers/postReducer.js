@@ -6,7 +6,7 @@ const initialState = {
   isLoading: true,
 }
 
-const url = 'https://ultimatehealthhmo.com/wp-json/wp/v2/posts?_embed'
+const url = process.env.REACT_APP_WORDPRESS_POST_URL;
 
 export const getPosts = createAsyncThunk('posts/getPosts', async () =>{
   try{
