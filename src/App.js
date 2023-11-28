@@ -25,6 +25,8 @@ import SocialPrograms from './components/pages/nigeria/programmes'
 import WOW from 'wowjs'
 import { AnimatePresence } from "framer-motion";
 import InsuranceCalc from './components/partials/insuranceCalc/InsuranceCalc';
+import ErrorPage from './components/pages/errorPage'
+import Checkout from './components/pages/checkout';
 
 function App() {
   const location = useLocation();
@@ -69,6 +71,8 @@ function App() {
           <Route path='/payment' element={<Payment/>} />
           <Route path='/social-health-insurance' element={<SocialPrograms/>} />
           <Route path='/insurance-calculator/:purchase' element={<InsuranceCalc/>} />
+          <Route path='/checkout' element={<Checkout/>} />
+          <Route path='/error' element={<ErrorPage/>} />
         </Routes>
       <Footer/>
     </AnimatePresence>
