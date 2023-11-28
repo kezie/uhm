@@ -27,11 +27,11 @@ const Details = () => {
                 <div className="blog-post mb-60 wow fadeInUp">
                   <div className="post-meta">
                     <ul>
-                        {post.categories.map((categoryId) => (
+                        {post.categories ? (post.categories.map((categoryId) => (
                           <li key={categoryId}> 
                             {categoryItems.find(cat => cat.id === categoryId)?.name} 
                           </li>
-                        ))}
+                        ))): ''}
                     </ul>
                   </div>
                   <div className="main-post">
@@ -122,12 +122,6 @@ const Details = () => {
             </div>
             </div>
             <div className='col-lg-1'></div>
-            {/* <div className="">
-              ===  Sidebar widget area  ===
-              <div className="sidebar-widget-area">
-                <Sidebar categoryItems={categoryItems} latestPosts={latestPosts}/>               
-              </div>
-            </div> */}
           </div>
         </div>
       </section>
