@@ -2,7 +2,7 @@
   "name": "uhm",
   "version": "0.1.0",
   "author": "alsidiq technologies",
-  "homepage": "/",
+  "homepage": "https://ultimatehealthhmo.alsidiqtechnologies.com/",
   "private": true,
   "dependencies": {
     "@paystack/inline-js": "^2.13.0",
