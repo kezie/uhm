@@ -53,12 +53,6 @@ export const teamData = [
         position:'HEAD, CLAIMS UNIT',
         image:blessing
     },
-    // {
-    //     id:8,
-    //     name:'Otokpa Obande',
-    //     position:'HEAD, ICT',
-    //     image:otokpa
-    // },
     {
         id:9,
         name:'Chikezie Oguamanam',
@@ -70,12 +64,6 @@ export const teamData = [
         name:'Cosmos Michael',
         position:' HEAD, RELATIONSHIP MANAGEMENT',
         image:cosmos
-    },
-    // {
-    //     id:11,
-    //     name:'Olamide Dara Subair',
-    //     position:' HEAD, MARKETING',
-    //     image:dara
-    // },
+    }
     
 ]
