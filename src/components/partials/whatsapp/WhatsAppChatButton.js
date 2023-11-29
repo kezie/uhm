@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './style.css'
 
 const WhatsAppChatButton = () => {
-  const phoneNumber = 'YOUR_PHONE_NUMBER'; // Replace with your phone number
+  const phoneNumber = process.env.REACT_APP_WHATSAPP_NUMBER; // Replace with your phone number
 
   const chatLink = `https://api.whatsapp.com/send?phone=${phoneNumber}`;
 
