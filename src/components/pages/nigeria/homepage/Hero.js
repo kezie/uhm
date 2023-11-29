@@ -19,7 +19,7 @@ const Hero = () => {
     
       <Slider {...settings}>
         {SlideData.map((slide, index) => (
-          <div key={index} className="hero">
+          <div key={index}>
             {slide.type === 'video' ? (
               <>
               <video autoPlay muted loop preload="auto" className="video-element">
@@ -27,17 +27,17 @@ const Hero = () => {
                 Your browser does not support the video tag.
               </video>
               <div className="color-overlay" style={{ backgroundColor: slide.colorOverlay}}></div>
-              {/* <div className="text-overlay">
+              <div className="text-overlay">
                 <div className="">
-                  <div className="hero-content">
-                    
-                    <h1 className="wow fadeInDown pt-5" data-wow-delay="1s">
-                       Your Partner For 
+                  {/* desktop */}
+                  <div className="hero-content d-none d-lg-block">
+                    <h1 style={{fontSize:60}} className="wow fadeInDown text-uppercase" data-wow-delay="1s">
+                       Your Partner For  
                        {" "}
                     </h1>
-                    <span style={{fontSize:12}}>
+                    <span className='mb-5' style={{fontSize:50, fontWeight:'bolder'}}>
                         <ReactTyped
-                          strings={["Developer", "Writer", "Designer"]}
+                          strings={["Individual Health Insurance", "Family Health Insurance", "Corporate Health Insurance"]}
                           typeSpeed={100}
                           loop
                           backSpeed={20}
@@ -50,13 +50,41 @@ const Hero = () => {
                       className="hero-button wow fadeInDown"
                       data-wow-delay=".9s"
                     >
-                      <Link  href="/about">
+                      <Link  to="/insurance-plans">
                         <span className="main-btn btn-outline">Explore More</span>
                       </Link>
                     </div>
                   </div>
+
+                  {/* mobile */}
+                  <div className="hero-content d-lg-none">
+                    <h1 style={{fontSize:32}} className="wow fadeInDown text-uppercase" data-wow-delay="1s">
+                       Your Partner For  
+                       {" "}
+                    </h1>
+                    <span className='mb-5' style={{fontSize:30, fontWeight:'bolder'}}>
+                        <ReactTyped
+                          strings={["Individual Health Insurance", "Family Health Insurance", "Corporate Health Insurance"]}
+                          typeSpeed={100}
+                          loop
+                          backSpeed={20}
+                          cursorChar=">"
+                          showCursor={true}
+                        />
+                      </span>
+                    
+                    <div
+                      className="hero-button wow fadeInDown"
+                      data-wow-delay=".9s"
+                    >
+                      <Link  to="/insurance-plans">
+                        <span className="main-btn btn-outline">Explore More</span>
+                      </Link>
+                    </div>
+                  </div>
+                  {/* end Mobile */}
                 </div>
-              </div>  */}
+              </div> 
             </>
             ) : (
               <>
