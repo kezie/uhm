@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useWindowSize from "../../../partials/useWindowSize";
 import { stickyNav } from "../../../partials/utils";
@@ -145,7 +145,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
     </header>
 
     {/* Get Quote Modal */}
-    <div className="modal fade" id="getQuoteModal" tabIndex="-1" aria-labelledby="getQuoteModalLabel" aria-hidden="true">
+    {/* <div className="modal fade" id="getQuoteModal" tabIndex="-1" aria-labelledby="getQuoteModalLabel" aria-hidden="true">
         <div className=" modal-dialog modal-lg">
           <div className="container">
             <div className="row">
@@ -162,7 +162,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
     {/* Login Modal */}
     <div className="modal fade" id="loginModal" tabIndex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
