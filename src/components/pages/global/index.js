@@ -7,7 +7,7 @@ import WOW from 'wowjs'
 import {data} from './data'
 import Counter from '../../partials/Counter'
 import Slider from 'react-slick';
-import { partnerSliderOne } from '../../sliderProps';
+import { partnerSliderOne } from '../../partials/sliderProps';
 import hospitals from './hospitals';
 
 const Home = () => {
