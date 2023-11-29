@@ -111,11 +111,11 @@ const Blog = () => {
   )
 }
 
-const limitTextTo50Words = (text) => {
-  const words = text.split(' ');
-  const limitedWords = words.slice(0, 50);
-  return limitedWords.join(' ') + (words.length > 50 ? '...' : '');
-};
+// const limitTextTo50Words = (text) => {
+//   const words = text.split(' ');
+//   const limitedWords = words.slice(0, 50);
+//   return limitedWords.join(' ') + (words.length > 50 ? '...' : '');
+// };
 
 
 export default Blog
