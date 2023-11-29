@@ -2,7 +2,7 @@ import React from 'react';
 import Framer from '../../../partials/Framer';
 import Map from './Map'
 import Slider from 'react-slick';
-import { partnerSliderOne } from '../../../sliderProps';
+import { partnerSliderOne } from '../../../partials/sliderProps';
 import hospitals from '../../global/hospitals';
 
 const Providers = () => {
