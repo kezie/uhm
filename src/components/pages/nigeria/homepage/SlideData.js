@@ -4,7 +4,7 @@ export const SlideData = [
     {
       type: 'video',
       content: Hero,
-      caption: 'Video Caption 1',
+      // caption: 'Video Caption 1',
       colorOverlay: 'rgba(0, 0, 0, 0.4)'
     }
   ];
