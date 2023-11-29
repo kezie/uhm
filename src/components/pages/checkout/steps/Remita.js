@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import RemitaPayment from "react-remita";
+import Framer from '../../../partials/Framer';
 
 const Remita = (props) => {
     const [paymentData, setpaymentData] = useState({
@@ -28,7 +29,9 @@ const Remita = (props) => {
       };
 
   return (
-    <div className="w-50" style={{margin:'auto'}}>
+    <>
+      <Framer/>
+      <div className="w-50" style={{margin:'auto'}}>
         <div className='App'>
           <div className='container'>
             <h6 className="text-center mb-4">Make Payment</h6>
@@ -85,6 +88,7 @@ const Remita = (props) => {
           </div>
         </div>
       </div>
+    </>
   )
 }
 
