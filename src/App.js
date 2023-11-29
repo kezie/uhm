@@ -11,7 +11,6 @@ import News from './components/pages/nigeria/news/Blog'
 import Details from './components/pages/nigeria/news/Details'
 import Story from './components/pages/nigeria/story/Story';
 import Insurance from './components/pages/sections/insurance'
-import ScrollToTop from './components/partials/ScrollToTop';
 import Contact from './components/pages/nigeria/contact/Contact';
 import FAQs from './components/pages/nigeria/faqs/FAQs';
 import { getLocation, setLocation} from './components/redux/reducers/locationReducer';
@@ -50,29 +49,28 @@ function App() {
 
   return (
     <AnimatePresence >
-        <ScrollToTop/>
         <Header handleLocationChange={handleLocationChange}/>
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={ userLocation === 'NG' ? < Homepage /> : <Globalpage/>} />
-          <Route path="/team" element={< Team />} />
-          <Route path="/board" element={< Board />} />
-          <Route path="/story" element={< Story />} />
-          <Route path="/news" element={< News />} />
-          <Route path="/providers" element={< Providers/>} />
-          <Route path="/:slug" element={< Details/>} />
-          <Route path="/global" element={<Globalpage/>}/>
-          <Route path="/insurance-plans" element={< Insurance/>}/>
-          <Route path='/contact' element={<Contact/>}/>
-          <Route path='/faqs' element={<FAQs/>}/>
-          <Route path='/individual-plan' element={<Individual/>} />
-          <Route path='/family-plan' element={<Family/>} />
-          <Route path='/association-plan' element={<Associations/>} />
-          <Route path='/corperate-plan' element={<Corperate/>} />
-          <Route path='/payment' element={<Payment/>} />
-          <Route path='/social-health-insurance' element={<SocialPrograms/>} />
-          <Route path='/insurance-calculator/:purchase' element={<InsuranceCalc/>} />
-          <Route path='/checkout' element={<Checkout/>} />
-          <Route path='/error' element={<ErrorPage/>} />
+          <Route path={"/"} element={ userLocation === 'NG' ? < Homepage /> : <Globalpage/>} />
+          <Route path={"/team"} element={< Team />} />
+          <Route path={"/board"} element={< Board />} />
+          <Route path={"/story"} element={< Story />} />
+          <Route path={"/news"} element={< News />} />
+          <Route path={"/providers"} element={< Providers/>} />
+          <Route path={"/:slug"} element={< Details/>} />
+          <Route path={"/global"} element={<Globalpage/>}/>
+          <Route path={"/insurance-plans"} element={< Insurance/>}/>
+          <Route path={'/contact'} element={<Contact/>}/>
+          <Route path={'/faqs'} element={<FAQs/>}/>
+          <Route path={'/individual-plan'} element={<Individual/>} />
+          <Route path={'/family-plan'} element={<Family/>} />
+          <Route path={'/association-plan'} element={<Associations/>} />
+          <Route path={'/corperate-plan'} element={<Corperate/>} />
+          <Route path={'/payment'} element={<Payment/>} />
+          <Route path={'/social-health-insurance'} element={<SocialPrograms/>} />
+          <Route path={'/insurance-calculator/:purchase'} element={<InsuranceCalc/>} />
+          <Route path={'/checkout/:plan/:amount'} element={<Checkout/>} />
+          <Route path='*' element={<ErrorPage/>} />
         </Routes>
       <Footer/>
     </AnimatePresence>
