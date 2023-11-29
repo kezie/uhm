@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ActionButtons from "../ActionButtons";
+import Framer from "../../../partials/Framer";
 
 const StepOne = (props) => {
     const [info1, setInfo1] = useState({});
@@ -25,6 +26,8 @@ const StepOne = (props) => {
     };
   
     return (
+    <>
+      <Framer/>
       <div className="w-50" style={{margin:'auto'}}>
         <div className='contact-one_form-box'>
             <span className="text-center" style={{ color: "red"}}>{error}</span>
@@ -79,6 +82,7 @@ const StepOne = (props) => {
         </div> 
 
       </div>
+    </>
     );
   };
 
