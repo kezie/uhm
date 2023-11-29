@@ -1,6 +1,6 @@
 import React from 'react'
 import Slider from "react-slick";
-import { testimonialSliderThree } from "../../sliderProps";
+import { testimonialSliderThree } from "../sliderProps";
 import { TestimonialData } from './Data';
 import avatar from '../../../images/avatar.png'
 
