@@ -1,11 +1,12 @@
 import React from 'react'
 import PageBanner from '../../../partials/PageBanner'
-import { Link } from 'react-router-dom'
 import Button from './Button'
+import ScrollToTop from '../../../partials/ScrollToTop'
 
 const Associations = () => {
   return (
     <>
+        <ScrollToTop/>
         <PageBanner pageName={"Associations Health Plan"} PageImage={"wcu2.png"} />
         <section className="skill-section overflow-hidden pt-125 pb-80">
           <div className="container">

@@ -77,7 +77,8 @@ const Plans = () => {
                                         <li><i className={ `me-2 ${benefit.status}`}></i> {benefit.plan}</li>
                                     ))}
                                 </ul>
-                                <Link to={`/insurance-calculator/${(plan.plan).toLocaleLowerCase()}`}>
+                                {/* <Link to={`/insurance-calculator/${(plan.plan).toLocaleLowerCase()}`}> */}
+                                <Link to="#" data-bs-toggle="modal" data-bs-target="#getQuoteModal">
                                     <span className="main-btn btn-black">Buy Plan</span>
                                 </Link>
                                 </div>

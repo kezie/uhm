@@ -23,7 +23,8 @@ const MobileMenu = ({handleLocationChange}) => {
         <ul>
           
           <li className="menu-item">
-            { userLocation === "NG" ? <Link to="/" className="active">Home</Link> : <Link to="/global" className="active">Home</Link> }  
+            {/* { userLocation === "NG" ? <Link to="/" className="active">Home</Link> : <Link to="/global" className="active">Home</Link> }   */}
+            <Link to="/" className="active">Home</Link>   
           </li>
 
           <li className="menu-item has-children">
@@ -95,7 +96,7 @@ const MobileMenu = ({handleLocationChange}) => {
             </Link>
           </li>
 
-          <div className="btn-group" style={{cursor:'pointer'}}>
+          {/* <div className="btn-group" style={{cursor:'pointer'}}>
             <span className= "dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               {userLocation === "NG" ? <> <img src="assets/images/logo/naija.png" width={25}/> <span style={{fontWeight:'bold'}}> NG</span> </> : <> <img src="assets/images/logo/global.png" width={20}/> <span style={{fontWeight:'bold'}}> Global</span> </> }
             </span>
@@ -103,7 +104,7 @@ const MobileMenu = ({handleLocationChange}) => {
               <li className="ms-2"><Link onClick={() => handleLocationChange('NG')} to="/"> <img src="assets/images/logo/naija.png" width={25}/> Nigeria</Link></li>
               <li className="ms-2"><Link onClick={() => handleLocationChange('DG')} to="/global"><img src="assets/images/logo/global.png" width={20}/> Global</Link></li>
             </ul>
-          </div>
+          </div> */}
 
         </ul>
         

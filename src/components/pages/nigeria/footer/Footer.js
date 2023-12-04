@@ -33,7 +33,7 @@ const Footer = () => {
             <div className="row">
               <div className="col-lg-4 col-md-6 col-sm-12">
                 <div className="footer-widget about-company-widget mb-40 wow fadeInUp">
-                  <img src="assets/images/logo/footer-logo.png" width={300} alt="logo"/>
+                  <img src="/assets/images/logo/footer-logo.png" width={300} alt="logo"/>
                   <div className="footer-content mt-4">
                     <span>
                       Ultimate Health is a Health Maintenance Organization dedicated to delivering 

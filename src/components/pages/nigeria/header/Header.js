@@ -65,15 +65,15 @@ const Header = ({ singleMenus, handleLocationChange }) => {
 
                 <Socials/>
 
-                <div className="btn-group ms-4" style={{cursor:'pointer'}}>
+                {/* <div className="btn-group ms-4" style={{cursor:'pointer'}}>
                   <span className= "dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    {userLocation === "NG" ? <> <img src="assets/images/logo/naija.png" width={25}/> <span style={{fontWeight:'bold'}}> NG</span> </> : <> <img src="assets/images/logo/global.png" width={20}/> <span style={{fontWeight:'bold'}}> Global</span> </> }
+                    {userLocation === "NG" ? <> <img src="/assets/images/logo/naija.png" width={25}/> <span style={{fontWeight:'bold'}}> NG</span> </> : <> <img src="/assets/images/logo/global.png" width={20}/> <span style={{fontWeight:'bold'}}> Global</span> </> }
                   </span>
                   <ul className="dropdown-menu" style={{minWidth:"6rem"}}>
-                    <li className="ms-2"><Link onClick={() => handleLocationChange('NG')} to="/"> <img src="assets/images/logo/naija.png" width={25}/> Nigeria</Link></li>
-                    <li className="ms-2"><Link onClick={() => handleLocationChange('DG')} to="/global"><img src="assets/images/logo/global.png" width={20}/> Global</Link></li>
+                    <li className="ms-2"><Link onClick={() => handleLocationChange('NG')} to="/"> <img src="/assets/images/logo/naija.png" width={25}/> Nigeria</Link></li>
+                    <li className="ms-2"><Link onClick={() => handleLocationChange('DG')} to="/global"><img src="/assets/images/logo/global.png" width={20}/> Global</Link></li>
                   </ul>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -87,16 +87,21 @@ const Header = ({ singleMenus, handleLocationChange }) => {
           <div className="primary-menu">
             {/*=== Site Branding ===*/}
             <div className="site-branding">
-            { userLocation === "NG" ? (<Link to="/">
+              <Link to="/">
                 <span className="brand-logo">
-                  <img src="assets/images/logo/logo-2.png" width={60} alt="Site Logo" />
+                  <img src="/assets/images/logo/logo-2.png" width={60} alt="Site Logo" />
+                </span>
+              </Link>
+            {/* { userLocation === "NG" ? (<Link to="/">
+                <span className="brand-logo">
+                  <img src="/assets/images/logo/logo-2.png" width={60} alt="Site Logo" />
                 </span>
               </Link>) : (<Link to="/global">
                 <span className="brand-logo">
-                  <img src="assets/images/logo/logo-2.png" width={60} alt="Site Logo" />
+                  <img src="/assets/images/logo/logo-2.png" width={60} alt="Site Logo" />
                 </span>
-              </Link>)} 
-              
+              </Link>)
+            }    */}
             </div>
             {/*=== Nav Inner Menu ===*/}
             <div className="nav-inner-menu">
@@ -105,7 +110,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
                 <div className="mobile-logo mb-30 d-block d-xl-none text-center">
                   <Link to="/">
                     <span className="brand-logo">
-                      <img src="assets/images/logo/logo-2.png" width={60} alt="Site Logo" />
+                      <img src="/assets/images/logo/logo-2.png" width={60} alt="Site Logo" />
                     </span>
                   </Link>
                 </div>
@@ -129,7 +134,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
                 </span>
               </div>
               <div className="menu-button">
-                <Link to="/insurance-plans">
+                <Link to="#" data-bs-toggle="modal" data-bs-target="#getQuoteModal">
                   <span className="main-btn btn-red">Get a Quote</span>
                 </Link>
               </div>
@@ -145,7 +150,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
     </header>
 
     {/* Get Quote Modal */}
-    {/* <div className="modal fade" id="getQuoteModal" tabIndex="-1" aria-labelledby="getQuoteModalLabel" aria-hidden="true">
+    <div className="modal fade" id="getQuoteModal" tabIndex="-1" aria-labelledby="getQuoteModalLabel" aria-hidden="true">
         <div className=" modal-dialog modal-lg">
           <div className="container">
             <div className="row">
@@ -162,7 +167,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
 
     {/* Login Modal */}
     <div className="modal fade" id="loginModal" tabIndex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -172,7 +177,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
             <div className="col-lg-12">
               <div className="user-wrapper text-center">
                 <div className="user-content modal-content">
-                  <img src="assets/images/logo/logo-1.png" className="m-auto" alt="logo"width={60}/>
+                  <img src="/assets/images/logo/logo-1.png" className="m-auto" alt="logo"width={60}/>
                   <h3 className="mb-20">Log In To Your Account</h3>
                   <form
                     onSubmit={(e) => e.preventDefault()}
@@ -222,7 +227,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
             <div className="col-lg-12">
               <div className="user-wrapper text-center">
                 <div className="user-content modal-content">
-                  <img src="assets/images/logo/logo-1.png" className="m-auto" alt="logo"width={60}/>
+                  <img src="/assets/images/logo/logo-1.png" className="m-auto" alt="logo"width={60}/>
                   <h3 className="mb-20">Create Your Account</h3>
                   <form
                     onSubmit={(e) => e.preventDefault()}

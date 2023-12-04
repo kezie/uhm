@@ -50,7 +50,7 @@ const Hero = () => {
                       className="hero-button wow fadeInDown"
                       data-wow-delay=".9s"
                     >
-                      <Link  to="/insurance-plans">
+                      <Link  to="/insurance-calculator">
                         <span className="main-btn btn-outline">Explore More</span>
                       </Link>
                     </div>
@@ -77,7 +77,7 @@ const Hero = () => {
                       className="hero-button wow fadeInDown"
                       data-wow-delay=".9s"
                     >
-                      <Link  to="/insurance-plans">
+                      <Link  to="/insurance-calculator">
                         <span className="main-btn btn-outline">Explore More</span>
                       </Link>
                     </div>

@@ -4,15 +4,15 @@ import Map from './Map'
 import Slider from 'react-slick';
 import { partnerSliderOne } from '../../../partials/sliderProps';
 import hospitals from '../../global/hospitals';
+import Table from './Table';
 
 const Providers = () => {
 
   return (
       <>
-        <Framer/>
-        <section
-          className="page-banner bg_cover p-r z-1"
-          style={{ backgroundImage: `url(assets/images/bg/providers.jpg)`, height:'30vh' }}
+      <section
+          className="provider-banner bg_cover p-r z-1 mb-2"
+          style={{ backgroundImage: `url(assets/images/bg/providers.jpg)`, height:'30vh'}}
         >
           <div className="container">
             <div className="row justify-content-center">
@@ -25,8 +25,14 @@ const Providers = () => {
             </div>
           </div>
         </section>
+        <section>
+          <Table/>
+        </section>
+        
+        {/* <Framer/>
+        
         {/* <PageBanner pageName={"Provider Network"} PageImage={'providers.jpg'} />{" "} */}
-        <Map/>
+        {/* <Map/> */}
         {/*====== End Fact Section ======*/}
       <section className="newsletter-section pt-50 pb-30"
         style={{backgroundImage:'url(assets/images/bg/wcu.jpg)'}}

@@ -51,7 +51,8 @@ function App() {
     <AnimatePresence >
         <Header handleLocationChange={handleLocationChange}/>
         <Routes location={location} key={location.pathname}>
-          <Route path={"/"} element={ userLocation === 'NG' ? < Homepage /> : <Globalpage/>} />
+          {/* <Route path={"/"} element={ userLocation === 'NG' ? < Homepage /> : <Globalpage/>} /> */}
+          <Route path={"/"} element={ < Homepage />} />
           <Route path={"/team"} element={< Team />} />
           <Route path={"/board"} element={< Board />} />
           <Route path={"/story"} element={< Story />} />
@@ -68,7 +69,7 @@ function App() {
           <Route path={'/corperate-plan'} element={<Corperate/>} />
           <Route path={'/payment'} element={<Payment/>} />
           <Route path={'/social-health-insurance'} element={<SocialPrograms/>} />
-          <Route path={'/insurance-calculator/:purchase'} element={<InsuranceCalc/>} />
+          <Route path={'/insurance-calculator/:purchase?'} element={<InsuranceCalc/>} />
           <Route path={'/checkout/:plan/:amount'} element={<Checkout/>} />
           <Route path='*' element={<ErrorPage/>} />
         </Routes>

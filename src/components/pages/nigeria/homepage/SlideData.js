@@ -1,5 +1,4 @@
 import Hero from '../../../../videos/hero.mp4'
-
 export const SlideData = [
     {
       type: 'video',

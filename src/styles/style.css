@@ -2198,6 +2198,64 @@ button {
   border-bottom: 1px solid #db812e;
 }
 
+/* provider banner */
+.provider-banner {
+  padding: 100px 0 180px;
+}
+.provider-banner:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(26, 26, 26, 0.9);
+  mix-blend-mode: multiply;
+  z-index: -1;
+}
+.provider-banner .page-banner-content h1.page-title {
+  color: #fff;
+  padding-top: 100px;
+}
+@media (max-width: 767px) {
+  .provider-banner {
+    padding: 0px 0 80px;
+  }
+  .provider-banner .provider-banner-content h1.page-title {
+    font-size: 36px;
+    line-height: 45px;
+  }
+}
+.provider-banner .provider-banner-content .breadcrumb-link::before {
+  display: inline-block;
+  content: "";
+  font-family: "Font Awesome 5 pro";
+  font-weight: 400;
+  color: #db812e;
+  margin-right: 15px;
+}
+.provider-banner .provider-banner-content .breadcrumb-link li {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1em;
+}
+.provider-banner .provider-banner-content .breadcrumb-link li:not(:last-child):after {
+  display: inline-block;
+  content: "";
+  width: 5px;
+  height: 5px;
+  background-color: rgba(255, 255, 255, 0.6);
+  vertical-align: middle;
+  margin-left: 23px;
+  margin-right: 19px;
+}
+.provider-banner .provider-banner-content .breadcrumb-link li.active {
+  color: #db812e;
+  border-bottom: 1px solid #db812e;
+}
+
 /*---==================
     04. About css 
 =================----*/

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { TabData } from './Data'
 import {Col, Nav, Row, Tab} from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
-import Framer from '../Framer'
+import ScrollToTop from '../ScrollToTop'
 
 const InsuranceCalc = () => {
 
@@ -43,7 +43,7 @@ const InsuranceCalc = () => {
           formData.append(field.name, field.value);
         });
       
-        const url = process.env.REACT_APP_QUOTE_CALC_API
+        const url = process.env.REACT_APP_QUOTE_CALC_API;
         
         await fetch(
           url,
@@ -54,6 +54,7 @@ const InsuranceCalc = () => {
         )
           .then((response) => response.json())
           .then((data) => {
+            console.log();
             if (data.status !== "mail_sent") throw data.message
                 setFname(''); setLname(''); setLives(''); setEmail(''); setPhone(''); setError(''); setSent('Message Sent, We will be in touch shortly');
           })
@@ -68,7 +69,7 @@ const InsuranceCalc = () => {
 
     return (
         <>
-            <Framer/>
+            <ScrollToTop/>
             <section className="get-insurance">
                 <div className="get-insurance__shape-1"
                     style={{backgroundImage: "url(assets/images/bg/get-insurance.png)"}}>
