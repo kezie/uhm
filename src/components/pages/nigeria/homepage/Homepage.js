@@ -5,7 +5,6 @@ import Blog from "../../../partials/blog/Blog";
 import Testimonials from "../../../partials/testimonials/Testimonials";
 import Hero from './Hero';
 import InsuranceCalc from '../../../partials/insuranceCalc/InsuranceCalc';
-import 'react-range-slider-input/dist/style.css';
 import Services from '../../sections/services/Services';
 import About from '../../sections/about/About';
 

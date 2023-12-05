@@ -34,7 +34,6 @@ const Blog = () => {
           </div>
           <div className="row justify-content-center">
             {limitedPosts.map((post)=>{
-              const limitedWords = post.content.rendered.slice(0, 60);
               const inputDateString = post.date;
               const date = new Date(inputDateString);
               
@@ -79,12 +78,12 @@ const Blog = () => {
                         </ul>
                       </div>
                       <h5 className="title">
-                        <Link to={`/${post.slug}`}>
+                        <Link to={`/posts/${post.slug}`}>
                           <span>{post.title.rendered}</span>
                         </Link>
                       </h5>
                       {/* <div dangerouslySetInnerHTML={{ __html: limitedWords + '...' }} /> */}
-                      <Link to={`/${post.slug}`}>
+                      <Link to={`/posts/${post.slug}`}>
                         <span className="btn-link">Read More</span>
                       </Link>
                     </div>
@@ -110,12 +109,6 @@ const Blog = () => {
       </section>
   )
 }
-
-// const limitTextTo50Words = (text) => {
-//   const words = text.split(' ');
-//   const limitedWords = words.slice(0, 50);
-//   return limitedWords.join(' ') + (words.length > 50 ? '...' : '');
-// };
 
 
 export default Blog

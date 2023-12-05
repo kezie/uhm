@@ -26,6 +26,9 @@ import { AnimatePresence } from "framer-motion";
 import InsuranceCalc from './components/partials/insuranceCalc/InsuranceCalc';
 import ErrorPage from './components/pages/errorPage'
 import Checkout from './components/pages/checkout';
+import ScrollToTop from './components/partials/ScrollToTop';
+import { getPosts } from './components/redux/reducers/postReducer';
+import { getCategories } from './components/redux/reducers/categoryReducer';
 
 function App() {
   const location = useLocation();
@@ -34,6 +37,8 @@ function App() {
 
   useEffect(()=>{
     dispatch(getLocation());
+    dispatch(getPosts());
+    dispatch(getCategories())
   },[])
 
   const handleLocationChange = (userLocation) => {
@@ -50,6 +55,7 @@ function App() {
   return (
     <AnimatePresence >
         <Header handleLocationChange={handleLocationChange}/>
+        <ScrollToTop/>
         <Routes location={location} key={location.pathname}>
           {/* <Route path={"/"} element={ userLocation === 'NG' ? < Homepage /> : <Globalpage/>} /> */}
           <Route path={"/"} element={ < Homepage />} />
@@ -58,7 +64,7 @@ function App() {
           <Route path={"/story"} element={< Story />} />
           <Route path={"/news"} element={< News />} />
           <Route path={"/providers"} element={< Providers/>} />
-          <Route path={"/:slug"} element={< Details/>} />
+          <Route path={"/posts/:slug"} element={< Details />} />
           <Route path={"/global"} element={<Globalpage/>}/>
           <Route path={"/insurance-plans"} element={< Insurance/>}/>
           <Route path={'/contact'} element={<Contact/>}/>

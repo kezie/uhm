@@ -49,7 +49,7 @@ const Providers = () => {
             <div className="col-xl-8 col-lg-12">
               <Slider {...partnerSliderOne} className='mt-4'>
                   {hospitals.map((hospital)=>(
-                      <div className="partner-item ms-2" key={hospital.hospital}>
+                      <div className="partner-item ms-2" key={hospital.id}>
                           <div className="partner-img">
                               <img src={`${hospital.image}`} alt={`${hospital.hospital}`} />
                           </div>

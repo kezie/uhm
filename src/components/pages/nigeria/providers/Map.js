@@ -3,7 +3,6 @@ import { uhms_providers } from "./Data";
 import icon from '../../../../images/marker.png'
 import { state } from "./states";
 import { Link } from "react-router-dom";
-import 'tippy.js/dist/tippy.css'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 import L from 'leaflet';

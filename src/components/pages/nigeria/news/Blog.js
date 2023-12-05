@@ -19,14 +19,6 @@ const Blog = () => {
 
   const { postItems, isLoading } = useSelector((state)=> state.posts)
   const { categoryItems } = useSelector((state)=> state.categories)
-
-  useEffect(()=>{
-    dispatch(getPosts());
-  }, [])
-
-  useEffect(()=>{
-    dispatch(getCategories());
-  }, [])
   
   const postsArray = useMemo(()=> {
     let gottenPosts = postItems
@@ -119,12 +111,12 @@ const Blog = () => {
                             </ul>
                             </div>
                             <h5 className="title">
-                                <Link to={`/${post.slug}`}>
+                                <Link to={`/posts/${post.slug}`}>
                                     <span>{post.title.rendered}</span>
                                 </Link>
                             </h5>
                                 <div dangerouslySetInnerHTML={{ __html: limitedWords + '...' }} />
-                            <Link to={`/${post.slug}`}>
+                            <Link to={`/posts/${post.slug}`}>
                                 <span className="btn-link">Read More</span>
                             </Link>
                         </div>

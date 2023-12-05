@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { uhms_providers } from "./Data";
 import { state } from "./states";
+import './style.css'
 
 const Table = () => {
 
@@ -145,7 +146,9 @@ const Table = () => {
             </div>
         </div>
     </div>
-
+    
+    {/* desktop */}
+    <div className='container d-none d-lg-block'>
         <div className="pagination mb-2 mt-3">
             <button onClick={prevPage} className='btn btn-success ms-2' disabled={currentPage === 1}>
                 Prev
@@ -158,7 +161,7 @@ const Table = () => {
                 Page {currentPage} of {totalPages} Pages
             </div>
         </div>
-
+        
         <table className='table table-hover'>
             <thead>
                     <tr>
@@ -194,6 +197,58 @@ const Table = () => {
                 Page {currentPage} of {totalPages} Pages
             </div>
         </div>
+    </div>
+
+    {/* mobile */}
+    <div className='table-scrollable d-lg-none'>
+        <div className="pagination mb-2 mt-3">
+            <button onClick={prevPage} className='btn btn-success ms-2' disabled={currentPage === 1}>
+                Prev
+            </button>
+            
+            <button onClick={nextPage} className='btn btn-success ms-2' disabled={currentPage === totalPages}>
+                Next
+            </button>
+            <div style={{ marginLeft: '10px' }}>
+                Page {currentPage} of {totalPages} Pages
+            </div>
+        </div>
+        <table className='table table-hover'>
+            <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>PROVIDER</th>
+                        <th>ADDRESS</th>
+                        <th>STATE</th>
+                        <th>CATEGORY</th>
+                    </tr>
+            </thead>
+            <tbody>
+                {filteredProvider.map((provider) => (
+                    <tr key={provider.id} style={{fontSize:11}}>
+                        <td>{provider.id}</td>
+                        <td>{provider.Health_Care_Provider}</td>
+                        <td>{provider.Address}</td>
+                        <td>{provider.State}</td>
+                        <td>{provider.Category}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+        <div className="pagination mb-2 mt-3">
+            <button onClick={prevPage} className='btn btn-success ms-2' disabled={currentPage === 1}>
+                Prev
+            </button>
+            
+            <button onClick={nextPage} className='btn btn-success ms-2' disabled={currentPage === totalPages}>
+                Next
+            </button>
+            <div style={{ marginLeft: '10px' }}>
+                Page {currentPage} of {totalPages} Pages
+            </div>
+        </div>
+    </div>
+
     </>
   )
 }
