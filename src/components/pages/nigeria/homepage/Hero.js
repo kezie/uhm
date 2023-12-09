@@ -31,11 +31,11 @@ const Hero = () => {
                 <div className="">
                   {/* desktop */}
                   <div className="hero-content d-none d-lg-block">
-                    <h1 style={{fontSize:60}} className="wow fadeInDown text-uppercase" data-wow-delay="1s">
-                       Your Partner For  
+                    <h1 style={{fontSize:40, fontFamily:'inherit'}} className="wow fadeInDown text-uppercase" data-wow-delay="1s">
+                       Your Partner For...
                        {" "}
                     </h1>
-                    <span className='mb-5' style={{fontSize:50, fontWeight:'bolder'}}>
+                    <span className='mb-5' style={{fontSize:75, fontWeight:'bolder'}}>
                         <ReactTyped
                           strings={["Individual Health Insurance", "Family Health Insurance", "Corporate Health Insurance"]}
                           typeSpeed={100}
@@ -58,11 +58,11 @@ const Hero = () => {
 
                   {/* mobile */}
                   <div className="hero-content d-lg-none">
-                    <h1 style={{fontSize:32}} className="wow fadeInDown text-uppercase" data-wow-delay="1s">
-                       Your Partner For  
+                    <h1 style={{fontSize:20, marginBottom:0}} className="wow fadeInDown text-uppercase" data-wow-delay="1s">
+                       Your Partner For... 
                        {" "}
                     </h1>
-                    <span className='mb-5' style={{fontSize:30, fontWeight:'bolder'}}>
+                    <span className='mb-5' style={{fontSize:40, fontWeight:'bolder'}}>
                         <ReactTyped
                           strings={["Individual Health Insurance", "Family Health Insurance", "Corporate Health Insurance"]}
                           typeSpeed={100}

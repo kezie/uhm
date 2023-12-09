@@ -53,7 +53,7 @@ const Plans = () => {
                 </div>
                 <div className="row justify-content-center">
                     {insPlan.map((plan)=>(
-                        <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 mb-5">
                             {/*=== Pricing Item ===*/}
                             <div className="pricing-item-one mb-60 wow fadeInUp">
                                 <span className="save text-center">

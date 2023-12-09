@@ -10,9 +10,9 @@
 
   .text-overlay {
     position: absolute;
-    min-width: 60%;
+    min-width: 83%;
     top: 50%; 
-    left: 35%; 
+    left: 44%; 
     transform: translate(-50%, -50%);
     z-index: 1; 
     color: white;
