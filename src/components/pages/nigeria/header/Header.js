@@ -65,7 +65,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
 
                 <Socials/>
 
-                {/* <div className="btn-group ms-4" style={{cursor:'pointer'}}>
+                <div className="btn-group ms-4" style={{cursor:'pointer'}}>
                   <span className= "dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     {userLocation === "NG" ? <> <img src="/assets/images/logo/naija.png" width={25}/> <span style={{fontWeight:'bold'}}> NG</span> </> : <> <img src="/assets/images/logo/global.png" width={20}/> <span style={{fontWeight:'bold'}}> Global</span> </> }
                   </span>
@@ -73,7 +73,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
                     <li className="ms-2"><Link onClick={() => handleLocationChange('NG')} to="/"> <img src="/assets/images/logo/naija.png" width={25}/> Nigeria</Link></li>
                     <li className="ms-2"><Link onClick={() => handleLocationChange('DG')} to="/global"><img src="/assets/images/logo/global.png" width={20}/> Global</Link></li>
                   </ul>
-                </div> */}
+                </div>
               </div>
             </div>
           </div>
@@ -87,12 +87,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
           <div className="primary-menu">
             {/*=== Site Branding ===*/}
             <div className="site-branding">
-              <Link to="/">
-                <span className="brand-logo">
-                  <img src="/assets/images/logo/logo-2.png" width={60} alt="Site Logo" />
-                </span>
-              </Link>
-            {/* { userLocation === "NG" ? (<Link to="/">
+            { userLocation === "NG" ? (<Link to="/">
                 <span className="brand-logo">
                   <img src="/assets/images/logo/logo-2.png" width={60} alt="Site Logo" />
                 </span>
@@ -101,7 +96,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
                   <img src="/assets/images/logo/logo-2.png" width={60} alt="Site Logo" />
                 </span>
               </Link>)
-            }    */}
+            }   
             </div>
             {/*=== Nav Inner Menu ===*/}
             <div className="nav-inner-menu">
@@ -130,7 +125,7 @@ const Header = ({ singleMenus, handleLocationChange }) => {
               <div className="call-button" style={{color:'#db812e'}}>
                 <span>
                   <i className="fas fa-headset" style={{marginRight:'10px'}} />
-                    <a style={{marginRight:'10px'}} href="tel:+23418890002">018890002</a>
+                    <a style={{marginRight:'10px'}} href="tel:+23418890002">02018890002</a>
                 </span>
               </div>
               <div className="menu-button">

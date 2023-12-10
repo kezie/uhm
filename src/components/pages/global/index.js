@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import banner from '../../../images/banner.jpg'
+import mobile_banner from '../../../images/mobile.jpg'
 import circle from '../../../images/circle.png'
+import circle2 from '../../../images/circle2.png'
 import { Link } from 'react-router-dom'
 import Socials from "../../partials/socials/Socials";
 import WOW from 'wowjs'
@@ -21,8 +23,9 @@ const Home = () => {
   return (
     <>
       {/*====== Start Hero Section ======*/}
+      {/* desktop */}
       <section
-      className="banner-one bg_cover p-r z-1"
+      className="banner-one bg_cover p-r z-1 d-none d-lg-block"
       style={{ backgroundImage: `url(${banner})` }}
       >
           <div className="shape shape-two">
@@ -70,6 +73,62 @@ const Home = () => {
               </div>
           </div>
           </div>
+      </section>
+
+      {/* mobile */}
+      <section className="fact-section p-r z-1 d-lg-none">
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-7 col-lg-12">
+              {/*===Slider===*/}
+              <div className="fact-img_one-box text-right ">
+                <img
+                  src={mobile_banner}
+                  className="wow fadeInDown"
+                  alt="Fact image"
+                />
+                <div className="shape shape-two">
+                  <span>
+                      <Link data-bs-toggle="modal" data-bs-target="#videoModal">
+                          <img src={circle2} width={70} alt="" style={{marginTop:'-150px', marginLeft:'20px'}}/>
+                      </Link>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="text-white mb-5">
+              <h1 className="wow fadeInUp mb-3" data-wow-delay=".7s" style={{color:'#db812f', fontSize:30}}>
+                  Don't Send Money For Another Medical Bill
+              </h1>
+              <div style={{textAlign:'justify'}}>
+                <p className="wow fadeInUp mb-2" style={{fontSize:18, color:'#8cbd53'}}>
+                    The ability to take care of the medical needs of loved ones in Nigeria from Diaspora 
+                    can be a source of pride and joy. Raising and sending money back home for unplanned 
+                    medical expenditures can distort and disrupt individual's financial plan and derail 
+                    future plans.
+                </p>
+                <p className="wow fadeInUp mb-2" style={{fontSize:18,color:'#8cbd53'}}>
+                    Ultimate Health HMO has been in the health insurance ecosystem in Nigeria for over 20 Years
+                    driving the health insurance program with innovation, flexibility and integrity.
+                </p>
+                <p className="wow fadeInUp mb-2" style={{fontSize:18, color:'#8cbd53'}}>
+                    We are here to partner with you to enroll your dependants back in Nigeria on the health
+                    insurance program and even yourself, whenever you find yourself back home.
+                    It might interest you to note that the law has been passed in Nigeria to make health insurance
+                    mandatory for all Nigerians and legal residents in Nigeria.
+                </p>
+              </div>
+              <div className="hero-button mt-5 text-center wow fadeInUp" data-wow-delay=".9s">
+                  <Link to="/insurance-plans" className='me-3'>
+                      <span className="main-btn btn-red mb-4">Buy Insurance</span>
+                  </Link>
+                  <Link  data-bs-toggle="modal" data-bs-target="#videoModal">
+                      <span className="main-btn btn-red">Watch Presentation</span>
+                  </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
       {/*====== End Hero Section ======*/}
       <section className="about-section-five pt-100 pb-100 p-r z-1">

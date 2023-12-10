@@ -60,7 +60,7 @@ const InsuranceCalc = () => {
           })
           .catch((error) => {
             console.error("Error:", error);
-            setError('Please fill out all fields')
+            setError(error)
           }).finally(() => {
             setLoading(false)
           });

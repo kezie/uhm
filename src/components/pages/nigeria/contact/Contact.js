@@ -73,7 +73,7 @@ const Contact = () => {
                 </h4>
                 <p className='text-dark'>4th Floor, Plot 1446, Constitution Avenue, Central Business District, FCT-Abuja</p>
                 <p className='text-dark' style={{fontSize:13}}>
-                    <i style={{color:'#db812e'}} className='fa fa-phone'></i> FOR ENQUIRIES <Link to="tel:+2348111111448">018870017 </Link> OR  <Link to="tel:+2348030951853">018890002</Link>
+                    <i style={{color:'#db812e'}} className='fa fa-phone'></i> FOR ENQUIRIES <Link to="tel:02018870017">02018870017</Link> OR  <Link to="tel:020188900023">02018890002</Link>
                   </p>
                   <p className='text-dark' style={{fontSize:16}}>
                     <i style={{color:'#db812e'}} className='fas fa-envelope'></i> {' '}

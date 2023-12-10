@@ -57,7 +57,7 @@ function App() {
         <Header handleLocationChange={handleLocationChange}/>
         <ScrollToTop/>
         <Routes location={location} key={location.pathname}>
-          {/* <Route path={"/"} element={ userLocation === 'NG' ? < Homepage /> : <Globalpage/>} /> */}
+          <Route path={"/"} element={ userLocation === 'NG' ? < Homepage /> : <Globalpage/>} />
           <Route path={"/"} element={ < Homepage />} />
           <Route path={"/team"} element={< Team />} />
           <Route path={"/board"} element={< Board />} />
