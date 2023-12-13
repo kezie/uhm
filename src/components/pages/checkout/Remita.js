@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import RemitaPayment from "react-remita";
-import Framer from '../../../partials/Framer';
+import Framer from '../../partials/Framer';
+import { useLocation } from 'react-router-dom';
 
-const Remita = (props) => {
+const Remita = () => {
+    const location = useLocation();
+    const { firstName, lastName, email, amount } = location.state;
     const [paymentData, setpaymentData] = useState({
         key: process.env.REACT_APP_REMITA_KEY,
         customerId: process.env.REACT_APP_REMITA_CUSTOMER_ID,
-        firstName: props.user.fname,
-        lastName: props.user.lname,
-        email: props.user.email,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
         amount: null,
         narration: "",
       });
@@ -42,7 +45,7 @@ const Remita = (props) => {
               onChange={(e) =>
                 setpaymentData({ ...paymentData, firstName: e.target.value })
               }
-              value={props.user.fname}
+              value={firstName}
             />
             <input
               type='text'
@@ -51,7 +54,7 @@ const Remita = (props) => {
               onChange={(e) =>
                 setpaymentData({ ...paymentData, lastName: e.target.value })
               }
-              value={props.user.lname}
+              value={lastName}
             />
             <input
               type='text'
@@ -60,16 +63,17 @@ const Remita = (props) => {
               onChange={(e) =>
                 setpaymentData({ ...paymentData, email: e.target.value })
               }
-              value={props.user.email}
+              value={email}
             />
             <input
               type='text'
+              disabled
               placeholder='amount'
               className="checkout-input mb-3"
               onChange={(e) =>
                 setpaymentData({ ...paymentData, amount: e.target.value })
               }
-              value={200}
+              value={amount}
             />
             <input
               type='text'

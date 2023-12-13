@@ -3,13 +3,79 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import './styles.css'
 import { uhms_providers } from '../../nigeria/providers/Data';
+import { useNavigate } from 'react-router-dom';
 
-const Form = () => {
+const Form = ({amount}) => {
     const [selectedState, setSelectedState] = useState('');
     const [selectedHospitals, setSelectedHospitals] = useState([]);
     const [options, setOptions] = useState([]);
     const [hasPreExistingCondition, setHasPreExistingCondition] = useState(false);
     const [selectedConditions, setSelectedConditions] = useState([]);
+    const navigate = useNavigate();
+    const [validationErrors, setValidationErrors] = useState({});
+    const [submitError, setSubmitError] = useState('');
+
+
+    const validateForm = () => {
+        const errors = {};
+    
+        // Validate each form field here
+        if (!formData.fname.trim()) {
+          errors.fname = 'First Name is required';
+        }
+    
+        if (!formData.lname.trim()) {
+          errors.lname = 'Last Name is required';
+        }
+
+        if (!formData.gender.trim()) {
+            errors.gender = 'Your gender is required';
+        }
+
+        if (!formData.genotype.trim()) {
+            errors.genotype = 'Your genotype is required';
+        }
+
+        if (!formData.dob.trim()) {
+            errors.dob = 'Your date of birth is required';
+        }
+
+        if (!formData.email.trim()) {
+            errors.email = 'Your email is required';
+        }
+
+        if (!formData.mobile.trim()) {
+            errors.mobile = 'Your mobile is required';
+        }
+
+        if (!formData.address.trim()) {
+            errors.address = 'Your address is required';
+        }
+
+        if (!formData.state.trim()) {
+            errors.state = 'Your state is required';
+        }
+
+        if (!formData.town.trim()) {
+            errors.town = 'Your town is required';
+        }
+
+        if (!formData.hosp_location.trim()) {
+            errors.hosp_location = 'Choose a hospital location';
+        }
+
+        if (!formData.hospital.trim()) {
+            errors.hospital = 'Choose a hospital';
+        }
+    
+        // Add more validations for other fields as needed
+    
+        setValidationErrors(errors);
+    
+        // Return true if there are no errors, false otherwise
+        return Object.keys(errors).length === 0;
+      };
+
 
     useEffect(() => {
         const uniqueStates = Array.from(
@@ -18,66 +84,93 @@ const Form = () => {
         setOptions(uniqueStates);
       }, []);
 
-      const handleStateChange = (e) => {
-        const selectedState = e.target.value;
-        setSelectedState(selectedState);
+    const handleStateChange = (e) => {
+    const selectedState = e.target.value;
+    setSelectedState(selectedState);
     
-        
-        const hospitalsInSelectedState = uhms_providers.dataroot.Uhms_providers.filter(
-          provider => provider.State === selectedState
-        );
+    const hospitalsInSelectedState = uhms_providers.dataroot.Uhms_providers.filter(
+        (provider) => provider.State === selectedState
+    );
     
-        setSelectedHospitals(hospitalsInSelectedState);
-      };
+    setFormData({
+        ...formData,
+        hosp_location: selectedState, // Update the formData state
+    });
+    
+    setSelectedHospitals(hospitalsInSelectedState);
+    
+    // Clear the validation error when the state is selected
+    setValidationErrors({ ...validationErrors, hosp_location: '' });
+    }; 
 
-      const handlePreExistingConditionChange = (e) => {
+    const handlePreExistingConditionChange = (e) => {
         setHasPreExistingCondition(e.target.value === 'yes');
         setSelectedConditions([]);
-      };
+    };
 
-      const handleConditionChange = (condition) => {
+    const handleConditionChange = (condition) => {
         const updatedConditions = selectedConditions.includes(condition)
           ? selectedConditions.filter((c) => c !== condition)
           : [...selectedConditions, condition];
         setSelectedConditions(updatedConditions);
-      };
+    };
 
     const [formData, setFormData] = useState({
         fname: "",
         lname: "",
         email: "",
         gender: "",
+        genotype:"",
         dob: "",
         mobile: "",
         address: "",
         state: "",
+        town:"",
         hosp_location: "",
         hospital: "",
         health_condition: "",
-        });
+    });
 
-        const handleSubmit = async (e) => {
-            e.preventDefault();
-            const url = 'https:alsidiqtechnologies.com/server/server.php';
-            
-            try {
-              const response = await axios.post(url, formData, {
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-              });
-          
-              console.log(response.data);
-              // Handle success
-            } catch (error) {
-              console.error("Error submitting form:", error);
-              // Handle error
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!validateForm()) {
+            // If there are validation errors, do not submit the form
+            setSubmitError('Please fill out all fields correctly')
+            return;
             }
-          };
+
+        const url = process.env.REACT_APP_CONTACT_PERSON_API;
+        
+        const dataToSend = {
+            ...formData,
+            hosp_location: selectedState,
+            health_condition: hasPreExistingCondition ? selectedConditions.join(', ') : '',
+        };
+        
+        try {
+            const response = await axios.post(url, dataToSend);
+        
+            console.log(response.data);
+            // Handle success
+            navigate('/checkout/payment', { state: 
+            {
+                firstName: formData.fname,
+                lastName: formData.lname,
+                email: formData.email,
+                amount:amount
+            }
+            });
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            // Handle error
+        }
+    };   
           
-          const handleChange = (e) => {
-            setFormData({ ...formData, [e.target.name]: e.target.value });
-          };
+    const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setValidationErrors({ ...validationErrors, [e.target.name]: '' });
+    };
 
   return (
     
@@ -95,29 +188,35 @@ const Form = () => {
                         <input className='form-check-input' onChange={handleChange} type="radio" id="gender" value="female" name="gender"/>
                         <label>Female</label> 
                     </div>
+                    {validationErrors.gender && ( <p style={{ color: 'red' }}>{validationErrors.gender}</p> )}
                 </div>
                 <div className='col-lg-6 mt-2'>
                     <label for="fname">First Name:</label>
                     <input className='form-control' type="text" id="fname" onChange={handleChange} name="fname" />
+                    {validationErrors.fname && ( <p style={{ color: 'red' }}>{validationErrors.fname}</p> )}
                 </div>
                 <div className='col-lg-6 mt-2'>
                     <label for="lname">Last Name:</label>
                     <input className='form-control' type="text" id="lname" onChange={handleChange} name="lname"/>
+                    {validationErrors.lname && ( <p style={{ color: 'red' }}>{validationErrors.lname}</p> )}
                 </div>
                 <div className='col-lg-6 mt-2'>
                     <label for="genotype">Genotype:</label>
-                    <select className='form-control form-select' onChange={handleChange}>
-                        <option>Select...</option>
+                    <select className='form-control form-select'id='genotype' name='genotype' onChange={handleChange}>
+                        <option value=''>Select...</option>
                         <option value = 'AA'>AA</option>
                         <option value ='AS'>AS</option>
                         <option value = 'AC'>AC</option>
                         <option value = 'SS'>SS</option>
                         <option value = 'CC'>CC</option>
                     </select>
+                    {validationErrors.genotype && ( <p style={{ color: 'red' }}>{validationErrors.genotype}</p> )}
                 </div>
                 <div className='col-lg-6 mt-2'>
                     <label for="dob">DOB:</label>
                     <input className='form-control' type="date" id="dob" name="dob" onChange={handleChange}/>
+                    {validationErrors.dob && ( <p style={{ color: 'red' }}>{validationErrors.dob}</p> )}
+
                 </div>
             </div>
         </fieldset>
@@ -128,25 +227,30 @@ const Form = () => {
                 <div className='col-lg-6 mt-2'>
                     <label for="email">Email</label>
                     <input className='form-control' type="text" id="email" name="email" onChange={handleChange}/>
+                    {validationErrors.email && ( <p style={{ color: 'red' }}>{validationErrors.email}</p> )}
                 </div>
                 <div className='col-lg-6 mt-2'>
                     <label for="mobile">Mobile Number</label>
                     <input className='form-control' type="text" id="mobile" name="mobile" onChange={handleChange}/>
+                    {validationErrors.mobile && ( <p style={{ color: 'red' }}>{validationErrors.mobile}</p> )}
                 </div>
 
                 <div className='col-lg-12 mt-2'>
                     <label for="address">Contact Address/Mailing Address</label>
                     <input className='form-control' type="text" id="address" name="address" onChange={handleChange}/>
+                    {validationErrors.address && ( <p style={{ color: 'red' }}>{validationErrors.address}</p> )}
                 </div>
 
                 <div className='col-lg-6 mt-2'>
                     <label for="state">State</label>
                     <input className='form-control' type="text" id="state" name="state" onChange={handleChange}/>
+                    {validationErrors.state && ( <p style={{ color: 'red' }}>{validationErrors.state}</p> )}
                 </div>
 
                 <div className='col-lg-6 mt-2'>
                     <label for="town">Town</label>
                     <input className='form-control' type="text" id="town" name="town" onChange={handleChange}/>
+                    {validationErrors.town && ( <p style={{ color: 'red' }}>{validationErrors.town}</p> )}
                 </div>
                 
             </div>
@@ -157,7 +261,7 @@ const Form = () => {
             <div className='row'>
                 <div className='col-lg-6 mt-2'>
                     <label htmlFor="stateSelect">Preferred Hospital Location</label>
-                    <select id="stateSelect" className='form-control form-select' value={selectedState} onChange={handleStateChange}>
+                    <select id="stateSelect" className='form-control form-select' name='hosp_location' value={selectedState} onChange={handleStateChange}>
                         <option value="">Select a state</option>
                         {options.map((state, index) => (
                         <option key={index} value={state}>
@@ -165,16 +269,19 @@ const Form = () => {
                         </option>
                         ))}
                     </select>
+                    {validationErrors.hosp_location && ( <p style={{ color: 'red' }}>{validationErrors.hosp_location}</p> )}
                 </div>
                 <div className='col-lg-6 mt-2'>
                     <label htmlFor="hospitalSelect">Select Hospital:</label>
-                    <select id="hospitalSelect" className='form-control form-select'>
+                    <select id="hospitalSelect" name='hospital' onChange={handleChange} className='form-control form-select'>
+                        <option value="">Select a hospital</option>
                         {selectedHospitals.map((hospital, index) => (
-                        <option key={index} value={hospital.id}>
+                        <option key={index} value={hospital.Health_Care_Provider}>
                             {hospital.Health_Care_Provider}
                         </option>
                         ))}
-                    </select>  
+                    </select>
+                    {validationErrors.hospital && ( <p style={{ color: 'red' }}>{validationErrors.hospital}</p> )}
                 </div>
                 <div className='mt-2'>
                     <label for="gender">Pre-existing Health Condition:</label><br/>
@@ -204,6 +311,7 @@ const Form = () => {
                 </div>
             </div>
         </fieldset>
+        <p className='text-danger'>{submitError}</p>
         <button className='main-btn btn-outline mt-4 mb-4' style={{padding: '10px 20px'}}>Submit</button>
     </form>
   )

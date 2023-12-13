@@ -1,32 +1,10 @@
-import React, {Fragment, useEffect} from 'react'
+import React, {Fragment} from 'react'
 import { useSelector } from 'react-redux';
 import { Link, NavLink } from "react-router-dom";
 
 const Menus = () => {
 
   const { userLocation } = useSelector((state)=> state.userLocation)
-
-  // useEffect(()=>{
-    // const service = document.getElementsByClassName("services-li")[0];
-    // const about = document.getElementsByClassName("about-us-li")[0];
-    // const active = document.getElementsByClassName("menu-li")[0];
-    // const activeServiceLi = document.getElementById('service-li')
-    // const activeAboutLi = document.getElementById('about-li')
-
-    // service.addEventListener("click", () => {
-      // activeServiceLi.classList.add("active");
-    // });
-
-    // about.addEventListener("click", () => {
-    //   activeAboutLi.classList.add("active");
-    // });
-    
-    // active.addEventListener("click", ()=>{
-      // activeServiceLi.classList.remove("active");
-      // activeAboutLi.classList.remove("active");
-    // })
-  // })
-
 
   return (
     <Fragment>

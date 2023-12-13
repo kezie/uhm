@@ -19,7 +19,7 @@ import Individual from './components/pages/nigeria/insurance/Individual';
 import Family from './components/pages/nigeria/insurance/Family';
 import Associations from './components/pages/nigeria/insurance/Associations';
 import Corperate from './components/pages/nigeria/insurance/Corperate';
-import Payment from './components/partials/payment/PaystackIntegration';
+// import Payment from './components/partials/payment/PaystackIntegration';
 import SocialPrograms from './components/pages/nigeria/programmes'
 import WOW from 'wowjs'
 import { AnimatePresence } from "framer-motion";
@@ -29,6 +29,7 @@ import Checkout from './components/pages/checkout';
 import ScrollToTop from './components/partials/ScrollToTop';
 import { getPosts } from './components/redux/reducers/postReducer';
 import { getCategories } from './components/redux/reducers/categoryReducer';
+import Remita from './components/pages/checkout/Remita';
 
 function App() {
   const location = useLocation();
@@ -73,7 +74,7 @@ function App() {
           <Route path={'/family-plan'} element={<Family/>} />
           <Route path={'/association-plan'} element={<Associations/>} />
           <Route path={'/corperate-plan'} element={<Corperate/>} />
-          <Route path={'/payment'} element={<Payment/>} />
+          <Route path={'/checkout/payment'} element={<Remita/>} />
           <Route path={'/social-health-insurance'} element={<SocialPrograms/>} />
           <Route path={'/insurance-calculator/:purchase?'} element={<InsuranceCalc/>} />
           <Route path={'/checkout/:plan/:amount'} element={<Checkout/>} />
