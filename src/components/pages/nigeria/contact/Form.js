@@ -39,7 +39,6 @@ const Form = () => {
           setLoading(false)
           
       } catch (error) {
-        console.error("Error submitting form:", error);
         setError('Please fill out all fields')
         // Handle error
           

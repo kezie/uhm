@@ -3,10 +3,8 @@ import PageBanner from '../../../partials/PageBanner'
 import {plans} from './Data'
 import {plans2} from './Data2'
 import { Link } from 'react-router-dom'
-import PaystackIntegration from '../../../partials/payment/PaystackIntegration'
 import CurrencyFormat from 'react-currency-format'
 import { useSelector } from 'react-redux'
-import InsuranceCalc from '../../../partials/insuranceCalc/InsuranceCalc'
 import Framer from '../../../partials/Framer'
 
 const Plans = () => {
@@ -77,8 +75,7 @@ const Plans = () => {
                                         <li><i className={ `me-2 ${benefit.status}`}></i> {benefit.plan}</li>
                                     ))}
                                 </ul>
-                                {/* <Link to={`/insurance-calculator/${(plan.plan).toLocaleLowerCase()}`}> */}
-                                <Link to="#" data-bs-toggle="modal" data-bs-target="#getQuoteModal">
+                                <Link to={`/insurance-calculator/${(plan.plan).toLocaleLowerCase()}`}>
                                     <span className="main-btn btn-black">Buy Plan</span>
                                 </Link>
                                 </div>
@@ -93,9 +90,7 @@ const Plans = () => {
 
         { userLocation === "NG" ? "" : (
             <section className="newsletter-section pt-50 pb-30"
-            style={{background: 'rgb(174,212,80)',
-                background: 'linear-gradient(359deg, rgba(174,212,80,1) 0%, rgba(255,255,255,1) 83%)'}}
-          >
+            style={{ background: 'linear-gradient(359deg, rgba(174,212,80,1) 0%, rgba(255,255,255,1) 83%)'}}>
             <div className="container">
                 <div className="section-title wow text-center fadeInLeft">
                 <h4>We Also Sell Social Health Insurance </h4>
