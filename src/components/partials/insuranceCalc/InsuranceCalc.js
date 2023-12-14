@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import { TabData } from './Data'
 import {Col, Nav, Row, Tab} from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
@@ -6,8 +6,6 @@ import ScrollToTop from '../ScrollToTop'
 import axios from 'axios'
 
 const InsuranceCalc = () => {
-
-    const [validationErrors, setValidationErrors] = useState({});
     const [submitMessage, setSubmitMessage] = useState('');
     const [loading, setLoading] = useState(false)
     const [fname, setFname] = useState('');
@@ -16,7 +14,6 @@ const InsuranceCalc = () => {
     const [lives, setLives] = useState('');
     const [phone, setPhone] = useState('');
     const [error, setError] = useState('');
-    const [sent, setSent] = useState('')
 
     const {purchase} = useParams();
 
@@ -37,43 +34,45 @@ const InsuranceCalc = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-
-
-        if(fname === '' || email === '' || lname === '' || lives === ''|| phone ===''){
-            setError('Please fill out all fields')
-            setLoading(false)
+    
+        if (fname === '' || email === '' || lname === '' || lives === '' || phone === '') {
+            setError('Please fill out all fields');
+            setLoading(false);
             return;
-          }
-
+        }
+    
         const url = process.env.REACT_APP_QUOTE_CALC_API;
-
-        const formData = new FormData();
-      
-        Array.from(e.currentTarget.elements).forEach((field) => {
-          if (!field.name) return;
-          formData.append(field.name, field.value);
-        });
-        
+    
         const dataToSend = {
-            ...formData,
-            plan: purchase ? `${purchase.toUpperCase()} PLAN` : `${option} PLAN`
+            fname,
+            lname,
+            email,
+            phone,
+            lives,
+            plan: purchase ? `${purchase.toUpperCase()} PLAN` : `${option} PLAN`,
         };
-        
+    
         try {
             const response = await axios.post(url, dataToSend);
-        
+    
             console.log(response.data);
-            setFname(''); setEmail('');setLives(''); setPhone(''); setError(''); setLname('');
-            setSubmitMessage('Your message was sent successfully, we will contact you shortly.')
-            setLoading(false)
-            
+            setFname('');
+            setLname('');
+            setEmail('');
+            setPhone('');
+            setLives('');
+            setError('');
+            setSubmitMessage('Your message was sent successfully, we will contact you shortly.');
+            setLoading(false);
+    
         } catch (error) {
             console.error("Error submitting form:", error);
-            setError(error)
-            setLoading(false)
+            setError('Error submitting form, please try again');
+            setLoading(false);
             // Handle error
         }
-    };   
+    };
+      
 
     return (
         <>

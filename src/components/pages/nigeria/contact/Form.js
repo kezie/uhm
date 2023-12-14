@@ -20,17 +20,17 @@ const Form = () => {
           return;
         }
       
-        const formData = new FormData();
-      
-        Array.from(e.currentTarget.elements).forEach((field) => {
-          if (!field.name) return;
-          formData.append(field.name, field.value);
-        });
+        const dataToSend = {
+          name,
+          email,
+          subject,
+          message,
+      };
 
         const url = process.env.REACT_APP_CONTACT_FORM_API;
       
         try {
-          const response = await axios.post(url, formData);
+          const response = await axios.post(url, dataToSend);
       
           console.log(response.data);
           setName(''); setEmail('');setMessage(''); setSubject(''); setError('');
