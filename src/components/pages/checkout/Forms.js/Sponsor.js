@@ -3,13 +3,101 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import './styles.css'
 import { uhms_providers } from '../../nigeria/providers/Data';
+import { useNavigate } from 'react-router-dom';
 
-const Form = () => {
+const Form = ({amount}) => {
     const [selectedState, setSelectedState] = useState('');
     const [selectedHospitals, setSelectedHospitals] = useState([]);
     const [options, setOptions] = useState([]);
     const [hasPreExistingCondition, setHasPreExistingCondition] = useState(false);
     const [selectedConditions, setSelectedConditions] = useState([]);
+    const navigate = useNavigate();
+    const [validationErrors, setValidationErrors] = useState({});
+    const [submitError, setSubmitError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [formFail, setFormFail] = useState('');
+
+
+    const validateForm = () => {
+        const errors = {};
+    
+        // Validate each form field here
+        if (!formData.sponsor_fname.trim()) {
+          errors.sponsor_fname = 'First Name is required';
+        }
+    
+        if (!formData.sponsor_lname.trim()) {
+          errors.sponsor_lname = 'Last Name is required';
+        }
+
+        if (!formData.sponsor_email.trim()) {
+            errors.sponsor_email = 'Your email is required';
+        }
+
+        if (!formData.sponsor_gender.trim()) {
+            errors.sponsor_gender = 'Your gender is required';
+        }
+
+        if (!formData.sponsor_mobile.trim()) {
+            errors.sponsor_mobile = 'Your mobile number is required';
+        }
+
+        if (!formData.sponsor_address.trim()) {
+            errors.sponsor_address = 'Your address is required';
+        }
+
+        if (!formData.beneficiary_fname.trim()) {
+            errors.beneficiary_fname = "Benefeciary's First Name is required";
+          }
+      
+          if (!formData.beneficiary_lname.trim()) {
+            errors.beneficiary_lname = "Benefeciary's Last Name is required";
+          }
+  
+          if (!formData.beneficiary_email.trim()) {
+              errors.beneficiary_email = " Benefeciary's email is required";
+          }
+  
+          if (!formData.beneficiary_gender.trim()) {
+              errors.beneficiary_gender = "Benefeciary's gender is required";
+          }
+  
+          if (!formData.beneficiary_mobile.trim()) {
+              errors.beneficiary_mobile = "Benefeciary's mobile number is required";
+          }
+
+        if (!formData.beneficiary_age.trim()) {
+            errors.beneficiary_age = "Benefeciary's age is required";
+        }
+
+        if (!formData.beneficiary_state.trim()) {
+            errors.beneficiary_state = "Benefeciary's state is required";
+        }
+
+        if (!formData.beneficiary_town.trim()) {
+            errors.beneficiary_town = "Benefeciary's town is required";
+        }
+
+        if (!formData.beneficiary_relationship.trim()) {
+            errors.beneficiary_relationship = 'What is your relationship with the beneficiary';
+        }
+
+        if (!formData.beneficiary_hosp_location.trim()) {
+            errors.beneficiary_hosp_location = 'Choose a hospital location is required';
+        }
+
+        if (!formData.beneficiary_hospital.trim()) {
+            errors.beneficiary_hospital = 'Choose a hospital';
+        }
+    
+        // Add more validations for other fields as needed
+    
+        setValidationErrors(errors);
+    
+        // Return true if there are no errors, false otherwise
+        return Object.keys(errors).length === 0;
+      };
+
 
     useEffect(() => {
         const uniqueStates = Array.from(
@@ -18,66 +106,103 @@ const Form = () => {
         setOptions(uniqueStates);
       }, []);
 
-      const handleStateChange = (e) => {
-        const selectedState = e.target.value;
-        setSelectedState(selectedState);
+    const handleStateChange = (e) => {
+    const selectedState = e.target.value;
+    setSelectedState(selectedState);
     
-        
-        const hospitalsInSelectedState = uhms_providers.dataroot.Uhms_providers.filter(
-          provider => provider.State === selectedState
-        );
+    const hospitalsInSelectedState = uhms_providers.dataroot.Uhms_providers.filter(
+        (provider) => provider.State === selectedState
+    );
     
-        setSelectedHospitals(hospitalsInSelectedState);
-      };
+    setFormData({
+        ...formData,
+        beneficiary_hosp_location: selectedState, // Update the formData state
+    });
+    
+    setSelectedHospitals(hospitalsInSelectedState);
+    
+    // Clear the validation error when the state is selected
+    setValidationErrors({ ...validationErrors, beneficiary_hosp_location: '' });
+    }; 
 
-      const handlePreExistingConditionChange = (e) => {
+    const handlePreExistingConditionChange = (e) => {
         setHasPreExistingCondition(e.target.value === 'yes');
         setSelectedConditions([]);
-      };
+    };
 
-      const handleConditionChange = (condition) => {
+    const handleConditionChange = (condition) => {
         const updatedConditions = selectedConditions.includes(condition)
           ? selectedConditions.filter((c) => c !== condition)
           : [...selectedConditions, condition];
         setSelectedConditions(updatedConditions);
-      };
+    };
 
     const [formData, setFormData] = useState({
-        fname: "",
-        lname: "",
-        email: "",
-        gender: "",
-        dob: "",
-        mobile: "",
-        address: "",
-        state: "",
-        hosp_location: "",
-        hospital: "",
-        health_condition: "",
-        });
+        sponsor_fname: "",
+        sponsor_lname: "",
+        sponsor_email: "",
+        sponsor_gender: "",
+        sponsor_mobile: "",
+        sponsor_address: "",
+        beneficiary_fname: "",
+        beneficiary_lname: "",
+        beneficiary_email: "",
+        beneficiary_gender: "",
+        beneficiary_mobile: "",
+        beneficiary_address: "",
+        beneficiary_relationship:"",
+        beneficiary_age: "",
+        beneficiary_state: "",
+        beneficiary_town:"",
+        beneficiary_hosp_location: "",
+        beneficiary_hospital: "",
+        beneficiary_health_condition: "",
+    });
 
-        const handleSubmit = async (e) => {
-            e.preventDefault();
-            const url = 'https:alsidiqtechnologies.com/server/server.php';
-            
-            try {
-              const response = await axios.post(url, formData, {
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-              });
-          
-              console.log(response.data);
-              // Handle success
-            } catch (error) {
-              console.error("Error submitting form:", error);
-              // Handle error
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+
+        if (!validateForm()) {
+            // If there are validation errors, do not submit the form
+            setSubmitError('Please fill out all fields correctly')
+            setLoading(false)
+            return;
             }
-          };
+            setSubmitError('')
+        const url = process.env.REACT_APP_SPONSOR_DETAILS_API;
+        
+        const dataToSend = {
+            ...formData,
+            beneficiary_hosp_location: selectedState,
+            beneficiary_health_condition: hasPreExistingCondition ? selectedConditions.join(', ') : '',
+        };
+        
+        try {
+            const response = await axios.post(url, dataToSend);
+        
+            console.log(response.data);
+            // Handle success
+            navigate('/checkout/payment', { state: 
+            {
+                firstName: formData.sponsor_fname,
+                lastName: formData.sponsor_lname,
+                email: formData.sponsor_email,
+                amount:amount
+            }
+            });
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            // Handle error
+            setFormFail('Error Submitting Form')
+            setLoading(false);
+        }
+    };   
           
-          const handleChange = (e) => {
-            setFormData({ ...formData, [e.target.name]: e.target.value });
-          };
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setValidationErrors({ ...validationErrors, [e.target.name]: '' });
+    };
 
   return (
     
@@ -86,91 +211,102 @@ const Form = () => {
             <legend>Sponsor Details</legend>
             <div className='row'>
                 <div className=''>
-                    <label for="gender">Gender:</label><br/>
+                    <label for="sponsor_gender">Gender:</label><br/>
                     <div className='form-check form-check-inline'>
-                        <input className='form-check-input' onChange={handleChange} type="radio" id="gender" value="male" name="gender"/>
+                        <input className='form-check-input' onChange={handleChange} type="radio" value="male" name="sponsor_gender"/>
                         <label>Male</label> 
                     </div>
                     <div className='form-check form-check-inline'>
-                        <input className='form-check-input' onChange={handleChange} type="radio" id="gender" value="female" name="gender"/>
+                        <input className='form-check-input' onChange={handleChange} type="radio" value="female" name="sponsor_gender"/>
                         <label>Female</label> 
                     </div>
+                    {validationErrors.sponsor_gender && ( <p style={{ color: 'red' }}>{validationErrors.sponsor_gender}</p> )}
                 </div>
                 <div className='col-lg-6 mt-2'>
-                    <label for="fname">First Name:</label>
-                    <input className='form-control' type="text" id="fname" onChange={handleChange} name="fname" />
+                    <label for="sponsor_fname">First Name:</label>
+                    <input className='form-control' type="text" id="sponsor_fname" onChange={handleChange} name="sponsor_fname" />
+                    {validationErrors.sponsor_fname && ( <p style={{ color: 'red' }}>{validationErrors.sponsor_fname}</p> )}
                 </div>
                 <div className='col-lg-6 mt-2'>
-                    <label for="lname">Last Name:</label>
-                    <input className='form-control' type="text" id="lname" onChange={handleChange} name="lname"/>
+                    <label for="sponsor_lname">Last Name:</label>
+                    <input className='form-control' type="text" id="sponsor_lname" onChange={handleChange} name="sponsor_lname"/>
+                    {validationErrors.sponsor_lname && ( <p style={{ color: 'red' }}>{validationErrors.sponsor_lname}</p> )}
                 </div>
                 <div className='col-lg-6 mt-2'>
-                    <label for="email">Email</label>
-                    <input className='form-control' type="text" id="email" name="email" onChange={handleChange}/>
+                    <label for="sponsor_email">Email:</label>
+                    <input className='form-control' type="text" id="sponsor_email" onChange={handleChange} name="sponsor_email"/>
+                    {validationErrors.sponsor_email && ( <p style={{ color: 'red' }}>{validationErrors.sponsor_email}</p> )}
                 </div>
                 <div className='col-lg-6 mt-2'>
-                    <label for="mobile">Mobile Number</label>
-                    <input className='form-control' type="text" id="mobile" name="mobile" onChange={handleChange}/>
+                    <label for="sponsor_mobile">Mobile:</label>
+                    <input className='form-control' type="text" id="sponsor_mobile" onChange={handleChange} name="sponsor_mobile"/>
+                    {validationErrors.sponsor_mobile && ( <p style={{ color: 'red' }}>{validationErrors.sponsor_mobile}</p> )}
                 </div>
+
                 <div className='col-lg-12 mt-2'>
-                    <label for="address">Contact Address/Mailing Address</label>
-                    <input className='form-control' type="text" id="address" name="address" onChange={handleChange}/>
-                </div>
-                
+                    <label for="sponsor_address">Contact Address:</label>
+                    <input className='form-control' type="text" id="sponsor_address" onChange={handleChange} name="sponsor_address"/>
+                    {validationErrors.sponsor_address && ( <p style={{ color: 'red' }}>{validationErrors.sponsor_address}</p> )}
+                </div>   
             </div>
         </fieldset>
 
         <fieldset className='mt-2 p-4' style={{border: '1px solid'}}>
             <legend>Beneficiary Details</legend>
             <div className='row'>
-
                 <div className=''>
-                    <label for="gender">Gender:</label><br/>
+                    <label for="beneficiary_gender">Gender:</label><br/>
                     <div className='form-check form-check-inline'>
-                        <input className='form-check-input' onChange={handleChange} type="radio" id="gender" value="male" name="gender"/>
+                        <input className='form-check-input' onChange={handleChange} type="radio" id="beneficiary_gender" value="male" name="beneficiary_gender"/>
                         <label>Male</label> 
                     </div>
                     <div className='form-check form-check-inline'>
-                        <input className='form-check-input' onChange={handleChange} type="radio" id="gender" value="female" name="gender"/>
+                        <input className='form-check-input' onChange={handleChange} type="radio" id="beneficiary_gender" value="female" name="beneficiary_gender"/>
                         <label>Female</label> 
                     </div>
+                    {validationErrors.beneficiary_gender && ( <p style={{ color: 'red' }}>{validationErrors.beneficiary_gender}</p> )}
                 </div>
                 <div className='col-lg-6 mt-2'>
-                    <label for="fname">First Name:</label>
-                    <input className='form-control' type="text" id="fname" onChange={handleChange} name="fname" />
+                    <label for="beneficiary_fname">First Name:</label>
+                    <input className='form-control' type="text" id="beneficiary_fname" onChange={handleChange} name="beneficiary_fname"/>
+                    {validationErrors.beneficiary_fname && ( <p style={{ color: 'red' }}>{validationErrors.beneficiary_fname}</p> )}
                 </div>
                 <div className='col-lg-6 mt-2'>
-                    <label for="lname">Last Name:</label>
-                    <input className='form-control' type="text" id="lname" onChange={handleChange} name="lname"/>
+                    <label for="beneficiary_lname">Last Name:</label>
+                    <input className='form-control' type="text" id="beneficiary_lname" onChange={handleChange} name="beneficiary_lname"/>
+                    {validationErrors.beneficiary_lname && ( <p style={{ color: 'red' }}>{validationErrors.beneficiary_lname}</p> )}
                 </div>
                 <div className='col-lg-6 mt-2'>
-                    <label for="email">Email</label>
-                    <input className='form-control' type="text" id="email" name="email" onChange={handleChange}/>
+                    <label for="beneficiary_email">Email:</label>
+                    <input className='form-control' type="text" id="beneficiary_email" onChange={handleChange} name="beneficiary_email"/>
+                    {validationErrors.beneficiary_email && ( <p style={{ color: 'red' }}>{validationErrors.beneficiary_email}</p> )}
                 </div>
                 <div className='col-lg-6 mt-2'>
-                    <label for="mobile">Mobile Number</label>
-                    <input className='form-control' type="text" id="mobile" name="mobile" onChange={handleChange}/>
-                </div>
-                
-
-                <div className='col-lg-6 mt-2'>
-                    <label for="state">State</label>
-                    <input className='form-control' type="text" id="state" name="state" onChange={handleChange}/>
-                </div>
-
-                <div className='col-lg-6 mt-2'>
-                    <label for="town">Town</label>
-                    <input className='form-control' type="text" id="town" name="town" onChange={handleChange}/>
+                    <label for="beneficiary_mobile">Mobile Number</label>
+                    <input className='form-control' type="text" id="beneficiary_mobile" name="beneficiary_mobile" onChange={handleChange}/>
+                    {validationErrors.beneficiary_mobile && ( <p style={{ color: 'red' }}>{validationErrors.beneficiary_mobile}</p> )}
                 </div>
 
                 <div className='col-lg-6 mt-2'>
-                    <label for="town">Age</label>
-                    <input className='form-control' type="number" name="town" onChange={handleChange}/>
+                    <label for="beneficiary_state">State</label>
+                    <input className='form-control' type="text" id="beneficiary_state" name="beneficiary_state" onChange={handleChange}/>
+                    {validationErrors.beneficiary_state && ( <p style={{ color: 'red' }}>{validationErrors.beneficiary_state}</p> )}
                 </div>
 
                 <div className='col-lg-6 mt-2'>
-                    <label for="relationship">Relationship with Beneficiary</label>
-                    <select className='form-control form-select'  name="relationship" onChange={handleChange} >
+                    <label for="beneficiary_town">Town</label>
+                    <input className='form-control' type="text" id="beneficiary_town" name="beneficiary_town" onChange={handleChange}/>
+                    {validationErrors.beneficiary_town && ( <p style={{ color: 'red' }}>{validationErrors.beneficiary_town}</p> )}
+                </div>
+                <div className='col-lg-6 mt-2'>
+                    <label for="beneficiary_age">Age:</label>
+                    <input className='form-control' type="number" id="beneficiary_age" onChange={handleChange} name="beneficiary_age"/>
+                    {validationErrors.beneficiary_age && ( <p style={{ color: 'red' }}>{validationErrors.beneficiary_age}</p> )}
+                </div>
+
+                <div className='col-lg-6 mt-2'>
+                    <label for="beneficiary_relationship">Relationship with Beneficiary</label>
+                    <select className='form-control form-select'  name="beneficiary_relationship" onChange={handleChange} >
                         <option>Please Select</option>
                         <option value="son">Son</option>
                         <option value="daughter">Daughter</option>
@@ -180,11 +316,12 @@ const Form = () => {
                         <option value="sister">Sister</option>
                         <option value="others">Others</option>
                     </select>
+                    {validationErrors.beneficiary_relationship && ( <p style={{ color: 'red' }}>{validationErrors.beneficiary_relationship}</p> )}
                 </div>
 
                 <div className='col-lg-6 mt-2'>
                     <label htmlFor="stateSelect">Preferred Hospital Location</label>
-                    <select id="stateSelect" className='form-control form-select' value={selectedState} onChange={handleStateChange}>
+                    <select id="stateSelect" className='form-control form-select' name='beneficiary_hosp_location' value={selectedState} onChange={handleStateChange}>
                         <option value="">Select a state</option>
                         {options.map((state, index) => (
                         <option key={index} value={state}>
@@ -192,24 +329,28 @@ const Form = () => {
                         </option>
                         ))}
                     </select>
+                    {validationErrors.beneficiary_hosp_location && ( <p style={{ color: 'red' }}>{validationErrors.beneficiary_hosp_location}</p> )}
                 </div>
+
                 <div className='col-lg-6 mt-2'>
                     <label htmlFor="hospitalSelect">Select Hospital:</label>
-                    <select id="hospitalSelect" className='form-control form-select'>
+                    <select id="hospitalSelect" name='beneficiary_hospital' onChange={handleChange} className='form-control form-select'>
+                        <option value="">Select a hospital</option>
                         {selectedHospitals.map((hospital, index) => (
-                        <option key={index} value={hospital.id}>
+                        <option key={index} value={hospital.Health_Care_Provider}>
                             {hospital.Health_Care_Provider}
                         </option>
                         ))}
-                    </select>  
+                    </select>
+                    {validationErrors.beneficiary_hospital && ( <p style={{ color: 'red' }}>{validationErrors.beneficiary_hospital}</p> )}
                 </div>
                 <div className='mt-2'>
-                    <label for="gender">Pre-existing Health Condition:</label><br/>
+                    <label for="beneficiary_health_condition">Pre-existing Health Condition:</label><br/>
                     <div className='form-check form-check-inline'>
-                    <input type="radio" name="health_condition" value="yes" checked={hasPreExistingCondition} onChange={handlePreExistingConditionChange}/> <label>Yes</label> 
+                    <input type="radio" name="beneficiary_health_condition" value="yes" checked={hasPreExistingCondition} onChange={handlePreExistingConditionChange}/> <label>Yes</label> 
                     </div>
                     <div className='form-check form-check-inline'>
-                    <input type="radio" name="health_condition"  value="no" checked={!hasPreExistingCondition} onChange={handlePreExistingConditionChange} /> <label> No</label> 
+                    <input type="radio" name="beneficiary_health_condition"  value="no" checked={!hasPreExistingCondition} onChange={handlePreExistingConditionChange} /> <label> No</label> 
                     </div>
                     
                     {hasPreExistingCondition && (
@@ -228,12 +369,13 @@ const Form = () => {
                         </div>
                         </div>
                     )}
-                </div>
-                
+                </div>              
             </div>
         </fieldset>
 
-        <button className='main-btn btn-outline mt-4 mb-4' style={{padding: '10px 20px'}}>Submit</button>
+        <p className='text-danger'>{ submitError }</p>
+        <p className='text-danger'>{formFail}</p>
+        <button className='main-btn btn-outline mt-4 mb-4' style={{padding: '10px 20px'}}>{ loading ? 'Submitting...' : 'Submit'}</button>
     </form>
   )
 }

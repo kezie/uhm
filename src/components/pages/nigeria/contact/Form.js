@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 
 const Form = () => {
@@ -12,6 +13,12 @@ const Form = () => {
     async function handleSubmit(e) {
         e.preventDefault();
         setLoading(true)
+
+        if(name === '' || email === '' || subject === '' || message === ''){
+          setError('Please fill out all fields')
+          setLoading(false)
+          return;
+        }
       
         const formData = new FormData();
       
@@ -20,28 +27,27 @@ const Form = () => {
           formData.append(field.name, field.value);
         });
 
-        const url = process.env.REACT_APP_CONTACT_FORM_API
+        const url = process.env.REACT_APP_CONTACT_FORM_API;
       
-        await fetch(
-          url,
-          {
-            body: formData,
-            method: "POST",
-          }
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.status !== "mail_sent") throw data.message
-                setName(''); setEmail('');setMessage(''); setSubject(''); setError(''); setSent('Message Sent, We will get in touch shortly');
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-            setError('Please fill out all fields')
-          }).finally(() => {
-            setLoading(false)
-          });
+        try {
+          const response = await axios.post(url, formData);
+      
+          console.log(response.data);
+          setName(''); setEmail('');setMessage(''); setSubject(''); setError('');
+          setSent('Your message was sent successfully, we will contact you shortly.')
           
-      }
+          setLoading(false)
+          
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        setError('Please fill out all fields')
+        // Handle error
+          
+      }finally{
+        setLoading(false)
+      };
+    }
+
   return (
     <form
         onSubmit={handleSubmit}

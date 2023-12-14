@@ -1,12 +1,23 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { TabData } from './Data'
 import {Col, Nav, Row, Tab} from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import ScrollToTop from '../ScrollToTop'
+import axios from 'axios'
 
 const InsuranceCalc = () => {
 
-    
+    const [validationErrors, setValidationErrors] = useState({});
+    const [submitMessage, setSubmitMessage] = useState('');
+    const [loading, setLoading] = useState(false)
+    const [fname, setFname] = useState('');
+    const [lname, setLname] = useState('');
+    const [email, setEmail] = useState('');
+    const [lives, setLives] = useState('');
+    const [phone, setPhone] = useState('');
+    const [error, setError] = useState('');
+    const [sent, setSent] = useState('')
+
     const {purchase} = useParams();
 
     const activeTab = ()=>{
@@ -23,49 +34,46 @@ const InsuranceCalc = () => {
         setOption(plan);
     }
 
-    const [fname, setFname] = useState('');
-    const [lname, setLname] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [lives, setLives] = useState('');
-    const [error, setError] = useState('');
-    const [isLoading, setLoading] = useState(false);
-    const [sent, setSent] = useState('')
-
-    async function handleSubmit(e) {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true)
-      
+        setLoading(true);
+
+
+        if(fname === '' || email === '' || lname === '' || lives === ''|| phone ===''){
+            setError('Please fill out all fields')
+            setLoading(false)
+            return;
+          }
+
+        const url = process.env.REACT_APP_QUOTE_CALC_API;
+
         const formData = new FormData();
       
         Array.from(e.currentTarget.elements).forEach((field) => {
           if (!field.name) return;
           formData.append(field.name, field.value);
         });
-      
-        const url = process.env.REACT_APP_QUOTE_CALC_API;
         
-        await fetch(
-          url,
-          {
-            body: formData,
-            method: "POST",
-          }
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            console.log();
-            if (data.status !== "mail_sent") throw data.message
-                setFname(''); setLname(''); setLives(''); setEmail(''); setPhone(''); setError(''); setSent('Message Sent, We will be in touch shortly');
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-            setError(error)
-          }).finally(() => {
+        const dataToSend = {
+            ...formData,
+            plan: purchase ? `${purchase.toUpperCase()} PLAN` : `${option} PLAN`
+        };
+        
+        try {
+            const response = await axios.post(url, dataToSend);
+        
+            console.log(response.data);
+            setFname(''); setEmail('');setLives(''); setPhone(''); setError(''); setLname('');
+            setSubmitMessage('Your message was sent successfully, we will contact you shortly.')
             setLoading(false)
-          });
-          
-      }
+            
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            setError(error)
+            setLoading(false)
+            // Handle error
+        }
+    };   
 
     return (
         <>
@@ -116,8 +124,8 @@ const InsuranceCalc = () => {
                                                                         placeholder="First Name"
                                                                         name="fname"
                                                                         required=""
-                                                                        onChange={(e) => setFname(e.target.value)}
                                                                         value={fname}
+                                                                        onChange={(e) => setFname(e.target.value)}
                                                                     />
                                                                 </div>
 
@@ -127,9 +135,9 @@ const InsuranceCalc = () => {
                                                                         className="w-100 p-2 rounded-pill text-center"
                                                                         placeholder="Last Name"
                                                                         name="lname"
+                                                                        value={lname}
                                                                         required=""
                                                                         onChange={(e) => setLname(e.target.value)}
-                                                                        value={lname}
                                                                     />
                                                                 </div>
                                                             
@@ -140,8 +148,8 @@ const InsuranceCalc = () => {
                                                                         placeholder="Email"
                                                                         name="email"
                                                                         required=""
-                                                                        onChange={(e) => setEmail(e.target.value)}
                                                                         value={email}
+                                                                        onChange={(e) => setEmail(e.target.value)}
                                                                     />
                                                                 </div>
                                                             
@@ -152,8 +160,8 @@ const InsuranceCalc = () => {
                                                                         placeholder="Phone"
                                                                         name="phone"
                                                                         required=""
-                                                                        onChange={(e) => setPhone(e.target.value)}
                                                                         value={phone}
+                                                                        onChange={(e) => setPhone(e.target.value)}
                                                                     />
                                                                 </div>
 
@@ -164,9 +172,9 @@ const InsuranceCalc = () => {
                                                                         placeholder="Number of Lives"
                                                                         name="lives"
                                                                         min={1}
+                                                                        value={lives}
                                                                         required=""
                                                                         onChange={(e) => setLives(e.target.value)}
-                                                                        value={lives}
                                                                     />
                                                                 </div>
                                                         
@@ -181,10 +189,10 @@ const InsuranceCalc = () => {
                                                                         disabled
                                                                     />
                                                                 </div>
-                                                                <span className="text-center">{error ? error:sent}</span>
+                                                                <p className='text-light'>{error ? error : submitMessage}</p>
                                                                 <div className="form_group">
                                                                     <button className="main-btn btn-red">
-                                                                        {isLoading ? 'Sending Message...' :'Send Message' }
+                                                                       {loading ? 'Sending Message...' : 'Send Message'} 
                                                                     </button>
                                                                 </div>
                                                             </div>  
@@ -206,83 +214,6 @@ const InsuranceCalc = () => {
                                     </Row>
                                 </Tab.Container>
                             </div>
-                            {/* form */}
-                            {/* <div className="col-lg-4">
-                            === Contact Form Box ===
-                                <div className="insurance_form mb-50 wow fadeInRight">
-
-                                    <form onSubmit={(e) => e.preventDefault()}>
-                                        <div className='row'>
-                                            <div className="form_group mb-2">
-                                                <input
-                                                    type="text"
-                                                    className="w-100 p-2 rounded-pill text-center"
-                                                    placeholder="First Name"
-                                                    name="name"
-                                                    required=""
-                                                />
-                                            </div>
-
-                                            <div className="form_group mb-2">
-                                                <input
-                                                    type="text"
-                                                    className="w-100 p-2 rounded-pill text-center"
-                                                    placeholder="Last Name"
-                                                    name="name"
-                                                    required=""
-                                                />
-                                            </div>
-                                        
-                                            <div className="form_group mb-2">
-                                                <input
-                                                    type="email"
-                                                    className="w-100 p-2 rounded-pill text-center"
-                                                    placeholder="Email"
-                                                    name="email"
-                                                    required=""
-                                                />
-                                            </div>
-                                        
-                                            <div className="form_group mb-2">
-                                                <input
-                                                    type="text"
-                                                    className="w-100 p-2 rounded-pill text-center"
-                                                    placeholder="Phone"
-                                                    name="phone"
-                                                    required=""
-                                                />
-                                            </div>
-
-                                            <div className="col-lg-6 form_group mb-2">
-                                                <input
-                                                    type="number"
-                                                    className="w-100 p-2 rounded-pill text-center"
-                                                    placeholder="Number of Lives"
-                                                    name="numb"
-                                                    required=""
-                                                />
-                                            </div>
-                                    
-                                            <div className="col-lg-6 form_group mb-2">
-                                                <input
-                                                    type="text"
-                                                    className="w-100 p-2 rounded-pill text-center"
-                                                    placeholder="Plan"
-                                                    name="plan"
-                                                    required=""
-                                                    value={`${option} PLAN`}
-                                                />
-                                            </div>
-                                        
-                                            <div className="form_group">
-                                                <button className="main-btn btn-red">
-                                                    Get Quote
-                                                </button>
-                                            </div>
-                                        </div>  
-                                    </form>
-                                </div>
-                            </div> */}
                         </div>
                     </div>
                 </div>

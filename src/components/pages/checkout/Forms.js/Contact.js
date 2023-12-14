@@ -14,6 +14,8 @@ const Form = ({amount}) => {
     const navigate = useNavigate();
     const [validationErrors, setValidationErrors] = useState({});
     const [submitError, setSubmitError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [formFail, setFormFail] = useState('');
 
 
     const validateForm = () => {
@@ -133,14 +135,17 @@ const Form = ({amount}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true)
 
         if (!validateForm()) {
             // If there are validation errors, do not submit the form
+            setLoading(false)
             setSubmitError('Please fill out all fields correctly')
             return;
             }
 
         const url = process.env.REACT_APP_CONTACT_PERSON_API;
+        setSubmitError('')
         
         const dataToSend = {
             ...formData,
@@ -164,6 +169,7 @@ const Form = ({amount}) => {
         } catch (error) {
             console.error("Error submitting form:", error);
             // Handle error
+            setFormFail('Error Submitting Form')
         }
     };   
           
@@ -312,7 +318,8 @@ const Form = ({amount}) => {
             </div>
         </fieldset>
         <p className='text-danger'>{submitError}</p>
-        <button className='main-btn btn-outline mt-4 mb-4' style={{padding: '10px 20px'}}>Submit</button>
+        <p className='text-danger'>{formFail}</p>
+        <button className='main-btn btn-outline mt-4 mb-4' style={{padding: '10px 20px'}}>{ loading ? 'Submitting...' : 'Submit'}</button>
     </form>
   )
 }
