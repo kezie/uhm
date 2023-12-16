@@ -49,6 +49,18 @@ const Form = ({amount}) => {
             errors.principal_address = 'Your address is required';
         }
 
+        if (!formData.principal_state.trim()) {
+            errors.principal_state = 'Your state is required';
+        }
+
+        if (!formData.principal_dob.trim()) {
+            errors.principal_dob = 'Your date of birth is required';
+        }
+
+        if (!formData.principal_town.trim()) {
+            errors.principal_town = 'Your town is required';
+        }
+
         if (!formData.principal_hosp_location.trim()) {
             errors.principal_hosp_location = 'Preferred Hospital Location is required';
           }
@@ -174,6 +186,7 @@ const Form = ({amount}) => {
         principal_mobile: "",
         principal_state: "",
         principal_town:"",
+        principal_dob: "",
         principal_address: "",
         principal_hosp_location: "",
         principal_hospital: "",
