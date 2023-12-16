@@ -523,6 +523,7 @@ const Form = ({amount}) => {
                     )}
                 </div>              
             </div>
+            <h6 className='text-center text-success pt-3'>Contact our marketing team on +234-811-2893-000 to add more beneficiaries</h6>
         </fieldset>
 
         <p className='text-danger'>{ submitError }</p>
