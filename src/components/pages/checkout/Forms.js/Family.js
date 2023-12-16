@@ -9,7 +9,6 @@ const Form = ({amount}) => {
     const [selectedState, setSelectedState] = useState('');
     const [selectedHospitals, setSelectedHospitals] = useState([]);
     const [options, setOptions] = useState([]);
-    const [hasPreExistingCondition, setHasPreExistingCondition] = useState(false);
     const [selectedConditions, setSelectedConditions] = useState([]);
     const navigate = useNavigate();
     const [validationErrors, setValidationErrors] = useState({});
@@ -173,6 +172,8 @@ const Form = ({amount}) => {
         principal_email: "",
         principal_gender: "",
         principal_mobile: "",
+        principal_state: "",
+        principal_town:"",
         principal_address: "",
         principal_hosp_location: "",
         principal_hospital: "",
@@ -207,9 +208,11 @@ const Form = ({amount}) => {
         
         const dataToSend = {
             ...formData,
-            beneficiary_hosp_location: selectedState,
-            beneficiary_health_condition: hasPreExistingCondition ? selectedConditions.join(', ') : '',
+            principal_health_condition: principalHasPreExistingCondition ? selectedConditions.join(', ') : '',
+            beneficiary_health_condition: beneficiaryHasPreExistingCondition ? selectedConditions.join(', ') : '',
         };
+
+        console.log('Data to send:', dataToSend);
         
         try {
             const response = await axios.post(url, dataToSend);
@@ -281,11 +284,24 @@ const Form = ({amount}) => {
                     {validationErrors.principal_dob && ( <p style={{ color: 'red' }}>{validationErrors.principal_dob}</p> )}
                 </div>
 
-                <div className='col-lg-12 mt-2'>
+                <div className='col-lg-6 mt-2'>
                     <label for="principal_address">Contact Address:</label>
                     <input className='form-control' type="text" id="principal_address" onChange={handleChange} name="principal_address"/>
                     {validationErrors.principal_address && ( <p style={{ color: 'red' }}>{validationErrors.principal_address}</p> )}
                 </div> 
+
+                <div className='col-lg-6 mt-2'>
+                    <label for="principal_state">State</label>
+                    <input className='form-control' type="text" id="principal_state" name="principal_state" onChange={handleChange}/>
+                    {validationErrors.principal_state && ( <p style={{ color: 'red' }}>{validationErrors.principal_state}</p> )}
+                </div>
+
+                <div className='col-lg-6 mt-2'>
+                    <label for="principal_town">Town</label>
+                    <input className='form-control' type="text" id="principal_town" name="principal_town" onChange={handleChange}/>
+                    {validationErrors.principal_town && ( <p style={{ color: 'red' }}>{validationErrors.principal_town}</p> )}
+                </div>
+
                 <div className='col-lg-6 mt-2'>
                     <label htmlFor="stateSelectPrincipal">Preferred Hospital Location (Principal)</label>
                     <select
