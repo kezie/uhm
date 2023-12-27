@@ -30,6 +30,7 @@ import ScrollToTop from './components/partials/ScrollToTop';
 import { getPosts } from './components/redux/reducers/postReducer';
 import { getCategories } from './components/redux/reducers/categoryReducer';
 import Remita from './components/pages/checkout/Remita';
+import TestForm from './components/pages/testform'
 
 function App() {
   const location = useLocation();
@@ -78,6 +79,7 @@ function App() {
           <Route path={'/social-health-insurance'} element={<SocialPrograms/>} />
           <Route path={'/insurance-calculator/:purchase?'} element={<InsuranceCalc/>} />
           <Route path={'/checkout/:plan/:amount'} element={<Checkout/>} />
+          <Route path={'/test'} element={<TestForm/>} />
           <Route path='*' element={<ErrorPage/>} />
         </Routes>
       <Footer/>
