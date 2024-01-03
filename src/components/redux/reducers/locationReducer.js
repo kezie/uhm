@@ -6,8 +6,8 @@ const initialState = {
   isLoading: true,
 }
 
-const token = '39e93a01118816';
-const apiUrl = `https://ipinfo.io/102.91.5.235?token=${token}`
+const token = process.env.REACT_APP_IPINFO_TOKEN;
+const apiUrl = `https://ipinfo.io?token=${token}`
 
 export const getLocation = createAsyncThunk('userLocation/getLocation', async () =>{
     try{
