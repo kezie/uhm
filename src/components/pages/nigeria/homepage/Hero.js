@@ -58,7 +58,7 @@ const Hero = () => {
 
                   {/* mobile */}
                   <div className="hero-content d-lg-none">
-                    <h1 style={{fontSize:20, marginBottom:0}} className="wow fadeInDown text-uppercase" data-wow-delay="1s">
+                    <h1 style={{fontSize:20, marginBottom:10}} className="wow fadeInDown text-uppercase" data-wow-delay="1s">
                        Your Partner For... 
                        {" "}
                     </h1>
