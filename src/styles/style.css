@@ -439,7 +439,7 @@ button {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding: 15px 30px;
+  padding: 15px;
   font-weight: 700;
   text-transform: capitalize;
   border-radius: 50px;
