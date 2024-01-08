@@ -17,6 +17,7 @@ const Form = ({amount}) => {
     const [submitError, setSubmitError] = useState('');
     const [loading, setLoading] = useState(false);
     const [formFail, setFormFail] = useState('');
+    const [selectedFile, setSelectedFile] = useState(null);
 
 
     const validateForm = () => {
@@ -98,6 +99,11 @@ const Form = ({amount}) => {
         // Return true if there are no errors, false otherwise
         return Object.keys(errors).length === 0;
       };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        setSelectedFile(file);
+    };
 
 
     useEffect(() => {
@@ -248,7 +254,12 @@ const Form = ({amount}) => {
                     <label for="sponsor_address">Contact Address:</label>
                     <input className='form-control' type="text" id="sponsor_address" onChange={handleChange} name="sponsor_address"/>
                     {validationErrors.sponsor_address && ( <p style={{ color: 'red' }}>{validationErrors.sponsor_address}</p> )}
-                </div>   
+                </div>  
+
+                <div className="mt-2">
+                    <label htmlFor="file"><i className='fa fa-file text-success form-control' style={{border:'1px solid', fontSize:18}}> Upload a Valid ID or Passport Photograph</i></label>
+                    <input type="file" id="file" onChange={handleFileChange} hidden/>
+                </div> 
             </div>
         </fieldset>
 
