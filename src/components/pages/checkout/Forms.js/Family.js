@@ -4,6 +4,7 @@ import { useState } from 'react';
 import './styles.css'
 import { uhms_providers } from '../../nigeria/providers/Data';
 import { useNavigate } from 'react-router-dom';
+import Terms from './Terms';
 
 const Form = ({amount}) => {
     const [selectedState, setSelectedState] = useState('');
@@ -538,7 +539,7 @@ const Form = ({amount}) => {
             </div>
             <h6 className='text-center text-success pt-3'>Contact our marketing team on +234-811-2893-000 to add more beneficiaries</h6>
         </fieldset>
-
+        <Terms/>
         <p className='text-danger'>{ submitError }</p>
         <p className='text-danger'>{formFail}</p>
         <button className='main-btn btn-outline mt-4 mb-4' style={{padding: '10px 20px'}}>{ loading ? 'Submitting...' : 'Submit'}</button>
