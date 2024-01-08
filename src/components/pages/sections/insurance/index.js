@@ -61,16 +61,17 @@ const Plans = () => {
                                     <span className="plan" style={{color:`${plan.color}`}}>{plan.plan}</span>
                                 </span>
                                 <div className="pricing-header text-center mt-4 pb-35">
-                                    <h6 style={{fontSize:14}}>COMPREHENSIVE ANNUAL LIMIT</h6>
+                                    {/* <h6 style={{fontSize:14}}>COMPREHENSIVE ANNUAL LIMIT</h6>
                                     <h2 className="price">
                                         <span className="currency" style={{fontSize:'14px'}}>
                                             { userLocation === "NG" ? "₦" : "$"}</span> <span className="sm" style={{fontSize:'22px'}}> <CurrencyFormat value={plan.price}  displayType={'text'} thousandSeparator={true} /></span>
                                         <span className="sm" style={{fontSize:'14px'}}> .00 </span>
                                     </h2>
-                                    <h3 style={{fontSize:'14px', color:'#008000'}}>PER INDIVIDUAL</h3>
+                                    <h3 style={{fontSize:'14px', color:'#008000'}}>PER INDIVIDUAL</h3> */}
                                 </div>
                                 <div className="pricing-body">
                                 <ul className="pricing-list">
+                                    <li><i className='fa fa-check-circle text-success me-2'></i>Annual Price Limit { userLocation === "NG" ? "₦" : "$"}{plan.price}</li>
                                     {plan.benefits.map((benefit)=>(
                                         <li><i className={ `me-2 ${benefit.status}`}></i> {benefit.plan}</li>
                                     ))}
