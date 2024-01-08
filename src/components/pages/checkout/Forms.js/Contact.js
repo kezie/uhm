@@ -17,6 +17,7 @@ const Form = ({amount}) => {
     const [submitError, setSubmitError] = useState('');
     const [loading, setLoading] = useState(false);
     const [formFail, setFormFail] = useState('');
+    const [selectedFile, setSelectedFile] = useState(null);
 
 
     const validateForm = () => {
@@ -83,6 +84,10 @@ const Form = ({amount}) => {
         return Object.keys(errors).length === 0;
       };
 
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        setSelectedFile(file);
+    };
 
     useEffect(() => {
         const uniqueStates = Array.from(
@@ -136,7 +141,7 @@ const Form = ({amount}) => {
         hosp_location: "",
         hospital: "",
         health_condition: "",
-        confirm:""
+        file: null,
     });
 
     const handleSubmit = async (e) => {
@@ -157,10 +162,14 @@ const Form = ({amount}) => {
             ...formData,
             hosp_location: selectedState,
             health_condition: hasPreExistingCondition ? selectedConditions.join(', ') : '',
+            file: selectedFile,
         };
         
         try {
-            const response = await axios.post(url, dataToSend);
+            const response = await axios.post(url, dataToSend, {headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
         
             console.log(response.data);
             // Handle success
@@ -263,6 +272,11 @@ const Form = ({amount}) => {
                     <label for="town">Town</label>
                     <input className='form-control' type="text" id="town" name="town" onChange={handleChange}/>
                     {validationErrors.town && ( <p style={{ color: 'red' }}>{validationErrors.town}</p> )}
+                </div>
+
+                <div className="mt-2">
+                    <label htmlFor="file"><i className='fa fa-file text-success form-control' style={{border:'1px solid', fontSize:18}}> Upload a Valid ID or Passport Photograph</i></label>
+                    <input type="file" id="file" onChange={handleFileChange} hidden/>
                 </div>
                 
             </div>
