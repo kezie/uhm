@@ -4,6 +4,7 @@ import { useState } from 'react';
 import './styles.css'
 import { uhms_providers } from '../../nigeria/providers/Data';
 import { useNavigate } from 'react-router-dom';
+import Terms from './Terms';
 
 const Form = ({amount}) => {
     const [selectedState, setSelectedState] = useState('');
@@ -372,7 +373,7 @@ const Form = ({amount}) => {
                 </div>              
             </div>
         </fieldset>
-
+        <Terms/>
         <p className='text-danger'>{ submitError }</p>
         <p className='text-danger'>{formFail}</p>
         <button className='main-btn btn-outline mt-4 mb-4' style={{padding: '10px 20px'}}>{ loading ? 'Submitting...' : 'Submit'}</button>
