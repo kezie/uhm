@@ -22,7 +22,7 @@ const Hero = () => {
           <div key={index}>
             {slide.type === 'video' ? (
               <>
-              <video autoPlay muted loop preload="auto" className="video-element">
+              <video autoPlay muted loop playsInline preload="auto" className="video-element">
                 <source src={slide.content} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
