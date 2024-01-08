@@ -20,6 +20,7 @@ const Form = ({amount}) => {
     const [beneficiaryHospLocation, setBeneficiaryHospLocation] = useState('');
     const [principalHasPreExistingCondition, setPrincipalHasPreExistingCondition] = useState(false);
     const [beneficiaryHasPreExistingCondition, setBeneficiaryHasPreExistingCondition] = useState(false);
+    const [selectedFile, setSelectedFile] = useState(null);
 
 
     const validateForm = () => {
@@ -118,6 +119,10 @@ const Form = ({amount}) => {
         return Object.keys(errors).length === 0;
       };
 
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        setSelectedFile(file);
+    };
 
     useEffect(() => {
         const uniqueStates = Array.from(
@@ -127,36 +132,36 @@ const Form = ({amount}) => {
       }, []);
 
     const handleStateChange = (e, isPrincipal) => {
-    const selectedState = e.target.value;
-    const hasPreExistingCondition = e.target.value === 'yes';
+        const selectedState = e.target.value;
+        const hasPreExistingCondition = e.target.value === 'yes';
 
-    setSelectedState(selectedState);
-    if (isPrincipal) {
-        setPrincipalHospLocation(selectedState);
-        setPrincipalHasPreExistingCondition(hasPreExistingCondition);
-        setSelectedConditions([]);
-    } else {
-        setBeneficiaryHospLocation(selectedState);
-        setBeneficiaryHasPreExistingCondition(hasPreExistingCondition);
-        setSelectedConditions([]);
-        }
-    
-    const hospitalsInSelectedState = uhms_providers.dataroot.Uhms_providers.filter(
-        (provider) => provider.State === selectedState
-    );
-    
-    if (isPrincipal) {
-        setSelectedHospitals(hospitalsInSelectedState);
-        setFormData({ ...formData, principal_hosp_location: selectedState });
+        setSelectedState(selectedState);
+        if (isPrincipal) {
+            setPrincipalHospLocation(selectedState);
+            setPrincipalHasPreExistingCondition(hasPreExistingCondition);
+            setSelectedConditions([]);
         } else {
-        // Update the beneficiary-related states accordingly
-        setSelectedHospitals(hospitalsInSelectedState);
-        setFormData({ ...formData, beneficiary_hosp_location: selectedState });
-        }
+            setBeneficiaryHospLocation(selectedState);
+            setBeneficiaryHasPreExistingCondition(hasPreExistingCondition);
+            setSelectedConditions([]);
+            }
+        
+        const hospitalsInSelectedState = uhms_providers.dataroot.Uhms_providers.filter(
+            (provider) => provider.State === selectedState
+        );
     
-    // Clear the validation error when the state is selected
-    setValidationErrors({ ...validationErrors, beneficiary_hosp_location: '' });
-    }; 
+        if (isPrincipal)    {
+            setSelectedHospitals(hospitalsInSelectedState);
+            setFormData({ ...formData, principal_hosp_location: selectedState });
+            } else {
+            // Update the beneficiary-related states accordingly
+            setSelectedHospitals(hospitalsInSelectedState);
+            setFormData({ ...formData, beneficiary_hosp_location: selectedState });
+            }
+        
+            // Clear the validation error when the state is selected
+            setValidationErrors({ ...validationErrors, beneficiary_hosp_location: '' });
+        }; 
 
     const handlePreExistingConditionChange = (e, isPrincipal) => {
         const hasPreExistingCondition = e.target.value === 'yes';
@@ -349,6 +354,11 @@ const Form = ({amount}) => {
                     </select>
                     {validationErrors.beneficiary_hospital && ( <p style={{ color: 'red' }}>{validationErrors.beneficiary_hospital}</p> )}
                 </div>
+
+                <div className="mt-2">
+                    <label htmlFor="file"><i className='fa fa-file text-success form-control' style={{border:'1px solid', fontSize:18}}> Upload a Valid ID or Passport Photograph</i></label>
+                    <input type="file" id="file" onChange={handleFileChange} hidden/>
+                </div> 
                 
                 <div className='mt-2'>
                     <label htmlFor="principal_health_condition">Pre-existing Health Condition (Principal):</label><br />
