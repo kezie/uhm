@@ -1,6 +1,6 @@
 import React from 'react';
 import Framer from '../../../partials/Framer';
-import Map from './Map'
+import Map from '../../map/Map'
 import Slider from 'react-slick';
 import { partnerSliderOne } from '../../../partials/sliderProps';
 import hospitals from '../../global/hospitals';
