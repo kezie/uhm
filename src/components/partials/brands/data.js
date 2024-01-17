@@ -1,4 +1,4 @@
-export default [
+export const brands = [
     {
         id:0,
         brand:'ndlea',
