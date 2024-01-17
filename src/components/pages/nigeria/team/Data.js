@@ -5,10 +5,8 @@ import charity from '../../../../images/team/charity.jpeg'
 import nancy from '../../../../images/team/nancy.jpeg'
 import idris from '../../../../images/team/idris.jpeg'
 import blessing from '../../../../images/team/blessing.jpeg'
-import otokpa from '../../../../images/team/otokpa.jpeg'
 import chikezie from '../../../../images/team/chikezie.jpeg'
 import cosmos from '../../../../images/team/cosmos.jpg'
-import dara from '../../../../images/team/dara.jpg'
 
 export const teamData = [
     {
