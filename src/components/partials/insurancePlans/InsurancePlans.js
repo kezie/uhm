@@ -8,7 +8,7 @@ const InsurancePlans = () => {
       {InsuranceData.map((insurance)=>(
         <div key={insurance.type} className="service-item wow fadeInUp col-lg-3 mb-2">
           <div className="img-holder">
-            <img src={insurance.image} alt="service image" />
+            <img src={insurance.image} alt="service" />
           </div>
           <div className="service-content">
             <div className="text">
