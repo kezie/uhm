@@ -12,8 +12,8 @@ const Remita = () => {
         firstName: firstName,
         lastName: lastName,
         email: email,
-        amount: null,
-        narration: "",
+        amount: amount,
+        narration: "Insurance Payment",
       });
       let data = {
         ...paymentData,
