@@ -12,11 +12,11 @@ const Blog = () => {
 
   useEffect(()=>{
     dispatch(getPosts());
-  }, [])
+  })
 
   useEffect(()=>{
     dispatch(getCategories());
-  }, [])
+  })
 
   const limitedPosts = postItems ? postItems.slice(0, 3) : [];
   return (
