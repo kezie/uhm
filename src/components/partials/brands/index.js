@@ -1,7 +1,7 @@
 import React from 'react'
 import { partnerSliderOne } from '../sliderProps'
 import Slider from 'react-slick'
-import Clients from './data'
+import {brands as Clients} from './data'
 
 const Brands = () => {
   return (
