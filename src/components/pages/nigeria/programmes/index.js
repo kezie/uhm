@@ -39,8 +39,51 @@ const Programs = () => {
         m_status
     };
 
+    const submit_hubspot_form = async (formData) => {
+      const portalId = process.env.REACT_APP_HUBSPOT_PORTAL_ID; // Replace with your HubSpot portal ID
+      const formGuid = "188af79d-3b86-4010-88de-b2415cc54a6e"; // Replace with your HubSpot form GUID
+    
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+    
+      const {
+          fname,
+          lname,
+          email,
+          mobile,
+          company,
+          plan,
+          m_status
+      } = formData;
+    
+      const response = await axios.post(
+        `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`,
+        {
+          portalId,
+          formGuid,
+          fields: [
+            { name: 'firstname', value: fname },
+            { name: 'lastname', value: lname },
+            { name: 'email', value: email },
+            { name: 'mobile', value: mobile },
+            { name: 'company', value: company },
+            { name: 'plan', value: plan },
+            { name: 'm_status', value: m_status },
+          ],
+        },
+        config
+      );
+    
+      return response;
+    };
+
     try {
         const response = await axios.post(url, dataToSend);
+
+        await submit_hubspot_form(dataToSend);
 
         console.log(response.data);
         setFname('');
@@ -87,6 +130,7 @@ const Programs = () => {
                             className="form_control"
                             placeholder="First Name"
                             name="fname"
+                            value={fname}
                             onChange={(e) => setFname(e.target.value)}
                           />
                           
@@ -97,6 +141,7 @@ const Programs = () => {
                             className="form_control"
                             placeholder="Last Name"
                             name="lname"
+                            value={lname}
                             onChange={(e) => setLname(e.target.value)}
                           />
                          
@@ -107,6 +152,7 @@ const Programs = () => {
                             className="form_control"
                             placeholder="Phone Number"
                             name="mobile"
+                            value={mobile}
                             onChange={(e) => setMobile(e.target.value)}
                           />
                           
@@ -117,6 +163,7 @@ const Programs = () => {
                             className="form_control"
                             placeholder="Email"
                             name="email"
+                            value={email}
                             onChange={(e) => setEmail(e.target.value)}
                           />
                          
@@ -127,6 +174,7 @@ const Programs = () => {
                             className="form_control"
                             placeholder="Company Name"
                             name="company"
+                            value={company}
                             onChange={(e) => setCompany(e.target.value)}
                           />
                           
@@ -137,12 +185,13 @@ const Programs = () => {
                             className="form_control"
                             placeholder="Marital Status"
                             name="m_status"
+                            value={m_status}
                             onChange={(e) => setM_status(e.target.value)}
                           />
                           
                         </div>
                         <div className="form_group col-lg-6">
-                          <select className='form_control' name="plan" onChange={(e) => setPlan(e.target.value)}>
+                          <select className='form_control' name="plan" value={plan} onChange={(e) => setPlan(e.target.value)}>
                             <option>What Plan Are Interested In?</option>
                             <option value="GIFSHIP">GIFSHIP</option>
                             <option value="TISHIP">TISHIP</option>
