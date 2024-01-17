@@ -1,7 +1,70 @@
 import { Link } from "react-router-dom";
 import { socials } from "./socials/Data";
+import { useState } from "react";
+import axios from "axios";
 
 const Newsletter = () => {
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    if (email === '') {
+        setError('Please enter your email address');
+        setLoading(false);
+        return;
+    }
+
+    const url = process.env.REACT_APP_SUBSCRIPTIONS_API;
+
+    const submit_hubspot_form = async (email) => {
+        const portalId = process.env.REACT_APP_HUBSPOT_PORTAL_ID; // Replace with your HubSpot portal ID
+        const formGuid = 'a0ed1afe-d436-4110-8ffa-05a6e1cfdd5f'; // Replace with your HubSpot form GUID
+      
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        };
+      
+        const response = await axios.post(
+          `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`,
+          {
+            portalId,
+            formGuid,
+            fields: [
+              { name: 'email', value: email },
+            ],
+          },
+          config
+        );
+      
+        return response;
+      };
+
+    try {
+        await axios.post(url, {email});
+
+        await submit_hubspot_form(email);
+
+        setEmail('');
+        setError('')
+        setLoading(false);
+        setSubmitMessage('Thank you for subscribing.');
+
+
+    } catch (error) {
+        console.error("Error submitting form:", error);
+        setError('Error submitting form, please try again');
+        setLoading(false);
+        // Handle error
+    }
+};
+
   return (
     <section className="newsletter-section black-bg pt-50 pb-30">
       <div className="container">
@@ -25,7 +88,7 @@ const Newsletter = () => {
           <div className="col-xl-5 col-lg-12">
             {/*=== Newsletter Form ===*/}
             <div className="newsletter-from wow fadeInRight">
-              <form onSubmit={(e) => e.preventDefault()}>
+              <form onSubmit={handleSubmit}>
                 <div className="row align-items-center">
                   <div className="col-lg-12">
                     <p>Subscribe to our Newsletter to stay updated with events and promotions</p>
@@ -35,28 +98,18 @@ const Newsletter = () => {
                         className="form_control"
                         placeholder="Enter Email Address"
                         name="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                       <i className="far fa-envelope" />
                     </div>
-                    {/* <div className="form_checkbox">
-                      <input
-                        type="checkbox"
-                        name="checkbox"
-                        id="check2"
-                        defaultChecked=""
-                      />
-                      <label htmlFor="check2">
-                        <span>
-                          I agree to the <a href="#"> Privacy Policy</a>.
-                        </span>
-                      </label>
-                    </div> */}
                   </div>
+                  <p className='text-light'>{error ? error : submitMessage}</p>
                   <div className="col-lg-4 mt-2">
                     <div className="form-button float-lg-right">
-                      <button className="main-btn btn-red">
-                        Subscribe
-                      </button>
+                    <button className="main-btn btn-red">
+                        {loading ? 'Subscribing...' : 'Subscribe'} 
+                    </button>
                     </div>
                   </div>
                 </div>
