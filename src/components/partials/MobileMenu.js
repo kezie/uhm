@@ -1,7 +1,6 @@
 import { Fragment, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Socials from "./socials/Socials";
 
 const MobileMenu = ({handleLocationChange}) => {
 
@@ -97,11 +96,11 @@ const MobileMenu = ({handleLocationChange}) => {
 
           <div className="btn-group" style={{cursor:'pointer'}}>
             <span className= "dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              {userLocation === "NG" ? <> <img src="assets/images/logo/naija.png" width={25}/> <span style={{fontWeight:'bold'}}> NG</span> </> : <> <img src="assets/images/logo/global.png" width={20}/> <span style={{fontWeight:'bold'}}> Global</span> </> }
+              {userLocation === "NG" ? <> <img src="assets/images/logo/naija.png" width={25} alt="logo"/> <span style={{fontWeight:'bold'}}> NG</span> </> : <> <img src="assets/images/logo/global.png" width={20} alt="global"/> <span style={{fontWeight:'bold'}}> Global</span> </> }
             </span>
             <ul className="dropdown-menu" style={{minWidth:"7rem"}}>
-              <li className="ms-2"><Link onClick={() => handleLocationChange('NG')} to="/"> <img src="assets/images/logo/naija.png" width={25}/> Nigeria</Link></li>
-              <li className="ms-2"><Link onClick={() => handleLocationChange('DG')} to="/global"><img src="assets/images/logo/global.png" width={20}/> Global</Link></li>
+              <li className="ms-2"><Link onClick={() => handleLocationChange('NG')} to="/"> <img src="assets/images/logo/naija.png" width={25} alt="nigeria"/> Nigeria</Link></li>
+              <li className="ms-2"><Link onClick={() => handleLocationChange('DG')} to="/global"><img src="assets/images/logo/global.png" width={20} alt="global"/> Global</Link></li>
             </ul>
           </div>
 
