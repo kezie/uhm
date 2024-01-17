@@ -39,7 +39,7 @@ const Testimonials = () => {
                           <div className="author-thumb">
                             <img
                               src={avatar}
-                              alt="Author Image"
+                              alt="Author"
                             />
                           </div>
                           <div className="author-title">
