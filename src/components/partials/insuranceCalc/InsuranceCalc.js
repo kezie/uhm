@@ -51,9 +51,50 @@ const InsuranceCalc = () => {
             lives,
             plan: purchase ? `${purchase.toUpperCase()} PLAN` : `${option} PLAN`,
         };
+
+        const submit_hubspot_form = async (formData) => {
+            const portalId = process.env.REACT_APP_HUBSPOT_PORTAL_ID // Replace with your HubSpot portal ID
+            const formGuid = '1c1586dd-b7fa-44d4-a582-ac6cfca2ff57'; // Replace with your HubSpot form GUID
+          
+            const config = {
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            };
+          
+            const {
+                fname,
+                lname,
+                email,
+                phone,
+                lives,
+                plan,
+            } = formData;
+          
+            const response = await axios.post(
+              `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`,
+              {
+                portalId,
+                formGuid,
+                fields: [
+                  { name: 'firstname', value: fname },
+                  { name: 'lastname', value: lname },
+                  { name: 'email', value: email },
+                  { name: 'phone', value: phone },
+                  { name: 'lives', value: lives },
+                  { name: 'plan', value: plan },
+                ],
+              },
+              config
+            );
+          
+            return response;
+          };
     
         try {
             const response = await axios.post(url, dataToSend);
+
+            await submit_hubspot_form(dataToSend);
     
             console.log(response.data);
             setFname('');
@@ -64,6 +105,7 @@ const InsuranceCalc = () => {
             setError('');
             setSubmitMessage('Your message was sent successfully, we will contact you shortly.');
             setLoading(false);
+
     
         } catch (error) {
             console.error("Error submitting form:", error);
