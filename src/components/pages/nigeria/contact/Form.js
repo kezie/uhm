@@ -27,10 +27,47 @@ const Form = () => {
           message,
       };
 
+      const submit_hubspot_form = async (formData) => {
+        const portalId = '143520660'; // Replace with your HubSpot portal ID
+        const formGuid = 'f10b43d5-e999-4b87-864c-f900b0bb8b00'; // Replace with your HubSpot form GUID
+      
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        };
+      
+        const {
+            name,
+            email,
+            subject,
+            message
+        } = formData;
+      
+        const response = await axios.post(
+          `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`,
+          {
+            portalId,
+            formGuid,
+            fields: [
+              { name: 'fullname', value: name },
+              { name: 'email', value: email },
+              { name: 'subject', value: subject },
+              { name: 'message', value: message },
+            ],
+          },
+          config
+        );
+      
+        return response;
+      };
+
         const url = process.env.REACT_APP_CONTACT_FORM_API;
       
         try {
           const response = await axios.post(url, dataToSend);
+
+          await submit_hubspot_form(dataToSend);
       
           console.log(response.data);
           setName(''); setEmail('');setMessage(''); setSubject(''); setError('');
