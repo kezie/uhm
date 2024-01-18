@@ -86,7 +86,7 @@ const Checkout = () => {
                 </option>
                 {plans.map((plan) => (
                   <option key={plan.plan} value={plan.plan.toLowerCase()}>
-                    {plan.plan.toUpperCase()} PLAN - ₦{plan.amount}
+                    {plan.plan.toUpperCase()}  ₦{plan.amount}
                   </option>
                 ))}
               </select>
