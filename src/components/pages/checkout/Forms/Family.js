@@ -20,7 +20,6 @@ const Form = ({amount}) => {
     const [beneficiaryHospLocation, setBeneficiaryHospLocation] = useState('');
     const [principalHasPreExistingCondition, setPrincipalHasPreExistingCondition] = useState(false);
     const [beneficiaryHasPreExistingCondition, setBeneficiaryHasPreExistingCondition] = useState(false);
-    const [selectedFile, setSelectedFile] = useState(null);
 
 
     const validateForm = () => {
@@ -118,11 +117,6 @@ const Form = ({amount}) => {
         // Return true if there are no errors, false otherwise
         return Object.keys(errors).length === 0;
       };
-
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        setSelectedFile(file);
-    };
 
     useEffect(() => {
         const uniqueStates = Array.from(
@@ -433,10 +427,10 @@ const Form = ({amount}) => {
                     {validationErrors.beneficiary_hospital && ( <p style={{ color: 'red' }}>{validationErrors.beneficiary_hospital}</p> )}
                 </div>
 
-                <div className="mt-2">
+                {/* <div className="mt-2">
                     <label htmlFor="file"><i className='fa fa-file text-success form-control' style={{border:'1px solid', fontSize:18}}> Upload a Valid ID or Passport Photograph</i></label>
                     <input type="file" id="file" onChange={handleFileChange} hidden/>
-                </div> 
+                </div>  */}
                 
                 <div className='mt-2'>
                     <label htmlFor="principal_health_condition">Pre-existing Health Condition (Principal):</label><br />
@@ -625,7 +619,7 @@ const Form = ({amount}) => {
                     )}
                 </div>              
             </div>
-            <h6 className='text-center text-success pt-3'>Contact our marketing team on +234-811-2893-000 to add more beneficiaries</h6>
+            <h6 className='text-center pt-3' style={{color:'#8eb850'}}>Contact our marketing team on +234-811-2893-000 to add more beneficiaries</h6>
         </fieldset>
         <Terms/>
         <p className='text-danger'>{ submitError }</p>
