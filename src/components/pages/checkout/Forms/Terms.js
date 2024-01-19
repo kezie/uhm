@@ -5,7 +5,7 @@ const Terms = () => {
   return (
     <>
         <div className='mt-2'>
-            <label><input type="checkbox" name='confirm' required/> I confirm that I have read the exclusions to my policy stated <a href="#" className="text-success" data-bs-toggle="modal" data-bs-target="#policyModal">here</a>  </label>
+            <label><input type="checkbox" name='confirm' required/> I confirm that I have read the exclusions to my policy stated <a href="#" style={{color:'#8eb850'}} data-bs-toggle="modal" data-bs-target="#policyModal">here</a>  </label>
         </div>
         <div className="modal fade" id="policyModal" tabIndex="-1" aria-labelledby="policyModalLabel" aria-hidden="true">
             <div className=" modal-dialog modal-lg pt-130 pb-130">
