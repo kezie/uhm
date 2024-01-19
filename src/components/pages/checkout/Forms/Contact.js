@@ -17,7 +17,6 @@ const Form = ({amount}) => {
     const [submitError, setSubmitError] = useState('');
     const [loading, setLoading] = useState(false);
     const [formFail, setFormFail] = useState('');
-    const [selectedFile, setSelectedFile] = useState(null);
 
 
     const validateForm = () => {
@@ -316,11 +315,11 @@ const Form = ({amount}) => {
                     {validationErrors.town && ( <p style={{ color: 'red' }}>{validationErrors.town}</p> )}
                 </div>
 
-                <div className="mt-2">
+                {/* <div className="mt-2">
                     <label htmlFor="file"><i className='fa fa-file form-control' style={{border:'1px solid', fontSize:18}}> Upload a Valid ID or Passport Photograph</i></label>
                     <input type="file" id="file" hidden/>
                 </div>
-                
+                 */}
             </div>
         </fieldset>
 
