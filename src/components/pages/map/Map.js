@@ -102,10 +102,10 @@ const Map = () => {
                 className="form-control"
               >
                 <option value="">All</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
+                <option value="Classic">Classic</option>
+                <option value="Gold">Gold</option>
+                <option value="Diamond">Diamond</option>
+                <option value="Diamond+">Diamond+</option>
               </select>
             </div>
 
