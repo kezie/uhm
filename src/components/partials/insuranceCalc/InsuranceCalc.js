@@ -27,6 +27,8 @@ const InsuranceCalc = () => {
 
     const [option, setOption] = useState('CLASSIC')
 
+    console.log(`${process.env.REACT_APP_HUBSPOT_PORTAL_ID}`);
+
     const handleOptionChange = (plan) => {
         setOption(plan);
     }
@@ -53,8 +55,8 @@ const InsuranceCalc = () => {
         };
 
         const submit_hubspot_form = async (formData) => {
-            const portalId = process.env.REACT_APP_HUBSPOT_PORTAL_ID // Replace with your HubSpot portal ID
-            const formGuid = '1c1586dd-b7fa-44d4-a582-ac6cfca2ff57'; // Replace with your HubSpot form GUID
+            // const portalId = '23806076' // Replace with your HubSpot portal ID
+            // const formGuid = '1c1586dd-b7fa-44d4-a582-ac6cfca2ff57'; // Replace with your HubSpot form GUID
           
             const config = {
               headers: {
