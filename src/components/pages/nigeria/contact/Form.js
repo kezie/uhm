@@ -28,8 +28,8 @@ const Form = () => {
       };
 
       const submit_hubspot_form = async (formData) => {
-        const portalId = '143520660'; // Replace with your HubSpot portal ID
-        const formGuid = 'f10b43d5-e999-4b87-864c-f900b0bb8b00'; // Replace with your HubSpot form GUID
+        const portalId = process.env.REACT_APP_HUBSPOT_PORTAL_ID; // Replace with your HubSpot portal ID
+        const formGuid = '94e60f24-589c-4e92-8f6f-58d1c8f0412e'; // Replace with your HubSpot form GUID
       
         const config = {
           headers: {
