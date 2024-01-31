@@ -23,7 +23,7 @@ const Newsletter = () => {
 
     const submit_hubspot_form = async (email) => {
         const portalId = process.env.REACT_APP_HUBSPOT_PORTAL_ID; // Replace with your HubSpot portal ID
-        const formGuid = 'a0ed1afe-d436-4110-8ffa-05a6e1cfdd5f'; // Replace with your HubSpot form GUID
+        const formGuid = '2fd8a337-c79a-4c60-98db-53a5188efc2f'; // Replace with your HubSpot form GUID
       
         const config = {
           headers: {
