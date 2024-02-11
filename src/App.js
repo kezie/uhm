@@ -31,6 +31,7 @@ import { getPosts } from './components/redux/reducers/postReducer';
 import { getCategories } from './components/redux/reducers/categoryReducer';
 import Remita from './components/pages/checkout/Remita';
 import Map from './components/pages/map/Map'
+import PayPalButton from './components/pages/checkout/Forms/PayPal';
 
 function App() {
   const location = useLocation();
@@ -80,6 +81,7 @@ function App() {
           <Route path={'/insurance-calculator/:purchase?'} element={<InsuranceCalc/>} />
           <Route path={'/checkout/:chosenPlan'} element={<Checkout/>} />
           <Route path={'/map'} element={<Map/>} />
+          <Route path={'/paypal'} element={<PayPalButton/>} />
           <Route path='*' element={<ErrorPage/>} />
         </Routes>
       <Footer/>
