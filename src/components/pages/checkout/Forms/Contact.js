@@ -156,8 +156,8 @@ const Form = ({amount}) => {
         };
 
         const submit_hubspot_form = async (formData) => {
-            const portalId = process.env.REACT_APP_HUBSPOT_PORTAL_ID; // Replace with your HubSpot portal ID
-            const formGuid =  "d7119a9a-e222-4105-b11c-a87fa10b0ae3"; // Replace with your HubSpot form GUID
+            const portalId = process.env.REACT_APP_HUBSPOT_PORTAL_ID;
+            const formGuid =  "d7119a9a-e222-4105-b11c-a87fa10b0ae3";
           
             const config = {
               headers: {
@@ -221,7 +221,7 @@ const Form = ({amount}) => {
                 amount:amount
             }
             });
-            // await submit_hubspot_form(formData);
+            await submit_hubspot_form(formData);
         } catch (error) {
             console.error("Error submitting form:", error);
             // Handle error
