@@ -271,8 +271,7 @@ const Form = ({amount}) => {
                         amount:amount
                     }
                 })
-              }
-            ;
+              };
             // await submit_hubspot_form(formData);
         } catch (error) {
             console.error("Error submitting form:", error);
