@@ -5,10 +5,13 @@ import Family from "./Forms/Family.js";
 import { Link, NavLink, useParams } from "react-router-dom";
 import { Button, Card } from "react-bootstrap";
 import { plans } from "./Plans.js";
+import {plans2} from "./Plans2.js"
+import { useSelector } from 'react-redux'
 
 
 const Checkout = () => {
 
+  const {userLocation} = useSelector((state)=>(state.userLocation))
   
   const [selectedForm, setSelectedForm] = useState(1)
   const { chosenPlan: initialChosenPlan } = useParams();
@@ -18,7 +21,14 @@ const Checkout = () => {
   );
   
   const handlePlanChange = (newPlan) => {
-    const selectedPlan = plans.find((plan) => plan.plan.toLowerCase() === newPlan);
+    let selectedPlan;
+
+    if(userLocation === "NG"){
+      selectedPlan = plans.find((plan) => plan.plan.toLowerCase() === newPlan);
+    }else{
+      selectedPlan = plans2.find((plan) => plan.plan.toLowerCase() === newPlan);
+    }
+
     setChosenPlan(selectedPlan);
   };
   
@@ -84,11 +94,18 @@ const Checkout = () => {
                 <option value="" disabled>
                   Select a Plan
                 </option>
-                {plans.map((plan) => (
-                  <option key={plan.plan} value={plan.plan.toLowerCase()}>
-                    {plan.plan.toUpperCase()}  ₦{plan.amount}
-                  </option>
-                ))}
+                {userLocation === "NG" ? 
+                  plans.map((plan) => (
+                    <option key={plan.plan} value={plan.plan.toLowerCase()}>
+                      {plan.plan.toUpperCase()}  ₦{plan.amount}
+                    </option>
+                  )) : 
+                  plans2.map((plan) => (
+                    <option key={plan.plan} value={plan.plan.toLowerCase()}>
+                      {plan.plan.toUpperCase()} USD{plan.amount}
+                    </option>
+                  ))
+               }
               </select>
             </Card.Body>
               
