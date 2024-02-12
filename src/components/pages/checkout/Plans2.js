@@ -1,0 +1,22 @@
+export const plans2 = [
+    {
+        id:1,
+        plan:'Classic',
+        amount:'800'
+    },
+    {
+        id:2,
+        plan:'Gold',
+        amount:'1000'
+    },
+    {
+        id:3,
+        plan:'Diamond',
+        amount:'1500'
+    },
+    {
+        id:4,
+        plan:'Diamond+',
+        amount:'2500'
+    }
+]
