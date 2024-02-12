@@ -382,7 +382,6 @@ const Form = ({amount}) => {
         <p className='text-muted'>{submitError}</p>
         <p className='text-danger'>{formFail}</p>
         <button className='main-btn btn-outline mt-4 mb-4' style={{padding: '10px 20px'}}>{ loading ? 'Submitting...' : 'Submit'}</button>
-        
     </form>
   )
 }
