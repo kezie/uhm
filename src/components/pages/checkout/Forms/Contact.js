@@ -5,8 +5,11 @@ import './styles.css'
 import { uhms_providers } from '../../nigeria/providers/Data';
 import { useNavigate } from 'react-router-dom';
 import Terms from './Terms';
+import { useSelector } from 'react-redux'
 
 const Form = ({amount}) => {
+    const {userLocation} = useSelector((state)=>(state.userLocation))
+
     const [selectedState, setSelectedState] = useState('');
     const [selectedHospitals, setSelectedHospitals] = useState([]);
     const [options, setOptions] = useState([]);
@@ -213,14 +216,25 @@ const Form = ({amount}) => {
         
             console.log(response.data);
             // Handle success
-            navigate('/checkout/payment', { state: 
-            {
-                firstName: formData.fname,
-                lastName: formData.lname,
-                email: formData.email,
-                amount:amount
-            }
-            });
+            if(userLocation === "NG"){
+                navigate('/checkout/payment', { state: 
+                    {
+                        firstName: formData.fname,
+                        lastName: formData.lname,
+                        email: formData.email,
+                        amount:amount
+                    }
+                })
+              }else{
+                navigate('/checkout/paypal', { state: 
+                    {
+                        firstName: formData.fname,
+                        lastName: formData.lname,
+                        email: formData.email,
+                        amount:amount
+                    }
+                })
+              }
             await submit_hubspot_form(formData);
         } catch (error) {
             console.error("Error submitting form:", error);
